@@ -1,12 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
-  <rect width="1200" height="560" fill="#f8fbfd"/>
-  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">유지관리 계획의 구성</text>
-  <rect x="160" y="140" width="860" height="70" rx="18" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="590" y="185" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">설비 inventory</text>
-  <rect x="210" y="230" width="760" height="70" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
-  <text x="590" y="275" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">점검 항목과 일정</text>
-  <rect x="260" y="320" width="660" height="70" rx="18" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
-  <text x="590" y="365" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">condition indicator</text>
-  <rect x="310" y="410" width="560" height="70" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/>
-  <text x="590" y="455" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#6d28d9">기록과 후속 계획</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
+  <rect width="1200" height="430" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">유지관리 계획의 다섯 뼈대</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">그리고 "보는 것(inspection)"과 "손대는 것(maintenance)"의 구분</text>
+
+  <!-- five stacked bones -->
+  <g font-weight="700" font-size="18">
+    <g><rect x="70" y="150" width="560" height="48" rx="10" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/><text x="95" y="181" fill="#c2410c">① 설비 목록 (inventory)</text></g>
+    <g><rect x="70" y="206" width="560" height="48" rx="10" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/><text x="95" y="237" fill="#c2410c">② 점검 항목</text></g>
+    <g><rect x="70" y="262" width="560" height="48" rx="10" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/><text x="95" y="293" fill="#c2410c">③ 일정</text></g>
+    <g><rect x="70" y="318" width="560" height="48" rx="10" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/><text x="95" y="349" fill="#c2410c">④ 상태 지표 (condition indicator)</text></g>
+  </g>
+  <rect x="70" y="374" width="560" height="40" rx="10" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/>
+  <text x="95" y="400" font-size="18" font-weight="700" fill="#c2410c">⑤ 결과 기록</text>
+
+  <!-- inspection vs maintenance -->
+  <g>
+    <rect x="680" y="150" width="450" height="120" rx="16" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/>
+    <text x="705" y="190" font-size="20" font-weight="800" fill="#0f766e">inspection (점검)</text>
+    <text x="705" y="222" font-size="15" fill="#5d7c78">상태를 "보는" 행위 — 건강검진</text>
+    <text x="705" y="248" font-size="15" fill="#5d7c78">예: 펌프 진동을 측정만 한다</text>
+  </g>
+  <g>
+    <rect x="680" y="290" width="450" height="124" rx="16" fill="#1f2430" stroke="#1f2430" stroke-width="2.5"/>
+    <text x="705" y="330" font-size="20" font-weight="800" fill="#ffffff">maintenance (정비)</text>
+    <text x="705" y="362" font-size="15" fill="#cbb9ab">"손대는" 조치까지 포함 — 치료</text>
+    <text x="705" y="388" font-size="15" fill="#cbb9ab">예: 기준 넘으면 베어링 교체</text>
+  </g>
 </svg>

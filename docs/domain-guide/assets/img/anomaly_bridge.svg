@@ -1,24 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
-  <rect width="1200" height="560" fill="#f8fbfd"/>
-  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">이상탐지를 운영 판단으로 번역하는 다리</text>
-  <rect x="100" y="170" width="220" height="140" rx="18" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="210" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">모델 이상</text>
-  <text x="210" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#405270">score, spike, drift</text>
-  <rect x="390" y="170" width="220" height="140" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
-  <text x="500" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">원인 후보</text>
-  <text x="500" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#3d5a53">센서 / 부품 / 제어</text>
-  <rect x="680" y="170" width="220" height="140" rx="18" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
-  <text x="790" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">영향도</text>
-  <text x="790" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#704a3d">민원 / 안전 / 효율</text>
-  <rect x="970" y="170" width="140" height="140" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/>
-  <text x="1040" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#6d28d9">작업</text>
-  <text x="1040" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#5d3d8a">지시</text>
-  <path d="M320 240H390" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M610 240H680" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M900 240H970" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
-    </marker>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
   </defs>
+  <rect width="1200" height="400" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">이상 점수를 작업지시로 잇는 다리</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">점수 그대로는 부족하다 — 원인 후보와 영향도를 더해야 가치가 생긴다</text>
+
+  <g>
+    <rect x="70" y="180" width="240" height="120" rx="16" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/>
+    <text x="190" y="230" text-anchor="middle" font-size="21" font-weight="700" fill="#0f766e">이상 점수</text>
+    <text x="190" y="260" text-anchor="middle" font-size="14" fill="#5d7c78">"평소와 다르다"</text>
+  </g>
+
+  <!-- bridge middle -->
+  <rect x="410" y="160" width="380" height="160" rx="18" fill="#fff1e7" stroke="#ea580c" stroke-width="3"/>
+  <text x="600" y="200" text-anchor="middle" font-size="18" font-weight="800" fill="#c2410c">후처리 (번역 계층)</text>
+  <text x="600" y="234" text-anchor="middle" font-size="15" fill="#9a6a4f">· 센서 이상인가, 설비 이상인가</text>
+  <text x="600" y="260" text-anchor="middle" font-size="15" fill="#9a6a4f">· 원인 후보는 무엇인가</text>
+  <text x="600" y="286" text-anchor="middle" font-size="15" fill="#9a6a4f">· 영향도(민원 위험)는 큰가</text>
+
+  <g>
+    <rect x="890" y="180" width="240" height="120" rx="16" fill="#1f2430" stroke="#1f2430" stroke-width="2.5"/>
+    <text x="1010" y="230" text-anchor="middle" font-size="21" font-weight="700" fill="#ffffff">작업지시</text>
+    <text x="1010" y="260" text-anchor="middle" font-size="14" fill="#cbb9ab">바로 쓸 수 있는 형태</text>
+  </g>
+
+  <path d="M310 240 H410" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M790 240 H890" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
 </svg>

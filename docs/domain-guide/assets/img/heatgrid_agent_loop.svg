@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
+    <marker id="arh" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#ea580c"/></marker>
+  </defs>
+  <rect width="1200" height="440" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">HeatGrid 운영 판단 루프</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">센서 신호를 받아 판단하고, 작업으로 바꾸고, 차질이 생기면 다시 계획한다</text>
+
+  <!-- 5 nodes -->
+  <g>
+    <rect x="60" y="150" width="190" height="110" rx="16" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/>
+    <text x="155" y="198" text-anchor="middle" font-size="21" font-weight="700" fill="#0f766e">데이터 수집</text>
+    <text x="155" y="228" text-anchor="middle" font-size="15" fill="#5d7c78">센서·시계열 DB</text>
+  </g>
+  <g>
+    <rect x="312" y="150" width="190" height="110" rx="16" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/>
+    <text x="407" y="198" text-anchor="middle" font-size="21" font-weight="700" fill="#0f766e">이상 해석</text>
+    <text x="407" y="228" text-anchor="middle" font-size="15" fill="#5d7c78">이상 점수·원인 후보</text>
+  </g>
+  <g>
+    <rect x="564" y="150" width="190" height="110" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="659" y="198" text-anchor="middle" font-size="21" font-weight="700" fill="#c2410c">우선순위</text>
+    <text x="659" y="228" text-anchor="middle" font-size="15" fill="#9a6a4f">영향도·제약·이력</text>
+  </g>
+  <g>
+    <rect x="816" y="150" width="190" height="110" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="911" y="198" text-anchor="middle" font-size="21" font-weight="700" fill="#c2410c">작업지시</text>
+    <text x="911" y="228" text-anchor="middle" font-size="15" fill="#9a6a4f">점검 순서·준비물</text>
+  </g>
+  <g>
+    <rect x="1010" y="150" width="130" height="110" rx="16" fill="#1f2430" stroke="#1f2430" stroke-width="2.5"/>
+    <text x="1075" y="198" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">현장</text>
+    <text x="1075" y="226" text-anchor="middle" font-size="14" fill="#cbb9ab">정비사 출동</text>
+  </g>
+
+  <path d="M250 205 H312" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M502 205 H564" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M754 205 H816" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M1006 205 H1010" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+
+  <!-- feedback loop -->
+  <path d="M1075 260 V335 H155 V260" fill="none" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arh)"/>
+  <rect x="470" y="312" width="260" height="46" rx="12" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/>
+  <text x="600" y="341" text-anchor="middle" font-size="17" font-weight="700" fill="#c2410c">재계획 — 차질이 생기면 다시</text>
+</svg>

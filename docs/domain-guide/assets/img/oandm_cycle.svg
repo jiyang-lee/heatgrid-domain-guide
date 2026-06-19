@@ -1,21 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
-  <rect width="1200" height="560" fill="#f7fbfc"/>
-  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">현장 O&amp;M 순환</text>
-  <circle cx="280" cy="280" r="95" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="280" y="275" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">운전 상태 확인</text>
-  <circle cx="560" cy="180" r="95" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
-  <text x="560" y="175" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">점검 순서</text>
-  <circle cx="840" cy="280" r="95" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
-  <text x="840" y="275" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">조치 수행</text>
-  <circle cx="560" cy="380" r="95" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/>
-  <text x="560" y="375" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#6d28d9">기록과 재확인</text>
-  <path d="M370 240L470 200" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M650 200L750 240" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M780 350L650 390" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M470 390L340 340" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
-    </marker>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
   </defs>
+  <rect width="1200" height="400" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">점검은 순서대로 좁혀간다</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">쉽고 빠른 확인부터, 손 많이 가는 것 순으로 — 무작정 분해하지 않는다</text>
+
+  <g font-weight="700">
+    <g>
+      <rect x="90" y="170" width="280" height="130" rx="18" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/>
+      <text x="230" y="222" text-anchor="middle" font-size="22" fill="#0f766e">① 운전 상태 확인</text>
+      <text x="230" y="256" text-anchor="middle" font-size="15" font-weight="400" fill="#5d7c78">계기판으로 정상 기준과</text>
+      <text x="230" y="278" text-anchor="middle" font-size="15" font-weight="400" fill="#5d7c78">비교 (분해 없이)</text>
+    </g>
+    <g>
+      <rect x="460" y="170" width="280" height="130" rx="18" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+      <text x="600" y="222" text-anchor="middle" font-size="22" fill="#c2410c">② 원인 좁히기</text>
+      <text x="600" y="256" text-anchor="middle" font-size="15" font-weight="400" fill="#9a6a4f">차압·온도차·밸브 반응을</text>
+      <text x="600" y="278" text-anchor="middle" font-size="15" font-weight="400" fill="#9a6a4f">순서대로 확인</text>
+    </g>
+    <g>
+      <rect x="830" y="170" width="280" height="130" rx="18" fill="#1f2430" stroke="#1f2430" stroke-width="2.5"/>
+      <text x="970" y="222" text-anchor="middle" font-size="22" fill="#ffffff">③ 조치</text>
+      <text x="970" y="256" text-anchor="middle" font-size="15" font-weight="400" fill="#cbb9ab">필요한 곳만 정확히</text>
+      <text x="970" y="278" text-anchor="middle" font-size="15" font-weight="400" fill="#cbb9ab">수리·교체</text>
+    </g>
+  </g>
+
+  <path d="M370 235 H460" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M740 235 H830" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
 </svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
+    <marker id="arh" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#ea580c"/></marker>
+  </defs>
+  <rect width="1200" height="430" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">정비사 출동 프로세스</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">받는 것부터 기록·재출동 판단까지, 하나의 흐름</text>
+
+  <g font-size="18" font-weight="700">
+    <g><rect x="55" y="150" width="155" height="96" rx="14" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/><text x="132" y="195" text-anchor="middle" fill="#c2410c">① 이벤트</text><text x="132" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#9a6a4f">작업지시 수신</text></g>
+    <g><rect x="245" y="150" width="155" height="96" rx="14" fill="#ffffff" stroke="#dcd2c4" stroke-width="2.5"/><text x="322" y="195" text-anchor="middle" fill="#1f2430">② 확인</text><text x="322" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#6b7280">위치·증상·긴급도</text></g>
+    <g><rect x="435" y="150" width="155" height="96" rx="14" fill="#ffffff" stroke="#dcd2c4" stroke-width="2.5"/><text x="512" y="195" text-anchor="middle" fill="#1f2430">③ 준비·이동</text><text x="512" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#6b7280">공구·부품</text></g>
+    <g><rect x="625" y="150" width="155" height="96" rx="14" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/><text x="702" y="195" text-anchor="middle" fill="#0f766e">④ 진단</text><text x="702" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#5d7c78">1차 점검·원인</text></g>
+    <g><rect x="815" y="150" width="155" height="96" rx="14" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/><text x="892" y="195" text-anchor="middle" fill="#0f766e">⑤ 조치</text><text x="892" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#5d7c78">수리·교체</text></g>
+    <g><rect x="1005" y="150" width="140" height="96" rx="14" fill="#1f2430" stroke="#1f2430" stroke-width="2.5"/><text x="1075" y="195" text-anchor="middle" fill="#ffffff">⑥ 기록</text><text x="1075" y="220" text-anchor="middle" font-size="13" font-weight="400" fill="#cbb9ab">결과·이력</text></g>
+  </g>
+
+  <path d="M210 198 H245" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M400 198 H435" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M590 198 H625" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M780 198 H815" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M970 198 H1005" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+
+  <path d="M1075 246 V320 H132 V246" fill="none" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arh)"/>
+  <rect x="470" y="300" width="270" height="44" rx="12" fill="#fff1e7" stroke="#ea580c" stroke-width="2"/>
+  <text x="605" y="328" text-anchor="middle" font-size="16" font-weight="700" fill="#c2410c">⑦ 재출동·후속 점검 판단</text>
+</svg>
