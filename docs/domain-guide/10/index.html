@@ -21,17 +21,23 @@
     <main class="page-main">
       <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>이상탐지 연구</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>이상탐지/고장 연구 요약</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>이 분야의 연구 지형을 빠르게 보고 싶은 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>15분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../01/index.html">01_PreDist_논문_정리.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets">ResearchGate 리뷰</a>, <a href="https://www.diva-portal.org/smash/get/diva2%3A1988416/FULLTEXT01.pdf">ML anomaly detection thesis PDF</a></div></div><div class='meta-row'><div class='meta-key'>로컬 PDF 경로</div><div class='meta-value'>ResearchGate 리뷰는 로컬 보관 불가, <a href="./assets/pdf/10_ml_anomaly_detection_thesis.pdf">10_ml_anomaly_detection_thesis.pdf</a></div></div></section>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>이상탐지 연구 리뷰 요약</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>이상탐지를 HeatGrid 문제로 번역하려는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../02/index.html">02_PreDist_데이터셋_가이드.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://lup.lub.lu.se/student-papers/record/9147924/file/9147925.pdf">Thesis PDF</a></div></div></section>
         <h1>10. Anomaly Detection Review 요약</h1>
 <hr>
-<h2>왜 이 문서를 읽어야 하는가</h2>
-<p>PreDist 하나만 보면 데이터셋은 이해되지만, 어떤 fault와 anomaly가 중요한지 넓은 맥락이 부족할 수 있다.</p>
-<h2>핵심 해설</h2>
-<ul><li>district heating substation 분야는 일반 산업 PdM보다 상대적으로 연구가 적었다.</li><li>중요한 것은 catastrophic failure보다 <code>부분 고장</code>, <code>성능 저하</code>, <code>제어 이상</code>, <code>에너지 비효율</code>이다.</li><li>anomaly detection은 <code>미지의 이상</code>을 조기 포착하는 데 유용하다.</li></ul>
-<h2>HeatGrid에 직접 쓰는 포인트</h2>
-<ul><li>HeatGrid는 완전 파손보다 <code>성능 저하 + 운영 리스크</code>를 먼저 다루는 것이 자연스럽다.</li><li>따라서 anomaly score는 우선순위 엔진의 핵심 입력 중 하나가 된다.</li></ul>
+<h2>왜 읽어야 하는가</h2>
+<p>이상탐지는 HeatGrid의 일부일 뿐 전부가 아니다. 이 문서는 어떤 이상이 의미 있고, 어떤 이상은 현장 맥락이 없으면 가치가 낮은지를 구분하게 도와준다.</p>
+<h2>핵심 개념</h2>
+<ul><li>이상탐지는 정상 패턴을 먼저 잘 이해해야 한다.</li><li>부품 고장, 성능 저하, 센서 오류는 같은 이상 점수로 처리하면 안 된다.</li></ul>
+<h2>중요한 번역 포인트</h2>
+<ul><li>이상은 통계적 이탈일 수 있지만, 운영적으로는 같은 수준의 중요도를 가지지 않는다.</li><li>설명 가능성과 현장 적용성이 모델 성능만큼 중요하다.</li></ul>
+<h2>실무 예시</h2>
+<p>센서 스파이크는 모델 입장에서는 큰 이상일 수 있지만, 운영 입장에서는 센서 교정 이슈일 수 있다. 반대로 작은 온도 이탈이 반복되면 실제 민원 전조일 수도 있다.</p>
+<h2>PreDist 연결 예시</h2>
+<p>PreDist에서 disturbance와 customer report가 같이 붙는 패턴은 단순 수치 이상보다 운영적 중요도가 높은 학습 사례가 될 수 있다.</p>
+<h2>HeatGrid 적용 포인트</h2>
+<ul><li>anomaly score만으로는 부족하고, 원인 후보와 영향도를 함께 해석해야 한다.</li><li>센서 이상과 설비 이상을 구분하는 후처리 계층이 필요하다.</li></ul>
 <h2>초심자 체크포인트</h2>
-<ul><li>이 도메인에서 이상탐지가 왜 중요한지 설명할 수 있는가</li><li>고장 분류와 이상탐지를 어떻게 함께 쓸지 말할 수 있는가</li></ul>
+<ul><li>정상 패턴을 왜 먼저 알아야 하는지 설명할 수 있는가</li><li>센서 이상과 설비 이상을 같은 경보로 다루면 안 되는 이유를 말할 수 있는가</li><li>HeatGrid에서 이상탐지가 왜 보조 계층인지 이해했는가</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../09/index.html'>이전: 유지관리 계획</a><a class='nav-link next' href='../11/index.html'>다음: 국내 시장과 정책</a></nav>
       </article>
     </main>

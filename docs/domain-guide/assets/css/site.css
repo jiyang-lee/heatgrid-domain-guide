@@ -72,10 +72,17 @@ th{background:#eff7f6}
 .doc-card h1{margin-top:0;font-size:42px;line-height:1.08;letter-spacing:-.03em}
 .doc-card h2{margin-top:30px;font-size:28px}
 .doc-card h3{margin-top:22px;font-size:22px}
+.doc-card h4{margin-top:18px;font-size:18px}
 .meta-box{display:grid;gap:10px;margin-bottom:22px;padding:16px;border:1px solid var(--line);background:#f9fbfd;border-radius:18px}
 .meta-row{display:grid;grid-template-columns:150px 1fr;gap:10px}
 .meta-key{font-weight:800;color:#22303d}
 .meta-value{color:#415264}
+.doc-image{display:block;max-width:100%;margin:18px auto;border:1px solid var(--line);border-radius:18px;background:#fff;padding:10px}
+.callout{margin:18px 0;padding:16px 18px;border:1px solid #bfe3dd;background:var(--accent-soft);border-radius:18px}
+.callout strong{display:block;margin-bottom:6px}
+.key-answer{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:20px 0}
+.mini-card{padding:16px;border:1px solid var(--line);border-radius:18px;background:#fbfcfd}
+.mini-card h4{margin:0 0 8px}
 .doc-nav{display:flex;justify-content:space-between;gap:14px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
 .nav-link{display:inline-flex;padding:12px 14px;border-radius:14px;background:#f3f8f9;font-weight:700}
 

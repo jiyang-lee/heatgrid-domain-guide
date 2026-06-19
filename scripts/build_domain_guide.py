@@ -116,7 +116,17 @@ def strip_meta_from_markdown(lines: list[str]) -> list[str]:
 
 
 def convert_inline(text: str, current_slug: str) -> str:
+    image_tokens: list[str] = []
+
+    def repl_image(match: re.Match[str]) -> str:
+        alt = html.escape(match.group(1), quote=True)
+        src = rewrite_href(match.group(2), current_slug)
+        image_tokens.append(f'<img src="{html.escape(src, quote=True)}" alt="{alt}" class="doc-image">')
+        return f"@@IMAGE_{len(image_tokens) - 1}@@"
+
+    text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', repl_image, text)
     text = html.escape(text, quote=False)
+    text = text.replace("&lt;div", "<div").replace("&lt;/div&gt;", "</div>")
     text = re.sub(r'`([^`]+)`', r"<code>\1</code>", text)
     text = re.sub(r'\*\*([^*]+)\*\*', r"<strong>\1</strong>", text)
 
@@ -127,6 +137,8 @@ def convert_inline(text: str, current_slug: str) -> str:
         return f'<a href="{html.escape(href, quote=True)}">{label}</a>'
 
     text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', repl, text)
+    for idx, token in enumerate(image_tokens):
+        text = text.replace(f"@@IMAGE_{idx}@@", token)
     return text
 
 
@@ -174,6 +186,10 @@ def markdown_to_html(markdown: str, current_slug: str) -> str:
             i += 1
             continue
         if not line.strip():
+            i += 1
+            continue
+        if line.startswith("<") and line.endswith(">"):
+            html_parts.append(line)
             i += 1
             continue
         if re.fullmatch(r"-{3,}", line.strip()):
@@ -236,7 +252,7 @@ def markdown_to_html(markdown: str, current_slug: str) -> str:
 
 
 def starts_new_block(line: str, idx: int, lines: list[str]) -> bool:
-    if line.startswith(("# ", "## ", "### ", "#### ", ">", "- ", "```")):
+    if line.startswith(("# ", "## ", "### ", "#### ", ">", "- ", "```", "<")):
         return True
     if re.match(r"^\d+\.\s+", line):
         return True

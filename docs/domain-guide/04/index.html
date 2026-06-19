@@ -21,23 +21,29 @@
     <main class="page-main">
       <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>해외 구조와 운영</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>해외 구조/운영 입문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>ETS, substation, PM 문화가 낯선 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">IEA DHC Handbook</a>, <a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">Substation Design PDF</a>, <a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">Gebwell O&amp;M</a></div></div><div class='meta-row'><div class='meta-key'>로컬 PDF 경로</div><div class='meta-value'><a href="./assets/pdf/05_substation_design.pdf">05_substation_design.pdf</a>, <a href="./assets/pdf/06_gebwell_oandm_manual.pdf">06_gebwell_oandm_manual.pdf</a>, <a href="./assets/pdf/07_iea_dhc_connection_handbook.pdf">07_iea_dhc_connection_handbook.pdf</a></div></div></section>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>해외 구조와 운영 입문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>ETS, substation, 예방정비 문화를 처음 접하는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>25분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">IEA DHC Handbook</a>, <a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">Substation Design PDF</a>, <a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">Gebwell O&amp;M</a></div></div></section>
         <h1>04. 해외 지역난방 구조와 운영 가이드</h1>
 <hr>
-<h2>왜 이 문서를 읽어야 하는가</h2>
-<p>해외 자료는 설계 기준, 예방정비, O&amp;M 문서화가 잘 돼 있어 HeatGrid 설계 언어를 더 정교하게 만든다.</p>
+<h2>왜 지금 이 문서를 읽는가</h2>
+<p>해외 자료는 HeatGrid를 더 정교하게 만드는 <code>운영 표준 언어</code>를 제공한다. 국내는 운영 흐름 이해에 강하고, 해외는 ETS 구조와 예방정비 문서화에 강하다. 둘을 붙여야 설계가 깊어진다.</p>
+<h2>이 문서를 읽고 나면 할 수 있는 것</h2>
+<ul><li>ETS와 substation 개념을 국내 기계실과 비교해 설명할 수 있다.</li><li>왜 해외 자료에서 checklist, logbook, maintenance policy가 반복되는지 이해할 수 있다.</li><li>HeatGrid에 어떤 문서형 출력이 필요한지 설명할 수 있다.</li></ul>
+<p><img src="./assets/img/global_ets_structure.svg" alt="해외 ETS 및 substation 구조도" class="doc-image"></p>
 <hr>
-<h2>해외에서 자주 쓰는 개념</h2>
+<h2>해외 문서에서 반복되는 개념</h2>
 <ul><li><code>ETS (Energy Transfer Station)</code></li><li><code>substation</code></li><li><code>preventive maintenance</code></li><li><code>condition-based maintenance</code></li><li><code>logbook</code></li><li><code>maintenance policy</code></li></ul>
+<h2>해외 표준 문서에서는 이렇게 요구한다</h2>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>해외 문서에서 강조하는 내용</th><th>HeatGrid에 주는 의미</th></tr></thead><tbody><tr><td>설비 구조</td><td>열교환기, 밸브, 펌프, 센서, 계측기가 문서로 정리됨</td><td>설비-센서-고장 매핑이 쉬워짐</td></tr><tr><td>점검 체계</td><td>주기별 점검 항목과 체크리스트를 명확히 둠</td><td>작업지시서 자동화가 가능해짐</td></tr><tr><td>기록 문화</td><td>logbook과 maintenance history를 남김</td><td>재발 분석과 재계획에 유리</td></tr><tr><td>예방정비</td><td>고장 후 대응보다 사전 점검을 강조</td><td>리드타임 예측보다 예방조치 추천이 중요해짐</td></tr><tr><td>상태기반 정비</td><td>condition indicator 기반 판단을 사용</td><td>anomaly score를 운영 언어로 번역해야 함</td></tr></tbody></table></div>
 <hr>
-<h2>해외 운영 방식의 특징</h2>
-<ul><li>설비 구성과 설계 기준이 문서화돼 있다.</li><li>점검 항목과 주기가 비교적 명확하다.</li><li>예방정비와 기록 문화가 강하다.</li><li>점검 체크리스트와 logbook 개념이 중요하다.</li></ul>
-<hr>
+<h2>국내와 다른 운영 감각</h2>
+<ul><li>해외는 설비 구성을 먼저 문서화하고 그 위에 점검 체계를 얹는다.</li><li>국내는 민원과 현장대응 흐름이 더 강하게 느껴진다.</li><li>그래서 HeatGrid는 국내에서 출동 의사결정을 돕고, 해외식 체크리스트 문화를 통해 작업 품질을 높이는 방향이 적합하다.</li></ul>
+<h2>상황 예시</h2>
+<h3>펌프 이상과 센서 이상은 운영적으로 어떻게 다른가</h3>
+<ul><li>펌프 이상은 실제 순환 성능에 영향을 줘서 난방 품질 저하와 민원으로 이어질 수 있다.</li><li>센서 이상은 데이터가 틀릴 수 있지만 실제 설비가 당장 고장난 것은 아닐 수 있다.</li><li>따라서 좋은 Agent는 둘을 같은 “이상”으로 묶지 않고, 펌프 이상은 출동 우선순위를 높이고 센서 이상은 교정 또는 교체 점검으로 구분해야 한다.</li></ul>
 <h2>HeatGrid 시사점</h2>
-<ul><li>작업지시서에는 체크리스트와 점검 순서가 있어야 한다.</li><li>기록은 단순 저장이 아니라 재계획과 반복고장 학습에 써야 한다.</li><li>국내에서는 약한 부분인 <code>maintenance policy</code>를 소프트웨어로 보완할 수 있다.</li></ul>
-<hr>
-<h2>이 내용을 이해하면 할 수 있는 것</h2>
-<ul><li>HeatGrid를 단순 챗봇이 아니라 운영 표준화 도구로 설명할 수 있다.</li><li>국내 운영에 해외식 PM/체크리스트 문화를 어떻게 붙일지 생각할 수 있다.</li></ul>
+<ul><li>작업지시서에는 체크리스트와 점검 순서가 있어야 한다.</li><li>기록은 단순 저장이 아니라 재발 방지와 재계획의 근거가 되어야 한다.</li><li>maintenance policy가 약한 국내 현장일수록 Agent가 문서형 지침을 더 잘 만들어줘야 한다.</li></ul>
+<h2>다음에 읽을 문서</h2>
+<ul><li><a href="../05/index.html">05_District_Heating_Substations_Design_요약.md</a></li><li><a href="../06/index.html">06_Gebwell_OandM_요약.md</a></li><li><a href="../07/index.html">07_IEA_DHC_Connection_Handbook_요약.md</a></li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../03/index.html'>이전: 국내 구조와 운영</a><a class='nav-link next' href='../05/index.html'>다음: 기계실 설계</a></nav>
       </article>
     </main>

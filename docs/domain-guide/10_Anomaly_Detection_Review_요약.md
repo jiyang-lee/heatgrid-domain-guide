@@ -1,44 +1,55 @@
 # 10. Anomaly Detection Review 요약
 
 > **문서 역할**  
-> 이상탐지/고장 연구 요약
-
+> 이상탐지 연구 리뷰 요약
 > **대상 독자**  
-> 이 분야의 연구 지형을 빠르게 보고 싶은 사람
-
+> 이상탐지를 HeatGrid 문제로 번역하려는 사람
+>
 > **읽는 시간**  
-> 15분
-
+> 20분
 > **난이도**  
 > 중급
-
+>
 > **선수지식**  
-> [01_PreDist_논문_정리.md](./01_PreDist_논문_정리.md)
-
+> [02_PreDist_데이터셋_가이드.md](./02_PreDist_데이터셋_가이드.md)
+>
 > **원문 링크**  
-> [ResearchGate 리뷰](https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets), [ML anomaly detection thesis PDF](https://www.diva-portal.org/smash/get/diva2%3A1988416/FULLTEXT01.pdf)
-
-> **로컬 PDF 경로**  
-> ResearchGate 리뷰는 로컬 보관 불가, [10_ml_anomaly_detection_thesis.pdf](./assets/pdf/10_ml_anomaly_detection_thesis.pdf)
+> [Thesis PDF](https://lup.lub.lu.se/student-papers/record/9147924/file/9147925.pdf)
+>
+> **로컬 자산 경로**  
+> [10_ml_anomaly_detection_thesis.pdf](./assets/pdf/10_ml_anomaly_detection_thesis.pdf)
 
 ---
 
-## 왜 이 문서를 읽어야 하는가
+## 왜 읽어야 하는가
 
-PreDist 하나만 보면 데이터셋은 이해되지만, 어떤 fault와 anomaly가 중요한지 넓은 맥락이 부족할 수 있다.
+이상탐지는 HeatGrid의 일부일 뿐 전부가 아니다. 이 문서는 어떤 이상이 의미 있고, 어떤 이상은 현장 맥락이 없으면 가치가 낮은지를 구분하게 도와준다.
 
-## 핵심 해설
+## 핵심 개념
 
-- district heating substation 분야는 일반 산업 PdM보다 상대적으로 연구가 적었다.
-- 중요한 것은 catastrophic failure보다 `부분 고장`, `성능 저하`, `제어 이상`, `에너지 비효율`이다.
-- anomaly detection은 `미지의 이상`을 조기 포착하는 데 유용하다.
+- 이상탐지는 정상 패턴을 먼저 잘 이해해야 한다.
+- 부품 고장, 성능 저하, 센서 오류는 같은 이상 점수로 처리하면 안 된다.
 
-## HeatGrid에 직접 쓰는 포인트
+## 중요한 번역 포인트
 
-- HeatGrid는 완전 파손보다 `성능 저하 + 운영 리스크`를 먼저 다루는 것이 자연스럽다.
-- 따라서 anomaly score는 우선순위 엔진의 핵심 입력 중 하나가 된다.
+- 이상은 통계적 이탈일 수 있지만, 운영적으로는 같은 수준의 중요도를 가지지 않는다.
+- 설명 가능성과 현장 적용성이 모델 성능만큼 중요하다.
+
+## 실무 예시
+
+센서 스파이크는 모델 입장에서는 큰 이상일 수 있지만, 운영 입장에서는 센서 교정 이슈일 수 있다. 반대로 작은 온도 이탈이 반복되면 실제 민원 전조일 수도 있다.
+
+## PreDist 연결 예시
+
+PreDist에서 disturbance와 customer report가 같이 붙는 패턴은 단순 수치 이상보다 운영적 중요도가 높은 학습 사례가 될 수 있다.
+
+## HeatGrid 적용 포인트
+
+- anomaly score만으로는 부족하고, 원인 후보와 영향도를 함께 해석해야 한다.
+- 센서 이상과 설비 이상을 구분하는 후처리 계층이 필요하다.
 
 ## 초심자 체크포인트
 
-- 이 도메인에서 이상탐지가 왜 중요한지 설명할 수 있는가
-- 고장 분류와 이상탐지를 어떻게 함께 쓸지 말할 수 있는가
+- 정상 패턴을 왜 먼저 알아야 하는지 설명할 수 있는가
+- 센서 이상과 설비 이상을 같은 경보로 다루면 안 되는 이유를 말할 수 있는가
+- HeatGrid에서 이상탐지가 왜 보조 계층인지 이해했는가

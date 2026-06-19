@@ -21,21 +21,23 @@
     <main class="page-main">
       <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>현장 O&amp;M</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>운영·유지관리 매뉴얼 상세 요약</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>실제 현장 점검 항목을 알고 싶은 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>15분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../05/index.html">05_District_Heating_Substations_Design_요약.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">PDF</a></div></div><div class='meta-row'><div class='meta-key'>로컬 PDF 경로</div><div class='meta-value'><a href="./assets/pdf/06_gebwell_oandm_manual.pdf">06_gebwell_oandm_manual.pdf</a></div></div></section>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>현장 O&amp;M 매뉴얼 상세 요약</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>실제 점검 항목과 운전 매뉴얼을 보고 싶은 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../05/index.html">05_District_Heating_Substations_Design_요약.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">Gebwell O&amp;M PDF</a></div></div></section>
         <h1>06. Gebwell O&amp;M 요약</h1>
 <hr>
-<h2>왜 이 문서를 읽어야 하는가</h2>
-<p>HeatGrid가 생성할 작업지시서에 어떤 점검 항목이 들어가야 현실적인지 알려준다.</p>
+<h2>왜 읽어야 하는가</h2>
+<p>설비 구조를 안 뒤에는 실제로 어떻게 점검하고 운전하는지 알아야 한다. 이 문서는 HeatGrid 작업지시서가 어떤 문장과 순서를 가져야 하는지 힌트를 준다.</p>
+<h2>핵심 개념</h2>
+<ul><li>점검 항목은 설비별로 나뉘지만 실제 운전 점검은 순서와 조건이 중요하다.</li><li>정상 운전 조건, 안전 주의사항, 점검 주기가 명확히 문서화돼 있다.</li></ul>
 <h2>중요한 번역 포인트</h2>
-<ul><li>서비스 점검은 최소 연 2회, 난방 시즌 전후에 수행</li><li>전문 유지보수 업체에 의한 종합 예방정비는 매년 수행</li><li>점검 항목에는 온도, 압력손실, 펌프 운전점, 팽창탱크 압력, 제어기 튜닝, 이상 소음이 포함</li></ul>
-<h2>HeatGrid에 직접 쓰는 포인트</h2>
-<ul><li>점검 지시에는 <code>무엇을 보라</code>가 구체적으로 나와야 한다.</li><li>온도 확인, 압력손실 확인, 펌프 상태 확인 같은 체크리스트가 핵심이다.</li></ul>
-<h2>국내/해외 운영 맥락 비교</h2>
-<ul><li>국내 현장은 이런 항목을 사람 경험으로 수행하는 경우가 많다.</li><li>HeatGrid는 이를 표준 작업지시로 정리할 수 있다.</li></ul>
-<h2>PreDist/Agent 설계와 연결</h2>
-<ul><li>센서 이상은 단순 경보가 아니라 점검항목 호출의 근거가 된다.</li></ul>
+<ul><li>매뉴얼은 설치, 운전, 유지보수, 안전을 한 흐름으로 다룬다.</li><li>정상 상태를 먼저 알아야 이상 상태를 판단할 수 있다.</li></ul>
+<h2>실무 예시</h2>
+<p>열교환기 문제 의심 시 매뉴얼은 무작정 분해보다 운전 상태 확인, 차압 확인, 온도차 확인처럼 순서를 가진 점검을 요구한다.</p>
+<h2>PreDist 연결 예시</h2>
+<p>공급온도 저하와 환수온도 이상이 같이 나타나면 HeatGrid는 단순 알람이 아니라 “열교환 효율 저하 의심, 차압과 온도차를 먼저 점검” 식으로 지시할 수 있다.</p>
+<h2>HeatGrid 적용 포인트</h2>
+<ul><li>작업지시서는 점검 순서를 포함해야 한다.</li><li>정상 기준값과 안전 주의사항이 함께 붙어야 한다.</li></ul>
 <h2>초심자 체크포인트</h2>
-<ul><li>어떤 센서 이상이 어떤 현장 점검 항목으로 이어지는지 설명할 수 있는가</li></ul>
+<ul><li>좋은 작업지시서가 왜 점검 순서를 가져야 하는지 설명할 수 있는가</li><li>정상 운전 기준을 먼저 알아야 하는 이유를 이해했는가</li><li>센서 이벤트를 실제 점검 항목으로 바꿀 수 있는가</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../05/index.html'>이전: 기계실 설계</a><a class='nav-link next' href='../07/index.html'>다음: 운영 기록과 PM</a></nav>
       </article>
     </main>
