@@ -10,7 +10,7 @@
   <div class="page-shell">
     <aside class="page-side">
       <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
-      <p class="side-summary">도메인 초심자가 어디서부터 무엇을 배우고 어떻게 Agent 설계까지 연결할지 안내합니다.</p>
+      <p class="side-summary">다른 페이지로 안 가도 이 문서 하나만 읽으면 지역난방 기계실과 HeatGrid Agent를 이해할 수 있습니다.</p>
       <div class="side-links">
         <a href="../index.html">메인 허브</a>
         <a href="index.html">00 메인 가이드</a>
@@ -19,128 +19,163 @@
       </div>
     </aside>
     <main class="page-main">
-      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>전체 로드맵</span></div>
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>이 문서 하나로 충분합니다</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>초심자용 학습 메인 가이드 / 도메인 입문서 / Agent 설계 연결서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>지역난방 설비, 정비, 에너지 운영 도메인을 처음 접하는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>40~60분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'>없음</div></div></section>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>이 사이트에서 딱 하나만 읽는다면 이 문서다 / 초심자용 메인 가이드</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>지역난방 설비, 정비, 에너지 운영 도메인을 처음 접하는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20~25분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'>없음</div></div></section>
         <h1>HeatGrid Domain Guide</h1>
 <hr>
-<h2>0. 이 가이드의 목표</h2>
-<p>이 가이드는 <code>도메인 지식이 거의 없는 사람도 PreDist 기반 HeatGrid Agent를 설계할 수 있는 수준</code>까지 끌어올리는 것을 목표로 한다.</p>
-<p>이 문서를 모두 따라가면 아래를 설명할 수 있어야 한다.</p>
-<ul><li>지역난방 기계실이 무엇을 하는지</li><li>PreDist가 어떤 데이터를 주는지</li><li>어떤 센서가 어떤 부품 상태를 반영하는지</li><li>주요 고장이 센서에서 어떻게 보이는지</li><li>정비사는 어떤 순서로 일하는지</li><li>운영자는 왜 리드타임만으로 판단하지 않는지</li><li>HeatGrid Agent가 어떤 입력으로 우선순위와 재계획을 수행하는지</li></ul>
+<h2>0. 이 문서 하나로 충분합니다</h2>
+<p>이 사이트는 원래 00번부터 12번까지 13개 문서를 차례로 읽도록 만들어졌다. 그런데 처음 오는 사람에게는 "결국 뭘 읽어야 끝나는지" 감이 잘 안 잡힌다는 얘기를 들었다. 그래서 이 문서 하나에 핵심만 모았다. <strong>다른 페이지로 넘어가지 않고 이 문서만 끝까지 읽어도 지역난방 기계실이 뭘 하는 곳인지, HeatGrid가 왜 필요한지 설명할 수 있게 되는 것</strong>이 목표다. 더 깊이 알고 싶은 부분이 생기면 그때 각 섹션 끝에 있는 "더 보고 싶다면" 링크를 따라가면 된다.</p>
+<p>쉽게 비유하면, 지역난방 기계실은 우리 동네 보일러실을 도시 규모로 키운 것과 비슷하다. 동네 보일러실이 한 건물에 따뜻한 물을 보내준다면, 지역난방 기계실은 여러 건물에 동시에 온수와 난방을 공급한다. 설비가 커지고 책임 범위가 넓어지는 만큼, 어디서 무슨 일이 생겼는지 빨리 알아채고 우선순위를 정해서 대응하는 게 훨씬 중요해진다. HeatGrid는 바로 이 "빨리 알아채고 먼저 할 일을 정하는" 역할을 도와주는 AI 시스템이다.</p>
 <div class="callout">
 <strong>왜 지금 이 문서를 읽는가</strong>
-<p>HeatGrid는 단순한 이상탐지 모델이 아니라, 센서 신호를 운영 판단과 작업지시로 이어 붙이는 시스템이다. 그래서 데이터만 알아도 안 되고, 현장 구조만 알아도 안 되며, 두 세계를 연결하는 흐름을 한 번에 잡아야 한다.</p>
+<p>HeatGrid는 단순히 "이상하다/정상이다"를 판정하는 모델이 아니다. 센서에서 잡힌 변화를 현장에서 무슨 일이 일어난 것인지로 해석하고, 그걸 다시 "지금 누가 가서 무엇을 먼저 점검해야 하는지"로 바꿔주는 시스템이다. 그래서 데이터만 알아도 부족하고, 현장 구조만 알아도 부족하다. 두 가지를 한 흐름으로 연결해서 봐야 한다.</p>
 </div>
 <p><img src="../assets/img/heatgrid_agent_loop.svg" alt="HeatGrid 운영 판단 루프" class="doc-image"></p>
-<h2>지금 중요한 한 줄</h2>
-<p>HeatGrid의 핵심은 <code>센서값을 읽는 것</code>이 아니라 <code>센서 변화가 현장 운영에서 무슨 의미인지 해석하고, 지금 무엇을 먼저 해야 하는지 정하는 것</code>이다.</p>
+<h3>자주 나오는 용어, 먼저 풀어두기</h3>
+<p>아래 8개 단어는 이 문서 전체에서 계속 나온다. 한 번만 훑어두면 뒤에서 막히지 않는다.</p>
+<div class="callout">
+<strong>이 문서에서 자주 나오는 용어</strong>
+<ul><li><strong>PreDist</strong>: 실제 지역난방 기계실에서 모은 센서 데이터와, 그 기간에 있었던 고장·정비·민원 기록을 같이 묶어놓은 공개 데이터셋 이름이다. "센서 숫자"와 "현장에서 실제 있었던 일"을 짝지어 볼 수 있게 해준다.</li><li><strong>ETS / substation</strong>: 해외에서 흔히 쓰는 말로, 우리가 "기계실"이라고 부르는 것과 거의 같은 의미다. 열을 받아서 건물 안으로 나눠주는 설비 묶음이다.</li><li><strong>차압</strong>: 배관에서 어느 한 지점과 다른 지점의 압력 차이다. 차압이 갑자기 커지면 어딘가 막혔다는 신호로 본다.</li><li><strong>액추에이터</strong>: 밸브를 실제로 열고 닫는 모터/구동 장치다. "밸브를 70%만 열어라"라는 명령을 받아서 실제로 그만큼 움직이는 부품이다.</li><li><strong>fouling(파울링)</strong>: 열교환기 안쪽에 찌꺼기나 스케일이 쌓여서 열이 잘 전달되지 않게 되는 현상이다. 사람으로 치면 혈관이 좁아지는 것과 비슷하다.</li><li><strong>이상 점수(anomaly score)</strong>: 지금 센서값이 평소 패턴과 얼마나 다른지를 숫자로 표현한 것이다. 점수가 높다고 무조건 고장은 아니고, "더 자세히 봐야 한다"는 신호에 가깝다.</li><li><strong>리드타임</strong>: 이상 신호가 처음 보이기 시작한 시점부터 실제 고장(또는 민원)으로 이어지기까지 걸리는 시간이다. 리드타임이 길면 미리 손쓸 여유가 있다는 뜻이다.</li><li><strong>MQTT</strong>: 센서나 설비가 인터넷으로 데이터를 주고받을 때 흔히 쓰는 가벼운 통신 방식이다. "센서 데이터가 서버로 가는 통로" 정도로 이해하면 된다.</li></ul>
+</div>
+<h3>지금 중요한 한 줄</h3>
+<p>HeatGrid에서 진짜 중요한 건 <code>센서값을 읽는 것</code> 자체가 아니라, <code>그 변화가 현장에서 무슨 의미인지 해석하고, 여러 개 중에 지금 뭘 먼저 봐야 하는지 정하는 것</code>이다. 이 한 줄을 이해하고 나면 아래 세 가지 질문에 자연스럽게 도달한다.</p>
 <div class="key-answer">
 <div class="mini-card">
 <h4>도메인 질문</h4>
-<p>기계실은 무엇을 하고, 어떤 고장이 실제 문제를 만드는가.</p>
+<p>기계실은 평소에 뭘 하고, 어떤 고장이 생기면 실제로 사람들이 불편을 느끼는가.</p>
 </div>
 <div class="mini-card">
 <h4>데이터 질문</h4>
-<p>PreDist 컬럼이 어떤 부품과 현상으로 이어지는가.</p>
+<p>PreDist의 컬럼 하나하나가 실제로 어떤 부품, 어떤 현상과 연결되는가.</p>
 </div>
 <div class="mini-card">
 <h4>Agent 질문</h4>
-<p>탐지 결과를 어떤 우선순위와 작업지시로 바꿀 것인가.</p>
+<p>탐지된 이상을 어떤 순서, 어떤 작업지시로 바꿔야 현장에서 바로 쓸 수 있는가.</p>
 </div>
 </div>
 <hr>
-<h2>1. 데이터 연결 자료</h2>
-<h3>먼저 읽을 문서</h3>
-<ul><li><a href="../01/index.html">01_PreDist_논문_정리.md</a></li><li><a href="../02/index.html">02_PreDist_데이터셋_가이드.md</a></li></ul>
-<h3>핵심 이해 포인트</h3>
-<ul><li>PreDist는 지역난방 기계실의 <code>실제 운영 시계열 + disturbance/maintenance/customer report 이벤트 라벨</code>을 함께 제공한다.</li><li>HeatGrid는 이 데이터를 단순 예측용 CSV가 아니라 <code>운영 의사결정의 입력 스트림</code>으로 사용한다.</li><li>중요한 것은 단일 값이 아니라 <code>시간 흐름에 따른 패턴</code>, <code>정상 대비 이탈</code>, <code>이상 발생 후 조짐</code>이다.</li></ul>
+<h2>1. PreDist 데이터, 한 번에 이해하기</h2>
+<p>PreDist는 한마디로 "기계실의 평소 모습을 숫자로 적어둔 일기장"이다. 온도, 유량, 압력 같은 센서값이 시간 순서대로 쌓여 있고, 그 옆에 "이 시점에 이런 이상 신호가 있었다(disturbance)", "이 시점에 정비가 들어갔다(maintenance)", "이 시점에 민원이 들어왔다(customer report)" 같은 사건 기록이 같이 붙어 있다.</p>
+<p>여기서 중요한 포인트는 세 가지다.</p>
+<ul><li>PreDist는 단순 예측용 CSV가 아니라, <strong>운영 판단을 위한 입력값</strong>으로 써야 한다는 것이다. 숫자만 보고 끝내는 게 아니라 "그래서 지금 뭘 해야 하나"로 이어져야 의미가 있다.</li><li>중요한 건 어느 한 시점의 값 하나가 아니라 <strong>시간이 지나면서 값이 어떻게 움직이는가</strong>다. 갑자기 평소와 달라졌는지, 이상이 생긴 다음에 어떤 조짐이 먼저 나타났는지를 봐야 한다.</li><li>현장에서는 센서 데이터를 "표에 적힌 숫자"가 아니라 <strong>"기계실 상태가 바뀌고 있다는 기록"</strong>으로 읽는다. 공급온도가 떨어지고 유량이 흔들리고 밸브 개도가 이상해지는 게 동시에 보이면, 현장 사람들은 이걸 따로따로가 아니라 "하나의 사건"으로 묶어서 본다.</li></ul>
 <div class="callout">
 <strong>실무에서는 이렇게 본다</strong>
 <p>센서 데이터는 숫자 표가 아니라 현장의 상태 변화 기록이다. 공급온도 하락, 유량 불안정, 밸브 개도 이상이 한 번에 보이면 현장에서는 바로 같은 사건으로 묶어서 해석한다.</p>
 </div>
-<h3>이 내용을 이해하면 할 수 있는 것</h3>
-<ul><li>PreDist의 목적과 구성 요소를 설명할 수 있다.</li><li>데이터 컬럼을 설비와 센서 관점으로 읽을 준비가 된다.</li></ul>
-<h3>다음에 읽을 문서</h3>
-<ul><li><a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a></li><li><a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a></li></ul>
+<p>이만큼만 이해해도 PreDist가 왜 존재하고, 데이터 컬럼을 "설비/센서 관점"으로 읽을 준비가 된 것이다.</p>
+<p>더 깊이 보고 싶다면: <a href="../01/index.html">01_PreDist_논문_정리.md</a>, <a href="../02/index.html">02_PreDist_데이터셋_가이드.md</a></p>
 <hr>
-<h2>2. 지역난방 구조와 운영 이해 자료</h2>
-<h3>2-1. 국내 지역난방 구조와 운영</h3>
-<p>먼저 <a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a>를 읽는다.</p>
+<h2>2. 지역난방, 국내는 이렇게 해외는 이렇게</h2>
+<h3>국내: 사람이 직접 챙기는 구조</h3>
+<p>국내 지역난방은 <code>집단에너지 사업자 -&gt; 열수송망 -&gt; 사용자 기계실 -&gt; 건물 난방/급탕</code> 순서로 열이 흘러간다고 생각하면 된다. 운영은 민원이 들어오거나, 긴급 신고가 오거나, 정기점검 일정이 되거나, 협력업체가 출동하는 식으로 돌아간다. 점검과 지원 체계 자체는 잘 갖춰져 있지만, "여러 일이 동시에 생겼을 때 뭘 먼저 할지 자동으로 정해주는" 우선순위화·재계획 기능은 아직 약한 편이다. 사람이 경험으로 판단하는 비중이 크다.</p>
 <p><img src="../assets/img/domestic_dh_structure.svg" alt="국내 지역난방 공급 구조도" class="doc-image"></p>
-<p>핵심은 아래다.</p>
-<ul><li>국내는 <code>집단에너지 사업자 -&gt; 열수송망 -&gt; 사용자 기계실 -&gt; 건물 난방/급탕</code> 흐름으로 이해하면 된다.</li><li>운영은 민원, 긴급신고, 정기점검, 사용자 설비 지원사업, 협력업체 출동으로 이어진다.</li><li>국내 자료를 보면 점검과 지원은 존재하지만 <code>우선순위화와 재계획 자동화</code>는 아직 약하다.</li></ul>
-<h3>2-2. 해외 지역난방 구조와 운영</h3>
-<p>다음으로 <a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a>를 읽는다.</p>
+<h3>해외: 체크리스트로 미리 챙기는 구조</h3>
+<p>해외는 우리가 "기계실"이라고 부르는 것을 ETS(Energy Transfer Station)나 substation이라는 이름으로 표준화해서 관리한다. 핵심은 "문제가 생기기 전에 정해진 체크리스트대로 미리 점검한다"(preventive maintenance)는 문화가 문서로 분명하게 정리돼 있다는 점이다. 점검 기록도 로그북 형태로 꼼꼼히 남는다. HeatGrid는 국내의 운영 흐름 위에, 이런 해외식 체크리스트 기반 예방정비 문화를 얹는 방향으로 설계할 수 있다.</p>
 <p><img src="../assets/img/global_ets_structure.svg" alt="해외 ETS 및 substation 구조도" class="doc-image"></p>
-<p>핵심은 아래다.</p>
-<ul><li>해외는 <code>ETS(Energy Transfer Station)</code> 또는 substation을 중심으로 설비 구조와 점검 체계를 표준화한다.</li><li>preventive maintenance, checklist, logbook, maintenance policy 문화가 문서로 명확하다.</li><li>HeatGrid는 국내 운영 흐름 위에 해외식 <code>체크리스트 기반 예방정비</code> 문화를 붙이는 방향으로 설계할 수 있다.</li></ul>
-<h3>국내/해외 비교 표</h3>
+<h3>한눈에 정리: 국내 vs 해외</h3>
 <div class="table-wrap"><table><thead><tr><th>항목</th><th>국내</th><th>해외</th><th>HeatGrid 시사점</th></tr></thead><tbody><tr><td>운영 주체</td><td>사업자, FM, 협력업체가 혼합</td><td>사업자와 표준화된 유지관리 체계가 결합</td><td>역할 기반 권한과 알림 구분이 필요</td></tr><tr><td>설비 범위</td><td>사용자 기계실과 민원 대응 비중이 큼</td><td>ETS/substation 단위 설계와 유지관리 비중이 큼</td><td>기계실 운영과 설비 표준을 함께 모델링해야 함</td></tr><tr><td>점검 방식</td><td>자체점검, 민원 대응, 정기점검 혼합</td><td>checklist 중심의 예방정비가 분명</td><td>작업지시서에 체크리스트를 붙여야 함</td></tr><tr><td>예방정비 문화</td><td>존재하지만 문서화 수준 편차가 큼</td><td>maintenance policy가 명확</td><td>예방정비 추천 기능의 근거를 문서화해야 함</td></tr><tr><td>작업지시 체계</td><td>경험 기반 의존도가 큼</td><td>로그북, 점검표, 기록 체계가 강함</td><td>설명 가능한 Agent 출력이 중요</td></tr></tbody></table></div>
-<h3>이 내용을 이해하면 할 수 있는 것</h3>
-<ul><li>왜 HeatGrid가 단순 건물 설비가 아니라 지역난방 운영 맥락을 다루는지 설명할 수 있다.</li><li>국내와 해외 자료를 비교하면서 설계 언어를 고를 수 있다.</li></ul>
-<h3>다음에 읽을 문서</h3>
-<ul><li><a href="../05/index.html">05_District_Heating_Substations_Design_요약.md</a></li><li><a href="../06/index.html">06_Gebwell_OandM_요약.md</a></li><li><a href="../07/index.html">07_IEA_DHC_Connection_Handbook_요약.md</a></li></ul>
+<p>이만큼만 이해해도 왜 HeatGrid가 "건물 설비 하나"가 아니라 지역난방 운영 전체의 맥락을 다루는지, 그리고 국내/해외 자료를 어떻게 비교해서 설계 언어를 고르면 되는지 설명할 수 있다.</p>
+<p>더 깊이 보고 싶다면: <a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a>, <a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a></p>
 <hr>
-<h2>3. 정비사와 정비회사 관점 자료</h2>
-<h3>먼저 읽을 문서</h3>
-<ul><li><a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a></li><li><a href="../08/index.html">08_District_Energy_PM_Checklist_요약.md</a></li><li><a href="../09/index.html">09_ASHRAE_180_요약.md</a></li></ul>
+<h2>3. 정비사는 실제로 어떻게 일하는가</h2>
+<p>정비는 "부품을 갈아 끼우는 일"로만 생각하면 절반만 보는 것이다. 실제로는 <code>이벤트를 받는다 -&gt; 현장으로 이동한다 -&gt; 원인을 진단한다 -&gt; 조치한다 -&gt; 기록한다</code>로 이어지는 하나의 흐름이다.</p>
 <p><img src="../assets/img/field_dispatch_flow.svg" alt="정비사 출동 프로세스 흐름도" class="doc-image"></p>
-<h3>핵심 이해 포인트</h3>
-<ul><li>정비는 단순히 부품을 교체하는 일이 아니라 <code>이벤트 수신 -&gt; 현장 이동 -&gt; 원인 진단 -&gt; 조치 수행 -&gt; 기록</code>의 연속이다.</li><li>정비사 관점에서는 <code>무엇을 들고 가야 하는지</code>, <code>어떤 체크를 먼저 해야 하는지</code>, <code>작업 후 무엇을 기록해야 하는지</code>가 중요하다.</li><li>따라서 HeatGrid의 좋은 출력은 <code>이상 점수</code>가 아니라 <code>점검 순서와 작업지시</code>에 가깝다.</li></ul>
-<h3>이 내용을 이해하면 할 수 있는 것</h3>
-<ul><li>정비사 입장에서 유용한 Agent 출력 형태를 상상할 수 있다.</li></ul>
-<h3>다음에 읽을 문서</h3>
-<ul><li><a href="../11/index.html">11_국내_정책_시장_사업자_가이드.md</a></li></ul>
+<p>정비사 입장에서 진짜 중요한 질문은 따로 있다. <strong>출동 전에 뭘 들고 가야 하는지, 현장에 가서 어떤 순서로 체크해야 하는지, 작업이 끝난 뒤에는 뭘 기록해야 하는지</strong>다. 그래서 HeatGrid가 정비사에게 줘야 하는 건 "이상 점수 몇 점"이 아니라, 바로 쓸 수 있는 <strong>점검 순서와 작업지시</strong>에 가깝다. 점수만 던져주면 정비사는 그 점수를 다시 "그래서 뭘 하라는 거지"로 번역해야 하는데, 그 번역 과정 자체가 HeatGrid가 대신 해줘야 할 일이다.</p>
+<p>더 깊이 보고 싶다면: <a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a>, <a href="../08/index.html">08_District_Energy_PM_Checklist_요약.md</a>, <a href="../09/index.html">09_ASHRAE_180_요약.md</a></p>
 <hr>
-<h2>4. 국내 시장/정책/사업자 자료</h2>
-<h3>먼저 읽을 문서</h3>
-<ul><li><a href="../11/index.html">11_국내_정책_시장_사업자_가이드.md</a></li></ul>
-<h3>핵심 이해 포인트</h3>
-<ul><li>국내 집단에너지 시장은 작지 않다.</li><li>한국지역난방공사, GS파워, 대성에너지 등 사업자와 HDC랩스, SK쉴더스 FM 같은 운영 주체가 함께 존재한다.</li><li>정책 방향은 <code>설비 진단</code>, <code>AI</code>, <code>에너지 효율</code>, <code>스마트 유지관리</code>와 맞닿아 있다.</li></ul>
-<h3>이 내용을 이해하면 할 수 있는 것</h3>
-<ul><li>HeatGrid의 고객, 사용자, 구매자, 영향자를 분리해서 설명할 수 있다.</li></ul>
-<h3>다음에 읽을 문서</h3>
-<ul><li><a href="../references/heatgrid-agent-architecture/index.html">18_HeatGrid_AIoT_Agent_아키텍처.md</a></li><li><a href="../references/heatgrid-go-to-market/index.html">20_HeatGrid_출시_타당성_보고서.md</a></li></ul>
+<h2>4. 누가 돈을 내고, 누가 실제로 쓰는가</h2>
+<p>국내 집단에너지 시장은 작지 않다. 한국지역난방공사, GS파워, 대성에너지 같은 사업자가 있고, 그 옆에 HDC랩스, SK쉴더스 FM처럼 실제 운영을 대행하는 회사들도 있다. 정책 방향도 설비 진단, AI, 에너지 효율, 스마트 유지관리 쪽으로 가고 있어서 HeatGrid가 들어갈 자리가 분명히 있다.</p>
+<p>여기서 헷갈리지 말아야 할 건, <strong>구매를 결정하는 사람과 실제로 매일 쓰는 사람이 다를 수 있다</strong>는 점이다. 사업자가 도입을 결정해도 실제 화면을 보는 건 정비사나 운영자일 수 있다. 이걸 구분해서 봐야 "누구에게 어떤 가치를 보여줘야 하는지"가 명확해진다.</p>
+<p>더 깊이 보고 싶다면: <a href="../11/index.html">11_국내_정책_시장_사업자_가이드.md</a></p>
 <hr>
-<h2>5. 센서 변수 사전</h2>
-<div class="table-wrap"><table><thead><tr><th>변수/센서</th><th>물리 의미</th><th>이상 시 해석</th><th>현장 점검 항목</th><th>Agent 출력</th></tr></thead><tbody><tr><td>공급온도</td><td>열이 사용자측으로 들어가는 온도</td><td>목표보다 낮으면 공급 부족 가능성</td><td>열원측 상태, 열교환기, 제어값 확인</td><td>민원 위험 경보</td></tr><tr><td>환수온도</td><td>열을 전달한 뒤 돌아오는 온도</td><td>과도하게 높으면 열교환 비효율 가능성</td><td>열교환기 fouling, 유량, 제어기 점검</td><td>효율 저하 경보</td></tr><tr><td>유량</td><td>물이 얼마나 흐르는지</td><td>급감하거나 흔들리면 펌프/밸브/차압 문제 가능성</td><td>펌프 운전, 밸브 개도, 차압 확인</td><td>긴급 점검 또는 관찰 지시</td></tr><tr><td>차압</td><td>전후 압력 차이</td><td>비정상적이면 제어기 오동작이나 막힘 가능성</td><td>차압계, 필터, 배관 저항 확인</td><td>점검 우선순위 상향</td></tr><tr><td>밸브 개도</td><td>제어 명령 대비 밸브 상태</td><td>명령과 반응이 다르면 액추에이터 또는 밸브 이상</td><td>수동 조작, 피드백 신호 확인</td><td>제어 이상 작업지시</td></tr><tr><td>전력/펌프 상태</td><td>펌프 운전 상태</td><td>전력 패턴 이상, 운전 불안정</td><td>베어링, 전원, 진동, 소음 점검</td><td>펌프 이상 예보</td></tr></tbody></table></div>
+<h2>5. 센서 변수, 하나씩 풀어보기</h2>
+<p>기계실에는 센서가 여러 개 있지만, 결국 아래 6가지만 잡아도 큰 그림은 다 들어온다. 각 센서를 "정상일 때 / 이상일 때 / 현장에서 뭘 확인하는지" 순서로 풀어봤다.</p>
+<div class="key-answer">
+<div class="mini-card">
+<h4>공급온도</h4>
+<p>열이 사용자 쪽으로 들어가는 온도다. 목표보다 낮으면 "공급이 부족하다"는 뜻일 수 있다. 현장에서는 열원 상태, 열교환기, 제어값을 확인한다. 너무 낮으면 민원으로 바로 이어질 수 있어 위험도가 높다.</p>
+</div>
+<div class="mini-card">
+<h4>환수온도</h4>
+<p>열을 다 전달하고 돌아오는 물의 온도다. 너무 높으면 열교환이 비효율적으로 일어나고 있다는 신호다. 열교환기 fouling, 유량, 제어기를 점검한다.</p>
+</div>
+<div class="mini-card">
+<h4>유량</h4>
+<p>물이 얼마나 흐르는지다. 갑자기 줄거나 흔들리면 펌프, 밸브, 차압 쪽에 문제가 있을 가능성이 크다. 펌프 운전, 밸브 개도, 차압을 확인한다.</p>
+</div>
+<div class="mini-card">
+<h4>차압</h4>
+<p>배관 앞뒤의 압력 차이다. 비정상적으로 커지거나 작아지면 제어기 오동작이나 어딘가 막혔을 가능성을 본다. 차압계, 필터, 배관 저항을 확인한다.</p>
+</div>
+<div class="mini-card">
+<h4>밸브 개도</h4>
+<p>"밸브를 몇 % 열어라"는 명령과 실제 밸브 상태를 비교한 값이다. 명령과 실제 반응이 다르면 액추에이터나 밸브 자체의 이상을 의심한다.</p>
+</div>
+<div class="mini-card">
+<h4>전력/펌프 상태</h4>
+<p>펌프가 정상적으로 돌고 있는지를 보는 값이다. 전력 패턴이 이상하거나 운전이 불안정하면 베어링, 전원, 진동, 소음을 확인한다.</p>
+</div>
+</div>
+<h3>빠르게 찾아보기</h3>
+<div class="table-wrap"><table><thead><tr><th>변수/센서</th><th>이상 시 해석</th><th>Agent 출력</th></tr></thead><tbody><tr><td>공급온도</td><td>목표보다 낮으면 공급 부족 가능성</td><td>민원 위험 경보</td></tr><tr><td>환수온도</td><td>과도하게 높으면 열교환 비효율 가능성</td><td>효율 저하 경보</td></tr><tr><td>유량</td><td>급감하거나 흔들리면 펌프/밸브/차압 문제 가능성</td><td>긴급 점검 또는 관찰 지시</td></tr><tr><td>차압</td><td>비정상적이면 제어기 오동작이나 막힘 가능성</td><td>점검 우선순위 상향</td></tr><tr><td>밸브 개도</td><td>명령과 반응이 다르면 액추에이터 또는 밸브 이상</td><td>제어 이상 작업지시</td></tr><tr><td>전력/펌프 상태</td><td>전력 패턴 이상, 운전 불안정</td><td>펌프 이상 예보</td></tr></tbody></table></div>
 <hr>
-<h2>6. 대표 고장 taxonomy</h2>
-<div class="table-wrap"><table><thead><tr><th>고장/이상</th><th>주요 징후</th><th>운영 영향</th><th>현장 점검 항목</th></tr></thead><tbody><tr><td>스트레이너 막힘</td><td>유량 저하, 차압 증가</td><td>공급 부족, 효율 저하</td><td>필터 오염, 이물질 점검</td></tr><tr><td>펌프 성능 저하</td><td>순환 불안정, 전력 패턴 이상</td><td>난방 불안정, 민원 증가</td><td>소음, 진동, 전원, 차압 확인</td></tr><tr><td>열교환기 fouling</td><td>공급은 되나 효율 저하</td><td>에너지 손실, 응답 지연</td><td>온도차, 압력손실, 세척 필요성 점검</td></tr><tr><td>제어밸브/액추에이터 이상</td><td>명령 대비 반응 불일치</td><td>제어 불안정, 온도 편차</td><td>밸브 피드백, 수동 테스트</td></tr><tr><td>센서 이상</td><td>스파이크, 고정값, 물리적으로 불가능한 값</td><td>오탐 증가</td><td>교정, 배선, 센서 교체 여부 확인</td></tr></tbody></table></div>
+<h2>6. 자주 생기는 고장 5가지</h2>
+<p>고장 종류를 다 외울 필요는 없다. 아래 5가지가 현장에서 가장 자주 보고되는 패턴이고, 각각 "어떻게 보이는지 / 뭐가 문제가 되는지 / 현장에서 뭘 보는지"만 기억하면 된다.</p>
+<div class="key-answer">
+<div class="mini-card">
+<h4>스트레이너 막힘</h4>
+<p>유량이 떨어지고 차압이 올라간다. 결과적으로 공급이 부족해지고 효율이 떨어진다. 필터 오염과 이물질을 점검한다.</p>
+</div>
+<div class="mini-card">
+<h4>펌프 성능 저하</h4>
+<p>순환이 불안정해지고 전력 패턴이 이상해진다. 난방이 불안정해지면서 민원이 늘어난다. 소음, 진동, 전원, 차압을 확인한다.</p>
+</div>
+<div class="mini-card">
+<h4>열교환기 fouling</h4>
+<p>공급은 되는데 효율이 떨어진다. 에너지 손실이 생기고 반응이 느려진다. 온도차, 압력손실, 세척 필요성을 점검한다.</p>
+</div>
+<div class="mini-card">
+<h4>제어밸브/액추에이터 이상</h4>
+<p>명령과 실제 반응이 안 맞는다. 제어가 불안정해지고 온도가 들쭉날쭉해진다. 밸브 피드백과 수동 테스트로 확인한다.</p>
+</div>
+<div class="mini-card">
+<h4>센서 이상</h4>
+<p>값이 갑자기 튀거나, 한 값에 고정되거나, 물리적으로 말이 안 되는 값이 나온다. 오탐(잘못된 경보)이 늘어난다. 교정, 배선, 센서 교체 여부를 확인한다.</p>
+</div>
+</div>
 <hr>
-<h2>7. 정상 패턴 vs 이상 패턴</h2>
-<ul><li>정상 패턴에서는 공급온도, 환수온도, 유량, 차압이 부하 변화에 맞춰 서로 연동된다.</li><li>이상 패턴에서는 <code>한 값의 크기</code>보다 <code>관계의 깨짐</code>이 더 중요하다.</li><li>HeatGrid는 threshold만 보는 구조보다 <code>패턴 이탈</code>, <code>반응 지연</code>, <code>명령-응답 불일치</code>를 읽어야 한다.</li></ul>
+<h2>7. 정상 패턴과 이상 패턴, 뭐가 다른가</h2>
+<p>건강검진을 받을 때 숫자 하나만 보는 게 아니라 "평소 내 수치와 비교해서 어떻게 달라졌는지"를 보는 것과 비슷하다. 정상 패턴에서는 공급온도, 환수온도, 유량, 차압이 부하가 바뀔 때마다 서로 맞물려서 같이 움직인다. 이상 패턴에서는 어느 한 값이 크다/작다보다, <strong>이 값들 사이의 관계가 깨졌는지</strong>가 더 중요하다. 그래서 HeatGrid는 "이 값이 기준선을 넘었다"는 단순 threshold보다, 패턴이 평소와 달라졌는지, 반응이 늦어지는지, 명령과 결과가 어긋나는지를 읽어야 한다.</p>
 <hr>
-<h2>8. 운영 우선순위화와 재계획</h2>
-<p>운영자가 실제로 결정하는 것은 <code>무엇이 위험한가</code>가 아니라 <code>지금 무엇을 먼저 볼 것인가</code>다.</p>
-<h3>우선순위 입력</h3>
-<ul><li>리드타임</li><li>영향도</li><li>민원 가능성</li><li>안전 리스크</li><li>출동 가능 인력</li><li>부품 확보 여부</li><li>같은 권역 내 다른 작업과의 충돌</li></ul>
-<h3>재계획이 필요한 상황</h3>
-<ul><li>같은 날 긴급 고장과 일반 이상이 동시에 발생</li><li>부품이 없거나 출동 가능한 인력이 제한</li><li>예상 원인과 실제 현장이 다름</li></ul>
-<p>따라서 HeatGrid는 <code>리드타임 예측 모델</code>로 끝나지 않고 <code>우선순위 엔진 + 작업지시 + 재계획 루프</code>까지 가져가야 한다.</p>
+<h2>8. 지금 뭘 먼저 할지 정하는 법</h2>
+<p>운영자가 매일 실제로 결정하는 건 "뭐가 위험한가"가 아니라 <strong>"여러 개 중에 지금 뭘 먼저 볼 것인가"</strong>다. 응급실에서 환자를 받을 때 가장 위급한 사람부터 보는 것(트리아지)과 똑같은 원리다.</p>
+<p>이 판단에 들어가는 요소는 다음과 같다.</p>
+<ul><li>리드타임 (얼마나 빨리 문제가 커질지)</li><li>영향도 (얼마나 많은 사람이 영향받을지)</li><li>민원 가능성</li><li>안전 리스크</li><li>출동 가능 인력</li><li>부품 확보 여부</li><li>같은 권역 내 다른 작업과의 충돌</li></ul>
+<p>그리고 아래 같은 상황이 생기면 계획을 다시 짜야 한다.</p>
+<ul><li>같은 날 긴급 고장과 일반 이상이 동시에 발생했을 때</li><li>부품이 없거나 출동 가능한 인력이 부족할 때</li><li>예상했던 원인과 실제 현장 상황이 다를 때</li></ul>
+<p>그래서 HeatGrid는 "리드타임을 예측하는 모델"에서 끝나면 안 되고, <code>우선순위 엔진 + 작업지시 + 재계획 루프</code>까지 가져가야 완성된다.</p>
 <hr>
-<h2>9. PreDist 데이터 해석</h2>
-<p><img src="../assets/img/predist_mapping.svg" alt="PreDist 컬럼에서 작업지시까지" class="doc-image"></p>
-<h3>PreDist를 읽을 때의 질문</h3>
+<h2>9. PreDist 데이터를 작업지시로 바꾸기</h2>
+<p>이 표는 "PreDist에 적힌 정보"가 "실제 현장에서 무슨 뜻인지"와 "Agent가 그걸 받으면 뭘 해야 하는지"를 한 줄씩 연결해서 보여준다. 표를 읽을 때는 아래 4가지 질문을 순서대로 따라가면 된다.</p>
 <ol><li>이 컬럼은 어떤 센서를 나타내는가</li><li>이 이벤트는 현장에서 어떤 사건을 뜻하는가</li><li>이 이상은 어떤 부품 또는 운영 문제와 연결되는가</li><li>이 신호를 Agent가 받으면 어떤 액션으로 이어져야 하는가</li></ol>
-<h3>매핑 표</h3>
-<div class="table-wrap"><table><thead><tr><th>PreDist 정보</th><th>물리 의미</th><th>현장 해석</th><th>Agent 출력</th></tr></thead><tbody><tr><td>disturbance 이벤트</td><td>정상 운전에서 벗어난 사건</td><td>초기 이상 징후</td><td>관찰 경보</td></tr><tr><td>maintenance 이벤트</td><td>정비 개입 시점</td><td>실제 작업 이력</td><td>작업이력 기반 추천</td></tr><tr><td>customer report 이벤트</td><td>사용자의 불편 체감</td><td>민원과 연결되는 운영 문제</td><td>민원 우선순위 상향</td></tr></tbody></table></div>
-<h3>이 내용을 이해하면 할 수 있는 것</h3>
-<ul><li>PreDist 컬럼을 물리 현상과 연결해서 읽을 수 있다.</li><li>데이터 분석 결과를 작업지시로 이어 붙이는 기준을 세울 수 있다.</li></ul>
+<p><img src="../assets/img/predist_mapping.svg" alt="PreDist 컬럼에서 작업지시까지" class="doc-image"></p>
+<div class="table-wrap"><table><thead><tr><th>PreDist 정보</th><th>현장 해석</th><th>Agent 출력</th></tr></thead><tbody><tr><td>disturbance 이벤트</td><td>초기 이상 징후</td><td>관찰 경보</td></tr><tr><td>maintenance 이벤트</td><td>실제 작업 이력</td><td>작업이력 기반 추천</td></tr><tr><td>customer report 이벤트</td><td>민원과 연결되는 운영 문제</td><td>민원 우선순위 상향</td></tr></tbody></table></div>
+<p>이만큼만 이해해도 PreDist 컬럼을 물리 현상과 연결해서 읽을 수 있고, 분석 결과를 작업지시로 이어 붙이는 기준을 세울 수 있다.</p>
 <hr>
-<h2>10. HeatGrid Agent 설계 연결</h2>
+<h2>10. 그래서 HeatGrid Agent는 무슨 일을 하는가</h2>
 <div class="callout">
 <strong>모르면 여기부터 보기</strong>
-<p>HeatGrid는 “센서값을 읽는 모델”이 아니라 “운영 상황을 해석하고, 지금 필요한 작업을 제안하며, 차질이 생기면 다시 계획을 짜는 시스템”이라고 이해하면 가장 빠르다.</p>
+<p>HeatGrid는 "센서값을 읽는 모델"이 아니라 "운영 상황을 해석하고, 지금 필요한 작업을 제안하며, 차질이 생기면 다시 계획을 짜는 시스템"이라고 이해하면 가장 빠르다.</p>
 </div>
-<p>HeatGrid에서 역할 분리는 아래처럼 가는 것이 자연스럽다.</p>
+<p>신호가 실제로 가는 순서는 이렇다. 먼저 <strong>데이터 계층</strong>이 MQTT나 시계열 DB로 기계실 데이터를 모은다. 그 데이터를 <strong>모델 계층</strong>이 받아서 이상 점수, 리드타임, 위험도를 계산한다. 그 결과를 <strong>우선순위 계층</strong>이 영향도, 제약 조건, 과거 이력과 함께 재서 순서를 매긴다. 그러면 <strong>Agent 계층</strong>이 실제 계획을 세우고 작업지시를 만들고, 상황이 바뀌면 다시 계획을 짠다. 마지막으로 사람은 <strong>운영 인터페이스</strong>(대시보드, 코파일럿, 작업 오더)를 통해 이 결과를 받아본다.</p>
 <div class="table-wrap"><table><thead><tr><th>계층</th><th>역할</th></tr></thead><tbody><tr><td>데이터 계층</td><td>MQTT/시계열 DB로 기계실 데이터를 수집</td></tr><tr><td>모델 계층</td><td>anomaly score, 리드타임, 위험도 계산</td></tr><tr><td>우선순위 계층</td><td>영향도, 제약, 이력 반영</td></tr><tr><td>Agent 계층</td><td>계획 수립, 작업지시 생성, 재계획</td></tr><tr><td>운영 인터페이스</td><td>대시보드, 코파일럿, 작업 오더</td></tr></tbody></table></div>
 <h3>한 문장 정의</h3>
 <blockquote>HeatGrid는 지역난방 기계실의 데이터를 읽고 이상 징후를 해석한 뒤, 제한된 자원 아래 무엇을 먼저 어떻게 대응할지 계획하고 차질이 생기면 다시 재계획하는 운영 AIoT Agent다.</blockquote>
 <hr>
-<h2>관련 문서</h2>
-<ul><li><a href="../references/heatgrid-agent-architecture/index.html">18_HeatGrid_AIoT_Agent_아키텍처.md</a></li><li><a href="../references/heatgrid-go-to-market/index.html">20_HeatGrid_출시_타당성_보고서.md</a></li><li><a href="../references/heatgrid-reference-notes/index.html">21_HeatGrid_참고문헌_및_PDF_번역정리.md</a></li></ul>
+<h2>더 깊이 보고 싶다면</h2>
+<p>이 문서만으로도 전체 그림은 다 잡힌다. 특정 주제를 더 파보고 싶을 때만 아래를 보면 된다.</p>
+<ul><li><a href="../01/index.html">01_PreDist_논문_정리.md</a> / <a href="../02/index.html">02_PreDist_데이터셋_가이드.md</a> — PreDist를 더 깊이</li><li><a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a> / <a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a> — 국내·해외 구조를 더 깊이</li><li><a href="../05/index.html">05_District_Heating_Substations_Design_요약.md</a> ~ <a href="../10/index.html">10_Anomaly_Detection_Review_요약.md</a> — 설비, O&amp;M, 체크리스트, 이상탐지 심화</li><li><a href="../11/index.html">11_국내_정책_시장_사업자_가이드.md</a> / <a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a> — 시장과 정비사 출동 흐름</li><li><a href="../references/heatgrid-agent-architecture/index.html">18_HeatGrid_AIoT_Agent_아키텍처.md</a> / <a href="../references/heatgrid-go-to-market/index.html">20_HeatGrid_출시_타당성_보고서.md</a> / <a href="../references/heatgrid-reference-notes/index.html">21_HeatGrid_참고문헌_및_PDF_번역정리.md</a> — 설계·사업 문서</li></ul>
         <nav class='doc-nav'><a class='nav-link next' href='../01/index.html'>다음: PreDist 논문</a></nav>
       </article>
     </main>

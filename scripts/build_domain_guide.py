@@ -13,7 +13,7 @@ CSS_FILE = DOMAIN_ROOT / "assets" / "css" / "site.css"
 
 
 DOC_CONFIG = [
-    ("00_HeatGrid_Domain_Guide.md", "00", "전체 로드맵", "도메인 초심자가 어디서부터 무엇을 배우고 어떻게 Agent 설계까지 연결할지 안내합니다."),
+    ("00_HeatGrid_Domain_Guide.md", "00", "이 문서 하나로 충분합니다", "다른 페이지로 안 가도 이 문서 하나만 읽으면 지역난방 기계실과 HeatGrid Agent를 이해할 수 있습니다."),
     ("01_PreDist_논문_정리.md", "01", "PreDist 논문", "PreDist의 문제의식, 라벨 구조, lead time 개념을 초심자 눈높이로 풀어냅니다."),
     ("02_PreDist_데이터셋_가이드.md", "02", "PreDist 데이터셋", "PreDist 파일 구조와 컬럼을 센서, 설비, 운영 이벤트 관점으로 읽는 법을 정리합니다."),
     ("03_국내_지역난방_구조와_운영_가이드.md", "03", "국내 구조와 운영", "한국의 집단에너지 구조, 민원, 긴급신고, 정기점검, 협력업체 흐름을 설명합니다."),
@@ -441,11 +441,11 @@ def build_landing() -> None:
       <p class="eyebrow">HeatGrid Domain Guide</p>
       <h1>지역난방을 몰라도<br>HeatGrid Agent 설계까지 갈 수 있는 학습 사이트</h1>
       <p class="hero-lead">
-        이 사이트는 지역난방 기계실, 정비, 운영, PreDist를 처음 보는 사람도
-        <strong>문제 이해 -> 데이터 해석 -> 운영 판단 -> Agent 설계</strong>까지 연결할 수 있도록 만든 교재형 가이드다.
+        시간이 없다면 <strong>"00 이 문서 하나로 충분합니다"</strong> 한 편만 읽어도 지역난방 기계실부터 HeatGrid Agent까지
+        한 번에 이해할 수 있다. 더 깊이 파보고 싶을 때만 나머지 문서로 넘어가면 된다.
       </p>
       <div class="cta-row">
-        <a class="btn primary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('00'))}">처음 시작하기</a>
+        <a class="btn primary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('00'))}">이 문서 하나로 시작하기</a>
         <a class="btn secondary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('03'))}">국내 구조와 운영 먼저 보기</a>
         <a class="btn secondary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('04'))}">해외 구조와 운영 먼저 보기</a>
       </div>
@@ -472,7 +472,7 @@ def build_landing() -> None:
         <p>아래 순서대로 보면 초심자도 자연스럽게 설비 구조에서 Agent 설계까지 이어진다.</p>
       </div>
       <ol class="route-list">
-        <li><strong>00</strong> 전체 로드맵과 공부 순서 잡기</li>
+        <li><strong>00</strong> 이 문서 하나로 전체 그림 잡기 (다른 문서 없이도 충분)</li>
         <li><strong>01~02</strong> PreDist와 데이터 구조 이해</li>
         <li><strong>03~04</strong> 국내와 해외 지역난방 구조 비교</li>
         <li><strong>05~10</strong> 기계실 설계, O&amp;M, 체크리스트, 이상탐지 해석 심화</li>
@@ -483,7 +483,7 @@ def build_landing() -> None:
     <section class="section-block">
       <div class="section-head">
         <h2>핵심 진입점</h2>
-        <p>처음 보는 사람이라면 아래 다섯 문서부터 읽으면 큰 그림이 가장 빨리 잡힌다.</p>
+        <p>맨 위 "00 이 문서 하나로 충분합니다"만 읽어도 전체 그림이 잡힌다. 특정 주제를 더 보고 싶을 때 아래 문서를 추가로 본다.</p>
       </div>
       <div class="summary-grid">
         {''.join(featured_cards)}
