@@ -4,27 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HeatGrid Domain Guide</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
+  <div class="progress-bar"><span id="progress-fill"></span></div>
   <div class="page-shell">
     <aside class="page-side">
-      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
-      <p class="side-summary">Domain Guide 폴더 구조와 문서 규칙, 배포 구성을 빠르게 확인합니다.</p>
-      <div class="side-links">
-        <a href="../index.html">메인 허브</a>
-        <a href="../00/index.html">00 메인 가이드</a>
-        <a href="../03/index.html">2-1 국내 구조와 운영</a>
-        <a href="../04/index.html">2-2 해외 구조와 운영</a>
-      </div>
+      <a class="side-home" href="../index.html">🔥 HeatGrid<span>Domain Guide</span></a>
+      <nav class='chapter-nav'><p class='nav-progress'>전체 13개 챕터</p><div class='nav-cluster'><p class='nav-cluster-title'>시작</p><a class='nav-item' href='../00/index.html'><span class='nav-num'>00</span><span class='nav-label'>이 문서 하나로 충분합니다</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>데이터 이해</p><a class='nav-item' href='../01/index.html'><span class='nav-num'>01</span><span class='nav-label'>PreDist 논문</span></a><a class='nav-item' href='../02/index.html'><span class='nav-num'>02</span><span class='nav-label'>PreDist 데이터셋</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>국내·해외 구조</p><a class='nav-item' href='../03/index.html'><span class='nav-num'>03</span><span class='nav-label'>국내 구조와 운영</span></a><a class='nav-item' href='../04/index.html'><span class='nav-num'>04</span><span class='nav-label'>해외 구조와 운영</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>설비·점검 심화</p><a class='nav-item' href='../05/index.html'><span class='nav-num'>05</span><span class='nav-label'>기계실 설계</span></a><a class='nav-item' href='../06/index.html'><span class='nav-num'>06</span><span class='nav-label'>현장 O&amp;M</span></a><a class='nav-item' href='../07/index.html'><span class='nav-num'>07</span><span class='nav-label'>운영 기록과 PM</span></a><a class='nav-item' href='../08/index.html'><span class='nav-num'>08</span><span class='nav-label'>예방정비 체크리스트</span></a><a class='nav-item' href='../09/index.html'><span class='nav-num'>09</span><span class='nav-label'>유지관리 계획</span></a><a class='nav-item' href='../10/index.html'><span class='nav-num'>10</span><span class='nav-label'>이상탐지 해석</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>시장·정비 서비스</p><a class='nav-item' href='../11/index.html'><span class='nav-num'>11</span><span class='nav-label'>국내 시장과 정책</span></a><a class='nav-item' href='../12/index.html'><span class='nav-num'>12</span><span class='nav-label'>정비사와 출동</span></a></div></nav>
     </aside>
     <main class="page-main">
       <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>폴더 안내</span></div>
       <article class="doc-card">
         
+        
+        
         <h1>HeatGrid Domain Guide</h1>
 <p>HeatGrid Domain Guide는 <code>PreDist 기반 지역난방 운영 AIoT Agent</code>를 설계하기 위한 초심자용 도메인 학습 제품군이다.</p>
-<h2>구성</h2>
+<h2 id="sec-1">구성</h2>
 <ul><li><code>00_HeatGrid_Domain_Guide.md</code></li></ul>
 <p>- 전체 학습 로드맵</p>
 <ul><li><code>01_*.md</code> ~ <code>12_*.md</code></li></ul>
@@ -35,13 +34,27 @@
 <p>- GitHub Pages 허브</p>
 <ul><li><code>sources_manifest.md</code></li></ul>
 <p>- 자료 원문 링크와 로컬 보관 상태</p>
-<h2>권장 학습 순서</h2>
+<h2 id="sec-2">권장 학습 순서</h2>
 <ol><li><code>00_HeatGrid_Domain_Guide.md</code></li><li><code>01_PreDist_논문_정리.md</code></li><li><code>02_PreDist_데이터셋_가이드.md</code></li><li><code>03_국내_지역난방_구조와_운영_가이드.md</code></li><li><code>04_해외_지역난방_구조와_운영_가이드.md</code></li><li><code>05</code> ~ <code>10</code> 문서</li><li><code>11</code>, <code>12</code> 문서</li></ol>
-<h2>문서 작성 규칙</h2>
+<h2 id="sec-3">문서 작성 규칙</h2>
 <ul><li>모든 문서는 한국어 중심으로 작성한다.</li><li>영어 원문은 핵심 문장 번역과 해설 위주로 정리한다.</li><li>각 문서에는 원문 링크와 로컬 PDF 경로를 함께 적는다.</li><li>각 문서에는 <code>읽는 시간</code>, <code>난이도</code>, <code>선수지식</code>을 표기한다.</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../12/index.html'>이전: 정비사와 출동</a><a class='nav-link next' href='../sources/index.html'>다음: 소스 인벤토리</a></nav>
       </article>
     </main>
+    <aside class='page-toc'><div class='toc-inner'><p class='toc-title'>이 페이지 목차</p><a class='toc-h2' href='#sec-1'>구성</a><a class='toc-h2' href='#sec-2'>권장 학습 순서</a><a class='toc-h2' href='#sec-3'>문서 작성 규칙</a></div></aside>
   </div>
+  <script>
+    (function(){
+      var fill = document.getElementById('progress-fill');
+      function onScroll(){
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+        fill.style.width = pct + '%';
+      }
+      document.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
 </body>
 </html>

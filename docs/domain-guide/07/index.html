@@ -4,44 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>07. IEA DHC Connection Handbook 요약</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
+  <div class="progress-bar"><span id="progress-fill"></span></div>
   <div class="page-shell">
     <aside class="page-side">
-      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
-      <p class="side-summary">연결 구조, 점검 이력, 로그북이 왜 재계획의 기반인지 보여줍니다.</p>
-      <div class="side-links">
-        <a href="../index.html">메인 허브</a>
-        <a href="../00/index.html">00 메인 가이드</a>
-        <a href="../03/index.html">2-1 국내 구조와 운영</a>
-        <a href="../04/index.html">2-2 해외 구조와 운영</a>
-      </div>
+      <a class="side-home" href="../index.html">🔥 HeatGrid<span>Domain Guide</span></a>
+      <nav class='chapter-nav'><p class='nav-progress'>전체 13개 챕터 · 지금 8번째</p><div class='nav-cluster'><p class='nav-cluster-title'>시작</p><a class='nav-item' href='../00/index.html'><span class='nav-num'>00</span><span class='nav-label'>이 문서 하나로 충분합니다</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>데이터 이해</p><a class='nav-item' href='../01/index.html'><span class='nav-num'>01</span><span class='nav-label'>PreDist 논문</span></a><a class='nav-item' href='../02/index.html'><span class='nav-num'>02</span><span class='nav-label'>PreDist 데이터셋</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>국내·해외 구조</p><a class='nav-item' href='../03/index.html'><span class='nav-num'>03</span><span class='nav-label'>국내 구조와 운영</span></a><a class='nav-item' href='../04/index.html'><span class='nav-num'>04</span><span class='nav-label'>해외 구조와 운영</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>설비·점검 심화</p><a class='nav-item' href='../05/index.html'><span class='nav-num'>05</span><span class='nav-label'>기계실 설계</span></a><a class='nav-item' href='../06/index.html'><span class='nav-num'>06</span><span class='nav-label'>현장 O&amp;M</span></a><a class='nav-item active' href='index.html'><span class='nav-num'>07</span><span class='nav-label'>운영 기록과 PM</span></a><a class='nav-item' href='../08/index.html'><span class='nav-num'>08</span><span class='nav-label'>예방정비 체크리스트</span></a><a class='nav-item' href='../09/index.html'><span class='nav-num'>09</span><span class='nav-label'>유지관리 계획</span></a><a class='nav-item' href='../10/index.html'><span class='nav-num'>10</span><span class='nav-label'>이상탐지 해석</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>시장·정비 서비스</p><a class='nav-item' href='../11/index.html'><span class='nav-num'>11</span><span class='nav-label'>국내 시장과 정책</span></a><a class='nav-item' href='../12/index.html'><span class='nav-num'>12</span><span class='nav-label'>정비사와 출동</span></a></div></nav>
     </aside>
     <main class="page-main">
-      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>운영 기록과 PM</span></div>
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>설비·점검 심화</span> / <span>운영 기록과 PM</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>연결 구조와 운영 기록 문화를 이해하는 문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>설비 연결과 점검 이력이 왜 중요한지 알고 싶은 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">IEA DHC Handbook</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'><a href="../assets/pdf/07_iea_dhc_connection_handbook.pdf">07_iea_dhc_connection_handbook.pdf</a></div></div></section>
+        <p class='chapter-eyebrow'>CHAPTER 07 · 설비·점검 심화</p>
+        <div class='meta-chips'><span class='chip'>읽는 시간 · 18분</span><span class='chip'>난이도 · 입문 ~ 중급</span></div>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>연결 구조와 운영 기록 문화를 이해하는 문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>설비 연결과 점검 이력이 왜 중요한지 알고 싶은 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>18분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">IEA DHC Handbook</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'><a href="../assets/pdf/07_iea_dhc_connection_handbook.pdf">07_iea_dhc_connection_handbook.pdf</a></div></div></section>
         <h1>07. IEA DHC Connection Handbook 요약</h1>
 <hr>
-<h2>왜 읽어야 하는가</h2>
-<p>HeatGrid는 단순한 경보기가 아니라, 연결 구조와 점검 이력을 활용해 다음 대응을 더 잘 짜는 Agent에 가깝다. 이 문서는 기록이 왜 재계획의 입력이 되는지를 이해하게 해 준다.</p>
-<h2>이 문서를 읽고 나면 할 수 있는 것</h2>
-<ul><li>설비 연결 구조와 운영 기록을 한 묶음으로 설명할 수 있다.</li><li>maintenance history가 왜 우선순위를 바꾸는지 설명할 수 있다.</li><li>재발 설비를 왜 따로 관리해야 하는지 이해할 수 있다.</li></ul>
+<h2 id="sec-1">한 줄 요약</h2>
+<p>같은 고장이라도 <strong>"과거에 이 설비에 무슨 일이 있었는지"</strong>를 알면 판단이 달라진다. 지난달 갈았는데 또 고장 난 밸브와, 5년 만에 처음 이상이 생긴 밸브는 똑같은 "밸브 이상"이어도 대응이 달라야 한다. 그래서 기록(로그북)은 단순 보관용이 아니라, 다음 판단을 위한 입력이다.</p>
+<div class="callout">
+<strong>이 문서에서 자주 나오는 용어</strong>
+<ul><li><strong>연결 구조</strong>: 사업자 배관과 건물 설비가 어떻게 이어지는지의 구조. 안정 운영의 뼈대.</li><li><strong>로그북(logbook)</strong>: 점검·정비 내용을 날짜별로 적어두는 작업 일지.</li><li><strong>정비 이력(maintenance history)</strong>: 그 설비에 지금까지 어떤 작업이 있었는지의 누적 기록.</li><li><strong>재발 설비</strong>: 같은 고장이 반복해서 나는 설비. 따로 관리할 가치가 있다.</li><li><strong>책임 구분</strong>: 어디까지를 사업자가, 어디부터를 사용자/관리주체가 책임지는지의 경계.</li><li><strong>재계획(replan)</strong>: 상황이 바뀌었을 때 우선순위와 일정을 다시 짜는 것.</li></ul>
+</div>
 <p><img src="../assets/img/iea_record_loop.svg" alt="연결 구조와 운영 기록의 루프" class="doc-image"></p>
-<h2>핵심 개념</h2>
-<ul><li>연결 구조는 안정 운영의 뼈대다.</li><li>기록은 단순 보관용이 아니라 다음 점검과 후속 계획의 입력이다.</li><li>책임 구분과 로그북 문화가 유지관리 품질을 높인다.</li></ul>
-<h2>실무 예시</h2>
-<p>같은 밸브 이상이라도 최근 교체 이력과 반복 발생 이력이 있다면 출동 우선순위가 높아질 수 있다. 기록이 있어야 같은 고장을 다르게 판단할 수 있다.</p>
-<h2>PreDist 연결 예시</h2>
-<p>PreDist의 maintenance 이벤트는 단순 라벨이 아니라 “과거에 실제 개입이 있었던 설비”를 알려 주는 운영 기록으로 읽어야 한다.</p>
-<h2>HeatGrid 적용 포인트</h2>
-<ul><li>이력 기반 우선순위 조정이 필요하다.</li><li>재발 설비는 재계획 루프에서 가중치를 높일 수 있다.</li><li>설명 가능한 작업지시서에는 과거 이력 요약이 붙는 편이 좋다.</li></ul>
-<h2>초심자 체크포인트</h2>
-<ul><li>운영 기록이 왜 예측 성능만큼 중요한지 설명할 수 있는가</li><li>maintenance 이벤트를 작업 이력으로 해석하고 있는가</li><li>HeatGrid가 왜 기록 구조를 가져야 하는지 이해했는가</li></ul>
+<hr>
+<h2 id="sec-2">왜 이 문서를 읽는가</h2>
+<p>HeatGrid는 단순한 경보기가 아니라, <strong>연결 구조와 점검 이력을 활용해 다음 대응을 더 잘 짜는 Agent</strong>에 가깝다. 이 문서는 "기록이 왜 재계획의 입력이 되는가"를 이해하게 해준다. 경보는 "지금 이상하다"만 말하지만, 기록이 더해지면 "이건 처음이 아니다, 이번엔 다르게 대응하자"까지 말할 수 있다.</p>
+<h2 id="sec-3">핵심 원칙 세 가지</h2>
+<div class="key-answer">
+<div class="mini-card">
+<h4>연결 구조 = 뼈대</h4>
+<p>설비가 어떻게 이어져 있는지가 안정 운영의 기본 골격이다. 구조를 알아야 어디서 문제가 번지는지 보인다.</p>
+</div>
+<div class="mini-card">
+<h4>기록 = 다음 판단의 입력</h4>
+<p>로그북은 그냥 보관하는 서류가 아니다. 다음 점검과 후속 계획을 짤 때 쓰는 입력 데이터다.</p>
+</div>
+<div class="mini-card">
+<h4>책임·기록 문화 = 품질</h4>
+<p>누가 무엇을 책임지는지가 명확하고, 기록을 꼬박꼬박 남기는 문화가 유지관리 품질을 끌어올린다.</p>
+</div>
+</div>
+<h2 id="sec-4">상황으로 이해하기: 같은 밸브 이상, 다른 판단</h2>
+<div class="callout">
+<strong>기록이 우선순위를 바꾼다</strong>
+<p>A 밸브와 B 밸브에 똑같이 "이상" 신호가 떴다. 그런데 A는 최근에 교체했는데 또 문제가 생긴 데다 같은 고장이 반복된 이력이 있다. B는 오랫동안 멀쩡했던 설비다. 이 경우 A의 출동 우선순위를 더 높이는 게 맞다. &lt;strong&gt;기록이 있어야 같은 고장을 다르게 판단&lt;/strong&gt;할 수 있다.</p>
+</div>
+<h3 id="sec-5">PreDist와 연결하면</h3>
+<p>PreDist의 maintenance 이벤트는 단순한 정답 꼬리표가 아니다. <strong>"과거에 실제로 사람이 개입했던 설비"</strong>를 알려주는 운영 기록으로 읽어야 한다. 그렇게 보면 같은 센서 이상도 "이 설비는 손이 자주 갔던 곳"이라는 맥락과 함께 해석된다.</p>
+<h2 id="sec-6">HeatGrid에 적용하기</h2>
+<ul><li><strong>이력 기반으로 우선순위를 조정</strong>해야 한다. 같은 이상도 재발 이력이 있으면 더 위로.</li><li><strong>재발 설비는 재계획 루프에서 가중치를 높일</strong> 수 있다.</li><li>설명 가능한 작업지시서에는 <strong>과거 이력 요약</strong>을 붙이는 편이 좋다. ("이 설비, 3개월 새 2번째 출동입니다"처럼.)</li></ul>
+<h2 id="sec-7">스스로 확인하기</h2>
+<ul><li>운영 기록이 왜 예측 성능만큼 중요한지 설명할 수 있는가?</li><li>maintenance 이벤트를 "작업 이력"으로 해석하고 있는가?</li><li>HeatGrid가 왜 기록 구조를 가져야 하는지 이해했는가?</li></ul>
+<hr>
+<h2 id="sec-8">더 깊이 보고 싶다면</h2>
+<ul><li><a href="../09/index.html">09_ASHRAE_180_요약.md</a> — 기록을 담는 유지관리 계획 문서의 뼈대</li><li><a href="../10/index.html">10_Anomaly_Detection_Review_요약.md</a> — 이력과 이상탐지를 함께 보기</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../06/index.html'>이전: 현장 O&amp;M</a><a class='nav-link next' href='../08/index.html'>다음: 예방정비 체크리스트</a></nav>
       </article>
     </main>
+    <aside class='page-toc'><div class='toc-inner'><p class='toc-title'>이 페이지 목차</p><a class='toc-h2' href='#sec-1'>한 줄 요약</a><a class='toc-h2' href='#sec-2'>왜 이 문서를 읽는가</a><a class='toc-h2' href='#sec-3'>핵심 원칙 세 가지</a><a class='toc-h2' href='#sec-4'>상황으로 이해하기: 같은 밸브 이상, 다른 판단</a><a class='toc-h3' href='#sec-5'>PreDist와 연결하면</a><a class='toc-h2' href='#sec-6'>HeatGrid에 적용하기</a><a class='toc-h2' href='#sec-7'>스스로 확인하기</a><a class='toc-h2' href='#sec-8'>더 깊이 보고 싶다면</a></div></aside>
   </div>
+  <script>
+    (function(){
+      var fill = document.getElementById('progress-fill');
+      function onScroll(){
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+        fill.style.width = pct + '%';
+      }
+      document.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
 </body>
 </html>

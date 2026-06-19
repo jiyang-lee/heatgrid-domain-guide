@@ -4,60 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>01. PreDist 논문 정리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
+  <div class="progress-bar"><span id="progress-fill"></span></div>
   <div class="page-shell">
     <aside class="page-side">
-      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
-      <p class="side-summary">PreDist의 문제의식, 라벨 구조, lead time 개념을 초심자 눈높이로 풀어냅니다.</p>
-      <div class="side-links">
-        <a href="../index.html">메인 허브</a>
-        <a href="../00/index.html">00 메인 가이드</a>
-        <a href="../03/index.html">2-1 국내 구조와 운영</a>
-        <a href="../04/index.html">2-2 해외 구조와 운영</a>
-      </div>
+      <a class="side-home" href="../index.html">🔥 HeatGrid<span>Domain Guide</span></a>
+      <nav class='chapter-nav'><p class='nav-progress'>전체 13개 챕터 · 지금 2번째</p><div class='nav-cluster'><p class='nav-cluster-title'>시작</p><a class='nav-item' href='../00/index.html'><span class='nav-num'>00</span><span class='nav-label'>이 문서 하나로 충분합니다</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>데이터 이해</p><a class='nav-item active' href='index.html'><span class='nav-num'>01</span><span class='nav-label'>PreDist 논문</span></a><a class='nav-item' href='../02/index.html'><span class='nav-num'>02</span><span class='nav-label'>PreDist 데이터셋</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>국내·해외 구조</p><a class='nav-item' href='../03/index.html'><span class='nav-num'>03</span><span class='nav-label'>국내 구조와 운영</span></a><a class='nav-item' href='../04/index.html'><span class='nav-num'>04</span><span class='nav-label'>해외 구조와 운영</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>설비·점검 심화</p><a class='nav-item' href='../05/index.html'><span class='nav-num'>05</span><span class='nav-label'>기계실 설계</span></a><a class='nav-item' href='../06/index.html'><span class='nav-num'>06</span><span class='nav-label'>현장 O&amp;M</span></a><a class='nav-item' href='../07/index.html'><span class='nav-num'>07</span><span class='nav-label'>운영 기록과 PM</span></a><a class='nav-item' href='../08/index.html'><span class='nav-num'>08</span><span class='nav-label'>예방정비 체크리스트</span></a><a class='nav-item' href='../09/index.html'><span class='nav-num'>09</span><span class='nav-label'>유지관리 계획</span></a><a class='nav-item' href='../10/index.html'><span class='nav-num'>10</span><span class='nav-label'>이상탐지 해석</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>시장·정비 서비스</p><a class='nav-item' href='../11/index.html'><span class='nav-num'>11</span><span class='nav-label'>국내 시장과 정책</span></a><a class='nav-item' href='../12/index.html'><span class='nav-num'>12</span><span class='nav-label'>정비사와 출동</span></a></div></nav>
     </aside>
     <main class="page-main">
-      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>PreDist 논문</span></div>
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>데이터 이해</span> / <span>PreDist 논문</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>PreDist 논문의 문제의식과 핵심 개념을 초심자 눈높이로 설명하는 문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>PreDist를 처음 읽는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>25분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../00/index.html">00_HeatGrid_Domain_Guide.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://arxiv.org/abs/2511.14791">arXiv abs</a>, <a href="https://arxiv.org/html/2511.14791v2">HTML v2</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'><a href="../assets/pdf/01_predist_paper.pdf">01_predist_paper.pdf</a></div></div></section>
+        <p class='chapter-eyebrow'>CHAPTER 01 · 데이터 이해</p>
+        <div class='meta-chips'><span class='chip'>읽는 시간 · 15분</span><span class='chip'>난이도 · 입문</span></div>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>PreDist 논문의 문제의식과 핵심 개념을 초심자 눈높이로 설명하는 문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>PreDist를 처음 읽는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>15분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../00/index.html">00_HeatGrid_Domain_Guide.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://arxiv.org/abs/2511.14791">arXiv abs</a>, <a href="https://arxiv.org/html/2511.14791v2">HTML v2</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'><a href="../assets/pdf/01_predist_paper.pdf">01_predist_paper.pdf</a></div></div></section>
         <h1>01. PreDist 논문 정리</h1>
 <hr>
-<h2>왜 지금 이 문서를 읽는가</h2>
-<p>PreDist 논문은 단순히 “새 데이터셋이 나왔다”는 문서가 아니다. 지역난방 기계실에서 어떤 문제가 중요하고, 왜 <code>센서 데이터만으로는 부족하며 운영 이벤트와 고객 체감 라벨이 함께 필요했는가</code>를 가장 잘 보여 주는 출발점이다.</p>
-<h2>이 문서를 읽고 나면 할 수 있는 것</h2>
-<ul><li>PreDist가 왜 만들어졌는지 설명할 수 있다.</li><li>disturbance, maintenance, customer report, lead time의 의미를 구분할 수 있다.</li><li>HeatGrid가 왜 단순 예측 모델이 아니라 운영 Agent 쪽으로 가야 하는지 연결할 수 있다.</li></ul>
+<h2 id="sec-1">한 줄 요약</h2>
+<p>PreDist는 "센서 숫자"만 모은 데이터가 아니라, <strong>"기계가 이상해진 순간"과 "사람이 실제로 불편을 느낀 순간"을 같이 적어둔</strong> 데이터다. 그래서 HeatGrid가 단순 고장 예측을 넘어 "민원이 터지기 전에 미리 손쓰는" 운영 도구로 갈 수 있게 해준다.</p>
+<div class="callout">
+<strong>이 문서에서 자주 나오는 용어</strong>
+<ul><li><strong>PreDist</strong>: 이 논문에서 공개한 데이터셋 이름. 지역난방 기계실의 센서 기록 + 그 기간에 있었던 사건(이상·정비·민원)을 한데 묶은 것.</li><li><strong>substation(서브스테이션)</strong>: 지역난방 열을 받아서 건물 난방·온수로 바꿔주는 사용자 측 기계실. 우리말 "기계실"과 같은 뜻.</li><li><strong>disturbance(디스터번스)</strong>: 평소 운전에서 벗어난 이상 사건. "뭔가 평소랑 다르다"가 잡힌 순간.</li><li><strong>maintenance(메인터넌스)</strong>: 사람이 실제로 가서 점검·조정·교체 같은 작업을 한 순간.</li><li><strong>customer report(고객 신고)</strong>: 사용자가 춥다/온수가 안 나온다처럼 불편을 느껴 신고한 순간.</li><li><strong>lead time(리드타임)</strong>: 이상 조짐이 처음 보인 때부터 실제 민원이나 작업으로 이어질 때까지의 시간 차. 이 시간이 길수록 미리 대응할 여유가 있다.</li></ul>
+</div>
 <p><img src="../assets/img/predist_paper_flow.svg" alt="PreDist 논문 핵심 흐름" class="doc-image"></p>
 <hr>
-<h2>논문이 던지는 핵심 질문</h2>
-<p>논문은 사실상 아래 질문을 던진다.</p>
-<ol><li>지역난방 기계실에서 센서만 보고 문제를 충분히 이해할 수 있는가</li><li>고객이 추워졌다고 느끼기 전에 조짐을 잡을 수 있는가</li><li>정비 개입 시점과 고객 체감 시점을 하나의 학습 문제로 엮을 수 있는가</li></ol>
-<p>이 세 질문이 곧 HeatGrid의 방향과 거의 같다.</p>
-<h2>핵심 개념 한국어 해설</h2>
-<ul><li><code>substation</code></li></ul>
-<p>지역난방 열을 건물 난방과 급탕으로 전달하는 사용자측 기계실이다.</p>
-<ul><li><code>disturbance</code></li></ul>
-<p>정상 운전에서 벗어난 이상 사건 또는 운전 교란이다.</p>
-<ul><li><code>maintenance</code></li></ul>
-<p>실제 사람이 개입해 점검, 조정, 교체 같은 작업을 수행한 시점이다.</p>
-<ul><li><code>customer report</code></li></ul>
-<p>사용자가 불편을 실제로 느껴 신고한 시점이다.</p>
-<ul><li><code>lead time</code></li></ul>
-<p>이상 조짐이 보인 시점과 고객 체감 또는 작업 개입 시점 사이의 시간 차다.</p>
-<h2>중요한 논문 포인트</h2>
-<ul><li>PreDist는 시계열 센서 데이터만이 아니라 유지보수 로그와 고객 신고를 함께 묶는다.</li><li>즉, “기계가 이상하다”와 “사람이 실제로 불편했다” 사이의 거리를 데이터로 다루려 한다.</li><li>이 구조 덕분에 <code>단순 이상 탐지</code>가 아니라 <code>민원 전 조기 감지</code>, <code>정비 우선순위화</code> 같은 운영 문제를 붙일 수 있다.</li></ul>
-<h2>실무에서는 이렇게 읽는다</h2>
-<p>현장 운영자는 고객 신고가 들어온 뒤에 반응하면 이미 늦다고 느낄 수 있다. 그래서 논문의 진짜 가치는 예측 성능 숫자보다 <code>고객 체감 전에 무엇을 포착할 수 있는가</code>라는 운영 질문을 데이터셋 구조 안에 넣었다는 점에 있다.</p>
-<h2>HeatGrid에 직접 쓰는 포인트</h2>
-<ul><li>customer report 라벨은 HeatGrid가 “운영적 가치”를 설명하는 핵심 근거가 된다.</li><li>disturbance와 maintenance 사이 시간축은 “관찰 -&gt; 출동 -&gt; 조치” 흐름을 학습하는 데 유용하다.</li><li>HeatGrid는 이 논문 덕분에 “데이터 기반 정비 AI”가 아니라 “운영 로그 기반 Agent”로 포지셔닝할 수 있다.</li></ul>
-<h2>상황 예시</h2>
-<p>센서상 공급온도 저하가 보였지만 아직 customer report는 없다면, HeatGrid는 “지금 바로 민원은 없지만 lead time 구간일 수 있다”는 식으로 해석할 수 있다. 이게 바로 운영 Agent에 필요한 사고방식이다.</p>
-<h2>초심자 체크포인트</h2>
-<ul><li>PreDist가 단순 센서 데이터셋이 아니라 운영 이벤트와 고객 체감까지 포함한 데이터셋인지 설명할 수 있는가</li><li>lead time이 왜 중요한지 말할 수 있는가</li><li>HeatGrid가 왜 이 데이터를 선택했는지 자기 말로 설명할 수 있는가</li></ul>
+<h2 id="sec-2">왜 이 논문이 중요한가</h2>
+<p>PreDist 논문은 "새 데이터셋이 나왔다"는 발표문이 아니다. 진짜 메시지는 이거다 — <strong>지역난방에서는 센서 숫자만 봐서는 진짜 문제를 못 잡는다.</strong> 기계가 이상해진 것과 사람이 실제로 불편해진 것은 시점도 다르고 의미도 다른데, 기존 데이터셋들은 센서 숫자만 줬다. PreDist는 그 둘을 한 시간축 위에 같이 올려서, "기계 이상 → 사람 불편"으로 번지는 과정을 데이터로 다룰 수 있게 했다.</p>
+<p>이게 바로 HeatGrid가 가려는 방향과 거의 똑같다. 그래서 PreDist를 이해하면 HeatGrid가 왜 그렇게 설계됐는지가 자연스럽게 보인다.</p>
+<h2 id="sec-3">논문이 던지는 세 가지 질문</h2>
+<p>논문을 한 꺼풀 벗기면 사실 아래 세 질문을 던지고 있다. 이 질문들이 곧 HeatGrid의 출발점이다.</p>
+<div class="key-answer">
+<div class="mini-card">
+<h4>센서만으로 충분한가</h4>
+<p>지역난방 기계실에서 센서 숫자만 보고 진짜 문제를 충분히 이해할 수 있을까? (논문의 답: 부족하다)</p>
+</div>
+<div class="mini-card">
+<h4>민원 전에 잡을 수 있나</h4>
+<p>고객이 "춥다"고 느끼기 전에, 미리 조짐을 포착할 수 있을까?</p>
+</div>
+<div class="mini-card">
+<h4>한 문제로 엮을 수 있나</h4>
+<p>정비가 들어간 시점과 고객이 불편을 느낀 시점을 하나의 학습 문제로 묶을 수 있을까?</p>
+</div>
+</div>
+<h2 id="sec-4">이 데이터가 특별한 이유</h2>
+<p>핵심은 하나다. <strong>PreDist는 센서 시계열에 "사람의 사건"을 붙였다.</strong></p>
+<ul><li>시계열 센서 데이터만이 아니라, 정비 기록(maintenance)과 고객 신고(customer report)를 같은 시간축에 함께 묶었다.</li><li>덕분에 "기계가 이상하다"와 "사람이 실제로 불편했다" 사이의 <strong>거리</strong>를 데이터로 측정할 수 있게 됐다.</li><li>이 구조 덕분에 단순 이상 탐지를 넘어, <code>민원 전 조기 감지</code>나 <code>정비 우선순위 정하기</code> 같은 진짜 운영 문제에 붙일 수 있다.</li></ul>
+<p>현장 운영자 입장에서 보면 더 명확하다. 고객 신고가 들어온 다음에 움직이면 이미 늦은 경우가 많다. 그래서 이 논문의 진짜 가치는 예측 정확도 숫자 자체보다, <strong>"고객이 느끼기 전에 무엇을 포착할 수 있는가"라는 운영 질문을 데이터 구조 안에 심어놨다</strong>는 점에 있다.</p>
+<h2 id="sec-5">HeatGrid로 어떻게 이어지는가</h2>
+<ul><li><strong>customer report 라벨</strong>은 HeatGrid가 "이건 단순 기술이 아니라 진짜 운영에 도움이 된다"를 증명하는 핵심 근거가 된다.</li><li><strong>disturbance와 maintenance 사이의 시간축</strong>은 "이상 관찰 → 출동 → 조치"로 가는 흐름을 학습하는 데 쓸 수 있다.</li><li>그래서 HeatGrid는 "데이터로 고장 맞히는 AI"가 아니라 <strong>"운영 기록을 읽고 판단을 돕는 Agent"</strong>로 자리잡을 수 있다.</li></ul>
+<div class="callout">
+<strong>상황으로 이해하기</strong>
+<p>센서에서 공급온도 저하가 보이는데 아직 고객 신고는 없는 상황. HeatGrid는 이걸 "지금 당장 민원은 없지만, 곧 터질 수 있는 lead time 구간이다"라고 읽는다. 이렇게 "아직 안 터졌지만 곧 터질 수 있다"를 미리 읽는 게 바로 운영 Agent에게 필요한 사고방식이다.</p>
+</div>
+<h2 id="sec-6">스스로 확인하기</h2>
+<ul><li>PreDist가 단순 센서 데이터셋이 아니라, 운영 사건과 고객 체감까지 포함한 데이터셋이라는 걸 설명할 수 있는가?</li><li>lead time이 왜 중요한지 한 문장으로 말할 수 있는가?</li><li>HeatGrid가 왜 하필 이 데이터를 골랐는지 자기 말로 설명할 수 있는가?</li></ul>
+<hr>
+<h2 id="sec-7">더 깊이 보고 싶다면</h2>
+<ul><li><a href="../02/index.html">02_PreDist_데이터셋_가이드.md</a> — 실제 파일 구조와 컬럼을 읽는 법</li><li><a href="../00/index.html">00_HeatGrid_Domain_Guide.md</a> — 전체 그림 다시 보기</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../00/index.html'>이전: 이 문서 하나로 충분합니다</a><a class='nav-link next' href='../02/index.html'>다음: PreDist 데이터셋</a></nav>
       </article>
     </main>
+    <aside class='page-toc'><div class='toc-inner'><p class='toc-title'>이 페이지 목차</p><a class='toc-h2' href='#sec-1'>한 줄 요약</a><a class='toc-h2' href='#sec-2'>왜 이 논문이 중요한가</a><a class='toc-h2' href='#sec-3'>논문이 던지는 세 가지 질문</a><a class='toc-h2' href='#sec-4'>이 데이터가 특별한 이유</a><a class='toc-h2' href='#sec-5'>HeatGrid로 어떻게 이어지는가</a><a class='toc-h2' href='#sec-6'>스스로 확인하기</a><a class='toc-h2' href='#sec-7'>더 깊이 보고 싶다면</a></div></aside>
   </div>
+  <script>
+    (function(){
+      var fill = document.getElementById('progress-fill');
+      function onScroll(){
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+        fill.style.width = pct + '%';
+      }
+      document.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
 </body>
 </html>

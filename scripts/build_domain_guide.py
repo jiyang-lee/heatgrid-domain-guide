@@ -43,6 +43,23 @@ REFERENCE_DOCS = [
 
 REFERENCE_MAP = {name: slug for name, slug, _ in REFERENCE_DOCS}
 
+# 사이드바 챕터 메뉴를 묶는 클러스터(학습 묶음) 정의
+CHAPTER_CLUSTERS = [
+    ("시작", ["00"]),
+    ("데이터 이해", ["01", "02"]),
+    ("국내·해외 구조", ["03", "04"]),
+    ("설비·점검 심화", ["05", "06", "07", "08", "09", "10"]),
+    ("시장·정비 서비스", ["11", "12"]),
+]
+CHAPTER_SLUGS = [slug for _, slugs in CHAPTER_CLUSTERS for slug in slugs]
+CLUSTER_OF = {slug: name for name, slugs in CHAPTER_CLUSTERS for slug in slugs}
+
+# 공통 <head> 조각: Pretendard 웹폰트(한국어 가독성) + 시스템 폰트 폴백은 CSS에서 처리
+FONT_LINKS = (
+    '<link rel="preconnect" href="https://cdn.jsdelivr.net">\n'
+    '  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">'
+)
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -303,41 +320,117 @@ def render_prev_next(slug: str) -> str:
     return "<nav class='doc-nav'>" + "".join(parts) + "</nav>" if parts else ""
 
 
-def page_template(title: str, body: str, slug: str, summary: str, meta_box: str, breadcrumb: str) -> str:
+def build_chapter_nav(current_slug: str) -> str:
+    """사이드바에 00~12 전체 챕터를 클러스터로 묶어 보여주고 현재 위치를 강조한다."""
+    current_out = slug_output_path(current_slug)
+    if current_slug in CHAPTER_SLUGS:
+        position = f"전체 {len(CHAPTER_SLUGS)}개 챕터 · 지금 {CHAPTER_SLUGS.index(current_slug) + 1}번째"
+    else:
+        position = f"전체 {len(CHAPTER_SLUGS)}개 챕터"
+    blocks = [f"<p class='nav-progress'>{position}</p>"]
+    for cluster_name, slugs in CHAPTER_CLUSTERS:
+        items = []
+        for slug in slugs:
+            meta = DOC_META[slug]
+            href = relative_href(current_out, slug_output_path(slug))
+            active = " active" if slug == current_slug else ""
+            items.append(
+                f"<a class='nav-item{active}' href='{href}'>"
+                f"<span class='nav-num'>{html.escape(slug)}</span>"
+                f"<span class='nav-label'>{html.escape(meta['label'])}</span></a>"
+            )
+        blocks.append(
+            f"<div class='nav-cluster'><p class='nav-cluster-title'>{html.escape(cluster_name)}</p>"
+            + "".join(items)
+            + "</div>"
+        )
+    return "<nav class='chapter-nav'>" + "".join(blocks) + "</nav>"
+
+
+def add_toc(body_html: str) -> tuple[str, str]:
+    """본문의 h2/h3에 id를 붙이고, 같은 순서로 페이지 내 목차(TOC)를 만든다."""
+    counter = {"n": 0}
+    entries: list[tuple[int, str, str]] = []
+
+    def repl(match: re.Match[str]) -> str:
+        level = int(match.group(1))
+        inner = match.group(2)
+        counter["n"] += 1
+        anchor = f"sec-{counter['n']}"
+        text = re.sub(r"<[^>]+>", "", inner).strip()
+        entries.append((level, anchor, text))
+        return f"<h{level} id=\"{anchor}\">{inner}</h{level}>"
+
+    new_body = re.sub(r"<h([23])>(.*?)</h\1>", repl, body_html, flags=re.DOTALL)
+    if not entries:
+        return body_html, ""
+    links = "".join(
+        f"<a class='toc-h{level}' href='#{anchor}'>{html.escape(text)}</a>"
+        for level, anchor, text in entries
+    )
+    toc = (
+        "<aside class='page-toc'><div class='toc-inner'>"
+        "<p class='toc-title'>이 페이지 목차</p>" + links + "</div></aside>"
+    )
+    return new_body, toc
+
+
+def page_template(
+    title: str,
+    body: str,
+    slug: str,
+    summary: str,
+    meta_box: str,
+    breadcrumb: str,
+    eyebrow: str = "",
+    chips: str = "",
+    toc: str = "",
+) -> str:
     css_href = relative_href(slug_output_path(slug), CSS_FILE)
     home_href = relative_href(slug_output_path(slug), DOMAIN_ROOT / "index.html")
-    guide_href = relative_href(slug_output_path(slug), slug_output_path("00"))
-    domestic_href = relative_href(slug_output_path(slug), slug_output_path("03"))
-    global_href = relative_href(slug_output_path(slug), slug_output_path("04"))
+    eyebrow_html = f"<p class='chapter-eyebrow'>{eyebrow}</p>" if eyebrow else ""
+    chips_html = f"<div class='meta-chips'>{chips}</div>" if chips else ""
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(title)}</title>
+  {FONT_LINKS}
   <link rel="stylesheet" href="{css_href}">
 </head>
 <body>
+  <div class="progress-bar"><span id="progress-fill"></span></div>
   <div class="page-shell">
     <aside class="page-side">
-      <a class="side-home" href="{home_href}">HeatGrid Domain Guide</a>
-      <p class="side-summary">{html.escape(summary)}</p>
-      <div class="side-links">
-        <a href="{home_href}">메인 허브</a>
-        <a href="{guide_href}">00 메인 가이드</a>
-        <a href="{domestic_href}">2-1 국내 구조와 운영</a>
-        <a href="{global_href}">2-2 해외 구조와 운영</a>
-      </div>
+      <a class="side-home" href="{home_href}">🔥 HeatGrid<span>Domain Guide</span></a>
+      {build_chapter_nav(slug)}
     </aside>
     <main class="page-main">
       <div class="breadcrumb">{breadcrumb}</div>
       <article class="doc-card">
+        {eyebrow_html}
+        {chips_html}
         {meta_box}
         {body}
         {render_prev_next(slug)}
       </article>
     </main>
+    {toc}
   </div>
+  <script>
+    (function(){{
+      var fill = document.getElementById('progress-fill');
+      function onScroll(){{
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+        fill.style.width = pct + '%';
+      }}
+      document.addEventListener('scroll', onScroll, {{passive:true}});
+      onScroll();
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -350,11 +443,33 @@ def build_doc(md_name: str, slug: str, label: str, summary: str) -> None:
     title = title_from_markdown(lines, label)
     content_lines = strip_meta_from_markdown(lines)
     content_html = markdown_to_html("\n".join(content_lines), slug)
+    content_html, toc = add_toc(content_html)
     meta_box = render_meta_box(meta, slug)
-    breadcrumb = f"<a href='{relative_href(slug_output_path(slug), DOMAIN_ROOT / 'index.html')}'>홈</a> / <span>{html.escape(label)}</span>"
+
+    home_href = relative_href(slug_output_path(slug), DOMAIN_ROOT / "index.html")
+    cluster = CLUSTER_OF.get(slug)
+    if slug in CHAPTER_SLUGS:
+        eyebrow = f"CHAPTER {html.escape(slug)} · {html.escape(cluster)}"
+        breadcrumb = (
+            f"<a href='{home_href}'>홈</a> / <span>{html.escape(cluster)}</span> / "
+            f"<span>{html.escape(label)}</span>"
+        )
+    else:
+        eyebrow = ""
+        breadcrumb = f"<a href='{home_href}'>홈</a> / <span>{html.escape(label)}</span>"
+
+    chip_parts = []
+    for key in ("읽는 시간", "난이도"):
+        if key in meta:
+            chip_parts.append(f"<span class='chip'>{html.escape(key)} · {convert_inline(meta[key], slug)}</span>")
+    chips = "".join(chip_parts)
+
     out = slug_output_path(slug)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page_template(title, content_html, slug, summary, meta_box, breadcrumb), encoding="utf-8")
+    out.write_text(
+        page_template(title, content_html, slug, summary, meta_box, breadcrumb, eyebrow, chips, toc),
+        encoding="utf-8",
+    )
 
 
 def build_reference_doc(source_name: str, slug: str, label: str) -> None:
@@ -373,13 +488,15 @@ def build_reference_doc(source_name: str, slug: str, label: str) -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(title)}</title>
+  {FONT_LINKS}
   <link rel="stylesheet" href="{css_href}">
 </head>
 <body>
-  <div class="page-shell">
+  <div class="page-shell page-shell-narrow">
     <aside class="page-side">
-      <a class="side-home" href="{home_href}">HeatGrid Domain Guide</a>
+      <a class="side-home" href="{home_href}">🔥 HeatGrid<span>Domain Guide</span></a>
       <p class="side-summary">{html.escape(summary)}</p>
+      <a class="back-home" href="{home_href}">← 메인으로 돌아가기</a>
     </aside>
     <main class="page-main">
       <div class="breadcrumb"><a href="{home_href}">홈</a> / <span>관련 기획 문서</span></div>
@@ -393,39 +510,41 @@ def build_reference_doc(source_name: str, slug: str, label: str) -> None:
 
 
 def build_landing() -> None:
-    featured_cards = []
-    for slug in ["00", "03", "04", "11", "12"]:
-        href = relative_href(DOMAIN_ROOT / "index.html", slug_output_path(slug))
-        featured_cards.append(
-            f"""
-            <article class="summary-card">
-              <div class="summary-no">{slug}</div>
-              <h3>{html.escape(DOC_META[slug]["label"])}</h3>
-              <p>{html.escape(DOC_META[slug]["summary"])}</p>
-              <a class="text-link" href="{href}">바로 읽기</a>
-            </article>
-            """
+    index_path = DOMAIN_ROOT / "index.html"
+
+    # 클러스터 단위로 묶은 단일 챕터 로드맵 (중복 진입장치를 하나로 통합)
+    roadmap_blocks = []
+    for cluster_name, slugs in CHAPTER_CLUSTERS:
+        cards = []
+        for slug in slugs:
+            meta = DOC_META[slug]
+            href = relative_href(index_path, slug_output_path(slug))
+            cards.append(
+                f"""<a class="roadmap-card" href="{href}">
+              <span class="roadmap-no">{html.escape(slug)}</span>
+              <span class="roadmap-body"><strong>{html.escape(meta['label'])}</strong>
+              <span>{html.escape(meta['summary'])}</span></span>
+            </a>"""
+            )
+        roadmap_blocks.append(
+            f"""<div class="roadmap-cluster">
+          <p class="roadmap-cluster-title">{html.escape(cluster_name)}</p>
+          <div class="roadmap-grid">{''.join(cards)}</div>
+        </div>"""
         )
-
-    deep_buttons = []
-    for slug in ["05", "06", "07", "08", "09", "10"]:
-        href = relative_href(DOMAIN_ROOT / "index.html", slug_output_path(slug))
-        deep_buttons.append(f"<a class='btn tertiary' href='{href}'>{html.escape(slug)} {html.escape(DOC_META[slug]['label'])}</a>")
-
-    catalog = []
-    for _, slug, label, summary in DOC_CONFIG:
-        href = relative_href(DOMAIN_ROOT / "index.html", slug_output_path(slug))
-        catalog.append(f"<li><a href='{href}'>{html.escape(label)}</a><span>{html.escape(summary)}</span></li>")
 
     pdf_items = []
     for pdf in sorted((DOMAIN_ROOT / "assets" / "pdf").glob("*.pdf")):
-        href = relative_href(DOMAIN_ROOT / "index.html", pdf)
+        href = relative_href(index_path, pdf)
         pdf_items.append(f"<li><a href='{href}'>{html.escape(pdf.name)}</a></li>")
 
     ref_items = []
     for _, slug, label in REFERENCE_DOCS:
-        href = relative_href(DOMAIN_ROOT / "index.html", DOMAIN_ROOT / "references" / slug / "index.html")
+        href = relative_href(index_path, DOMAIN_ROOT / "references" / slug / "index.html")
         ref_items.append(f"<li><a href='{href}'>{html.escape(label)}</a></li>")
+
+    start_href = relative_href(index_path, slug_output_path("00"))
+    sources_href = relative_href(index_path, slug_output_path("sources"))
 
     html_text = f"""<!DOCTYPE html>
 <html lang="ko">
@@ -433,101 +552,48 @@ def build_landing() -> None:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HeatGrid Domain Guide</title>
-  <link rel="stylesheet" href="{relative_href(DOMAIN_ROOT / 'index.html', CSS_FILE)}">
+  {FONT_LINKS}
+  <link rel="stylesheet" href="{relative_href(index_path, CSS_FILE)}">
 </head>
 <body>
   <div class="landing-shell">
     <section class="hero hero-strong">
-      <p class="eyebrow">HeatGrid Domain Guide</p>
-      <h1>지역난방을 몰라도<br>HeatGrid Agent 설계까지 갈 수 있는 학습 사이트</h1>
+      <p class="eyebrow">🔥 HeatGrid Domain Guide</p>
+      <h1>지역난방을 몰라도<br>HeatGrid를 이해할 수 있는 학습 사이트</h1>
       <p class="hero-lead">
-        시간이 없다면 <strong>"00 이 문서 하나로 충분합니다"</strong> 한 편만 읽어도 지역난방 기계실부터 HeatGrid Agent까지
-        한 번에 이해할 수 있다. 더 깊이 파보고 싶을 때만 나머지 문서로 넘어가면 된다.
+        지역난방 기계실, 정비, 운영, 데이터를 처음 보는 사람을 위한 교재입니다.
+        시간이 없다면 <strong>00번 한 편</strong>만 읽어도 전체 그림이 잡히고,
+        더 알고 싶으면 아래 로드맵을 차례대로 따라가면 됩니다.
       </p>
       <div class="cta-row">
-        <a class="btn primary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('00'))}">이 문서 하나로 시작하기</a>
-        <a class="btn secondary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('03'))}">국내 구조와 운영 먼저 보기</a>
-        <a class="btn secondary" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('04'))}">해외 구조와 운영 먼저 보기</a>
+        <a class="btn primary" href="{start_href}">00번부터 시작하기 →</a>
+        <a class="btn secondary" href="#roadmap">전체 챕터 보기</a>
       </div>
     </section>
 
-    <section class="answer-grid">
-      <article class="answer-card">
-        <h2>문제</h2>
-        <p>지역난방 기계실은 설비 구조, 센서 데이터, 민원, 정비, 출동, 우선순위화가 한 번에 얽혀 있다. 처음 보면 어디서부터 공부해야 할지 감이 잘 안 잡힌다.</p>
-      </article>
-      <article class="answer-card">
-        <h2>해결</h2>
-        <p>이 사이트는 PreDist, 국내 운영 자료, 해외 O&amp;M 문서, 정비 체크리스트를 한 흐름으로 엮어 초심자도 단계적으로 이해하도록 구성했다.</p>
-      </article>
-      <article class="answer-card">
-        <h2>결과</h2>
-        <p>끝까지 읽고 나면 기계실 구조, 주요 고장, 작업지시, 운영 우선순위, Agent 필요성을 자기 말로 설명할 수 있다.</p>
-      </article>
-    </section>
-
-    <section class="route-box">
-      <div class="route-copy">
-        <h2>학습 순서</h2>
-        <p>아래 순서대로 보면 초심자도 자연스럽게 설비 구조에서 Agent 설계까지 이어진다.</p>
+    <section class="stepper">
+      <div class="step">
+        <span class="step-no">1</span>
+        <div><strong>기초 잡기</strong><p>지역난방이 뭔지, 데이터가 뭘 알려주는지부터 (00~02)</p></div>
       </div>
-      <ol class="route-list">
-        <li><strong>00</strong> 이 문서 하나로 전체 그림 잡기 (다른 문서 없이도 충분)</li>
-        <li><strong>01~02</strong> PreDist와 데이터 구조 이해</li>
-        <li><strong>03~04</strong> 국내와 해외 지역난방 구조 비교</li>
-        <li><strong>05~10</strong> 기계실 설계, O&amp;M, 체크리스트, 이상탐지 해석 심화</li>
-        <li><strong>11~12</strong> 시장, 정책, 정비사 출동 프로세스로 서비스화 연결</li>
-      </ol>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <span class="step-no">2</span>
+        <div><strong>현장 이해</strong><p>국내·해외 구조와 설비, 점검·정비 흐름 (03~10)</p></div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <span class="step-no">3</span>
+        <div><strong>서비스 연결</strong><p>시장·정비 출동과 HeatGrid 설계로 (11~12)</p></div>
+      </div>
     </section>
 
-    <section class="section-block">
+    <section class="section-block" id="roadmap">
       <div class="section-head">
-        <h2>핵심 진입점</h2>
-        <p>맨 위 "00 이 문서 하나로 충분합니다"만 읽어도 전체 그림이 잡힌다. 특정 주제를 더 보고 싶을 때 아래 문서를 추가로 본다.</p>
+        <h2>전체 챕터 로드맵</h2>
+        <p>위에서 아래로 읽으면 자연스럽게 이어집니다. 번호를 눌러 바로 들어가세요.</p>
       </div>
-      <div class="summary-grid">
-        {''.join(featured_cards)}
-      </div>
-    </section>
-
-    <section class="section-block">
-      <div class="section-head">
-        <h2>심화 문서 바로가기</h2>
-        <p>05~10은 설비 이해, 점검 흐름, 체크리스트, 이상 해석을 깊게 파고드는 교재 구간이다.</p>
-      </div>
-      <div class="cta-row">
-        {''.join(deep_buttons)}
-      </div>
-    </section>
-
-    <section class="section-block">
-      <div class="section-head">
-        <h2>학습 트랙</h2>
-        <p>목표에 따라 바로 들어갈 수 있는 세 가지 학습 루트다.</p>
-      </div>
-      <div class="track-grid">
-        <article class="track-card">
-          <h3>초심자 루트</h3>
-          <p>00 -> 01 -> 02 -> 03 -> 04</p>
-        </article>
-        <article class="track-card">
-          <h3>데이터 루트</h3>
-          <p>01 -> 02 -> 10 -> 05 -> 06</p>
-        </article>
-        <article class="track-card">
-          <h3>Agent 설계 루트</h3>
-          <p>00 -> 03 -> 04 -> 08 -> 09 -> 11 -> 12</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-block section-muted">
-      <div class="section-head">
-        <h2>전체 문서</h2>
-      </div>
-      <ul class="catalog-list">
-        {''.join(catalog)}
-      </ul>
+      <div class="roadmap">{''.join(roadmap_blocks)}</div>
     </section>
 
     <section class="lower-grid">
@@ -546,14 +612,14 @@ def build_landing() -> None:
       <article class="panel">
         <h3>소스 인벤토리</h3>
         <p>원문 링크와 로컬 자산 상태를 한곳에서 확인할 수 있다.</p>
-        <a class="text-link" href="{relative_href(DOMAIN_ROOT / 'index.html', slug_output_path('sources'))}">sources 페이지 보기</a>
+        <a class="text-link" href="{sources_href}">sources 페이지 보기 →</a>
       </article>
     </section>
   </div>
 </body>
 </html>
 """
-    (DOMAIN_ROOT / "index.html").write_text(html_text, encoding="utf-8")
+    index_path.write_text(html_text, encoding="utf-8")
 
 
 def build_docs_redirect() -> None:
