@@ -35,6 +35,7 @@ th{background:#eff7f6}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:14px;font-weight:800}
 .btn.primary{background:#ffffff;color:#102542}
 .btn.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#f8fafc}
+.btn.tertiary{background:#eef6f6;border:1px solid var(--line);color:var(--accent-strong)}
 .answer-grid,.summary-grid,.track-grid,.lower-grid{display:grid;gap:16px}
 .answer-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:22px}
 .answer-card,.summary-card,.track-card,.panel,.route-box,.section-block{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 30px rgba(23,32,44,.05)}

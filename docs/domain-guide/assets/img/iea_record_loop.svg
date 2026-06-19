@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#f8fbfd"/>
+  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">연결 구조와 운영 기록의 루프</text>
+  <rect x="100" y="170" width="220" height="120" rx="18" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="210" y="215" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">설비 연결 구조</text>
+  <rect x="400" y="170" width="220" height="120" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+  <text x="510" y="215" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">점검 이력</text>
+  <rect x="700" y="170" width="220" height="120" rx="18" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
+  <text x="810" y="215" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">재발 판단</text>
+  <rect x="980" y="170" width="140" height="120" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/>
+  <text x="1050" y="215" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#6d28d9">재계획</text>
+  <path d="M320 230H400" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M620 230H700" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M920 230H980" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="100" y="410" font-size="22" font-family="Segoe UI, Arial" fill="#42596a">기록은 저장용 메모가 아니라, 다음 우선순위와 재출동 판단을 바꾸는 입력이다.</text>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

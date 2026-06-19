@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#f8fbfd"/>
+  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">이상탐지를 운영 판단으로 번역하는 다리</text>
+  <rect x="100" y="170" width="220" height="140" rx="18" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="210" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">모델 이상</text>
+  <text x="210" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#405270">score, spike, drift</text>
+  <rect x="390" y="170" width="220" height="140" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+  <text x="500" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">원인 후보</text>
+  <text x="500" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#3d5a53">센서 / 부품 / 제어</text>
+  <rect x="680" y="170" width="220" height="140" rx="18" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
+  <text x="790" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">영향도</text>
+  <text x="790" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#704a3d">민원 / 안전 / 효율</text>
+  <rect x="970" y="170" width="140" height="140" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/>
+  <text x="1040" y="220" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#6d28d9">작업</text>
+  <text x="1040" y="255" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#5d3d8a">지시</text>
+  <path d="M320 240H390" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M610 240H680" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M900 240H970" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

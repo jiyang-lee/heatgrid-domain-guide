@@ -32,7 +32,7 @@
 <strong>왜 지금 이 문서를 읽는가</strong>
 <p>HeatGrid는 단순한 이상탐지 모델이 아니라, 센서 신호를 운영 판단과 작업지시로 이어 붙이는 시스템이다. 그래서 데이터만 알아도 안 되고, 현장 구조만 알아도 안 되며, 두 세계를 연결하는 흐름을 한 번에 잡아야 한다.</p>
 </div>
-<p><img src="./assets/img/heatgrid_agent_loop.svg" alt="HeatGrid 운영 판단 루프" class="doc-image"></p>
+<p><img src="../assets/img/heatgrid_agent_loop.svg" alt="HeatGrid 운영 판단 루프" class="doc-image"></p>
 <h2>지금 중요한 한 줄</h2>
 <p>HeatGrid의 핵심은 <code>센서값을 읽는 것</code>이 아니라 <code>센서 변화가 현장 운영에서 무슨 의미인지 해석하고, 지금 무엇을 먼저 해야 하는지 정하는 것</code>이다.</p>
 <div class="key-answer">
@@ -67,12 +67,12 @@
 <h2>2. 지역난방 구조와 운영 이해 자료</h2>
 <h3>2-1. 국내 지역난방 구조와 운영</h3>
 <p>먼저 <a href="../03/index.html">03_국내_지역난방_구조와_운영_가이드.md</a>를 읽는다.</p>
-<p><img src="./assets/img/domestic_dh_structure.svg" alt="국내 지역난방 공급 구조도" class="doc-image"></p>
+<p><img src="../assets/img/domestic_dh_structure.svg" alt="국내 지역난방 공급 구조도" class="doc-image"></p>
 <p>핵심은 아래다.</p>
 <ul><li>국내는 <code>집단에너지 사업자 -&gt; 열수송망 -&gt; 사용자 기계실 -&gt; 건물 난방/급탕</code> 흐름으로 이해하면 된다.</li><li>운영은 민원, 긴급신고, 정기점검, 사용자 설비 지원사업, 협력업체 출동으로 이어진다.</li><li>국내 자료를 보면 점검과 지원은 존재하지만 <code>우선순위화와 재계획 자동화</code>는 아직 약하다.</li></ul>
 <h3>2-2. 해외 지역난방 구조와 운영</h3>
 <p>다음으로 <a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a>를 읽는다.</p>
-<p><img src="./assets/img/global_ets_structure.svg" alt="해외 ETS 및 substation 구조도" class="doc-image"></p>
+<p><img src="../assets/img/global_ets_structure.svg" alt="해외 ETS 및 substation 구조도" class="doc-image"></p>
 <p>핵심은 아래다.</p>
 <ul><li>해외는 <code>ETS(Energy Transfer Station)</code> 또는 substation을 중심으로 설비 구조와 점검 체계를 표준화한다.</li><li>preventive maintenance, checklist, logbook, maintenance policy 문화가 문서로 명확하다.</li><li>HeatGrid는 국내 운영 흐름 위에 해외식 <code>체크리스트 기반 예방정비</code> 문화를 붙이는 방향으로 설계할 수 있다.</li></ul>
 <h3>국내/해외 비교 표</h3>
@@ -85,7 +85,7 @@
 <h2>3. 정비사와 정비회사 관점 자료</h2>
 <h3>먼저 읽을 문서</h3>
 <ul><li><a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a></li><li><a href="../08/index.html">08_District_Energy_PM_Checklist_요약.md</a></li><li><a href="../09/index.html">09_ASHRAE_180_요약.md</a></li></ul>
-<p><img src="./assets/img/field_dispatch_flow.svg" alt="정비사 출동 프로세스 흐름도" class="doc-image"></p>
+<p><img src="../assets/img/field_dispatch_flow.svg" alt="정비사 출동 프로세스 흐름도" class="doc-image"></p>
 <h3>핵심 이해 포인트</h3>
 <ul><li>정비는 단순히 부품을 교체하는 일이 아니라 <code>이벤트 수신 -&gt; 현장 이동 -&gt; 원인 진단 -&gt; 조치 수행 -&gt; 기록</code>의 연속이다.</li><li>정비사 관점에서는 <code>무엇을 들고 가야 하는지</code>, <code>어떤 체크를 먼저 해야 하는지</code>, <code>작업 후 무엇을 기록해야 하는지</code>가 중요하다.</li><li>따라서 HeatGrid의 좋은 출력은 <code>이상 점수</code>가 아니라 <code>점검 순서와 작업지시</code>에 가깝다.</li></ul>
 <h3>이 내용을 이해하면 할 수 있는 것</h3>
@@ -121,7 +121,7 @@
 <p>따라서 HeatGrid는 <code>리드타임 예측 모델</code>로 끝나지 않고 <code>우선순위 엔진 + 작업지시 + 재계획 루프</code>까지 가져가야 한다.</p>
 <hr>
 <h2>9. PreDist 데이터 해석</h2>
-<p><img src="./assets/img/predist_mapping.svg" alt="PreDist 컬럼에서 작업지시까지" class="doc-image"></p>
+<p><img src="../assets/img/predist_mapping.svg" alt="PreDist 컬럼에서 작업지시까지" class="doc-image"></p>
 <h3>PreDist를 읽을 때의 질문</h3>
 <ol><li>이 컬럼은 어떤 센서를 나타내는가</li><li>이 이벤트는 현장에서 어떤 사건을 뜻하는가</li><li>이 이상은 어떤 부품 또는 운영 문제와 연결되는가</li><li>이 신호를 Agent가 받으면 어떤 액션으로 이어져야 하는가</li></ol>
 <h3>매핑 표</h3>

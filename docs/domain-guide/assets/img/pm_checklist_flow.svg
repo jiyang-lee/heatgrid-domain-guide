@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <rect width="1200" height="560" fill="#f8fbfd"/>
+  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">예방정비 체크리스트가 필요한 이유</text>
+  <rect x="120" y="150" width="240" height="220" rx="22" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="240" y="210" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">이상 징후</text>
+  <text x="240" y="250" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#405270">유량 저하</text>
+  <text x="240" y="282" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#405270">차압 증가</text>
+  <rect x="480" y="150" width="240" height="220" rx="22" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+  <text x="600" y="210" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">체크리스트</text>
+  <text x="600" y="250" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#3d5a53">필터 확인</text>
+  <text x="600" y="282" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#3d5a53">밸브 반응 확인</text>
+  <rect x="840" y="150" width="240" height="220" rx="22" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
+  <text x="960" y="210" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">작업지시</text>
+  <text x="960" y="250" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#704a3d">준비물</text>
+  <text x="960" y="282" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#704a3d">우선 점검 순서</text>
+  <path d="M360 260H480" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M720 260H840" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>
