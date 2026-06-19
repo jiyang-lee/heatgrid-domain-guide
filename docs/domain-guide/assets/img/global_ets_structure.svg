@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="450" viewBox="0 0 1200 450" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
+  </defs>
+  <rect width="1200" height="450" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">해외 — ETS 중심의 문서·점검 문화</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">기계실을 ETS/substation으로 표준화하고, 미리 점검하고 다 기록한다</text>
+
+  <!-- ETS center -->
+  <rect x="475" y="150" width="250" height="120" rx="18" fill="#e7f5f3" stroke="#0f766e" stroke-width="3"/>
+  <text x="600" y="200" text-anchor="middle" font-size="23" font-weight="800" fill="#0f766e">ETS / substation</text>
+  <text x="600" y="230" text-anchor="middle" font-size="15" fill="#5d7c78">열교환기·밸브·펌프·센서</text>
+  <text x="600" y="252" text-anchor="middle" font-size="14" fill="#5d7c78">= 우리말 "기계실"</text>
+
+  <!-- three culture pillars -->
+  <g>
+    <rect x="80" y="320" width="320" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="240" y="362" text-anchor="middle" font-size="19" font-weight="700" fill="#c2410c">예방정비 (preventive)</text>
+    <text x="240" y="390" text-anchor="middle" font-size="14" fill="#9a6a4f">고장 전에 정해진 대로 미리 점검</text>
+  </g>
+  <g>
+    <rect x="440" y="320" width="320" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="600" y="362" text-anchor="middle" font-size="19" font-weight="700" fill="#c2410c">체크리스트 (checklist)</text>
+    <text x="600" y="390" text-anchor="middle" font-size="14" fill="#9a6a4f">주기별 점검 항목을 표준화</text>
+  </g>
+  <g>
+    <rect x="800" y="320" width="320" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/>
+    <text x="960" y="362" text-anchor="middle" font-size="19" font-weight="700" fill="#c2410c">기록 (logbook)</text>
+    <text x="960" y="390" text-anchor="middle" font-size="14" fill="#9a6a4f">점검·정비 이력을 꼬박꼬박</text>
+  </g>
+
+  <path d="M520 270 L300 320" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M600 270 V320" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M680 270 L900 320" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+</svg>

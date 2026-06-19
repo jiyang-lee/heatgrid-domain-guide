@@ -1,21 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
-  <rect width="1200" height="620" fill="#f8fbfd"/>
-  <text x="70" y="70" font-size="34" font-family="Segoe UI, Arial" font-weight="700" fill="#16323a">기계실을 시스템으로 보는 관점</text>
-  <rect x="120" y="170" width="160" height="220" rx="18" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="200" y="245" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#1d4ed8">열원 유입</text>
-  <rect x="340" y="170" width="210" height="220" rx="18" fill="#ecfeff" stroke="#0891b2" stroke-width="3"/>
-  <text x="445" y="245" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#0f766e">열교환기</text>
-  <rect x="610" y="170" width="180" height="220" rx="18" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
-  <text x="700" y="245" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#047857">펌프</text>
-  <rect x="850" y="170" width="220" height="220" rx="18" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
-  <text x="960" y="245" text-anchor="middle" font-size="24" font-family="Segoe UI, Arial" font-weight="700" fill="#c2410c">밸브와 센서</text>
-  <path d="M280 280H340" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M550 280H610" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <path d="M790 280H850" stroke="#475569" stroke-width="4" marker-end="url(#arrow)"/>
-  <text x="120" y="480" font-size="22" font-family="Segoe UI, Arial" fill="#42596a">설계 문서는 부품 목록보다 연결 구조를 먼저 보게 만든다.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" font-family="Pretendard, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
-    </marker>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#9aa0aa"/></marker>
   </defs>
+  <rect width="1200" height="430" rx="22" fill="#fff9f4"/>
+  <text x="60" y="66" font-size="30" font-weight="800" fill="#1f2430">기계실은 하나의 연결된 시스템</text>
+  <text x="60" y="100" font-size="18" fill="#6b7280">한 부품이 흔들리면 옆으로 번진다 — 그래서 계통으로 본다</text>
+
+  <g font-weight="700" font-size="19">
+    <g><rect x="70" y="170" width="200" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/><text x="170" y="214" text-anchor="middle" fill="#c2410c">열교환기</text><text x="170" y="240" text-anchor="middle" font-size="13" font-weight="400" fill="#9a6a4f">열을 건물 물로 전달</text></g>
+    <g><rect x="350" y="170" width="200" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/><text x="450" y="214" text-anchor="middle" fill="#c2410c">순환펌프</text><text x="450" y="240" text-anchor="middle" font-size="13" font-weight="400" fill="#9a6a4f">물을 밀어주는 심장</text></g>
+    <g><rect x="630" y="170" width="200" height="100" rx="16" fill="#fff1e7" stroke="#ea580c" stroke-width="2.5"/><text x="730" y="214" text-anchor="middle" fill="#c2410c">제어밸브</text><text x="730" y="240" text-anchor="middle" font-size="13" font-weight="400" fill="#9a6a4f">흐름을 조절</text></g>
+    <g><rect x="910" y="170" width="220" height="100" rx="16" fill="#e7f5f3" stroke="#0f766e" stroke-width="2.5"/><text x="1020" y="214" text-anchor="middle" fill="#0f766e">센서·계측기</text><text x="1020" y="240" text-anchor="middle" font-size="13" font-weight="400" fill="#5d7c78">온도·압력·유량 측정</text></g>
+  </g>
+
+  <path d="M270 220 H350" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M550 220 H630" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M830 220 H910" stroke="#9aa0aa" stroke-width="3" marker-end="url(#ar)"/>
+
+  <rect x="120" y="330" width="960" height="64" rx="16" fill="#fdecec" stroke="#dc2626" stroke-width="2"/>
+  <text x="150" y="360" font-size="17" font-weight="800" fill="#b91c1c">번짐의 예</text>
+  <text x="150" y="382" font-size="15" fill="#8a4a4a">펌프 약화 → 유량 저하 → 열교환 효율 흔들림 → 공급온도 하락 : 한 군데가 아니라 계통을 의심</text>
 </svg>
