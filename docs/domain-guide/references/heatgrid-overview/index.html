@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주제 02 — HeatGrid : 지역난방 인프라 운영 AIoT Agent</title>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="page-side">
+      <a class="side-home" href="../../index.html">HeatGrid Domain Guide</a>
+      <p class="side-summary">HeatGrid 주제 제안서 참고 문서</p>
+    </aside>
+    <main class="page-main">
+      <div class="breadcrumb"><a href="../../index.html">홈</a> / <span>관련 기획 문서</span></div>
+      <article class="doc-card"><h1>주제 02 — HeatGrid : 지역난방 인프라 운영 AIoT Agent</h1>
+<blockquote><strong>문서 역할</strong><br>주제 제안서 / 전체 청사진</blockquote>
+<blockquote><strong>한 줄 정의</strong><br>공개 지역난방 기계실(substation) 운영 데이터를 실시간 IoT 스트림으로 재현하고, ML/DL로 <strong>이상 징후·리드타임·위험도</strong>를 계산한 뒤, LangGraph AI Agent가 <strong>상황 판단 → 대응 우선순위화 → 출동 계획 → 재계획</strong>까지 수행하는 "도시 열에너지 인프라 운영 AIoT Agent".</blockquote>
+<hr>
+<h2>1. 기본 정보</h2>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody><tr><td>프로젝트명</td><td><strong>HeatGrid</strong></td></tr><tr><td>프로젝트 주제</td><td>AIoT 기반 지역난방 기계실 운영 의사결정 &amp; 동적 대응 자동화</td></tr><tr><td>개발 기간</td><td>2026.06.27 ~ 2026.07.19 (약 3주)</td></tr><tr><td>개발 인원</td><td>개인 프로젝트 (풀스택 1인)</td></tr><tr><td>데이터 확보 방식</td><td>공개 데이터셋 (PreDist — 93개 지역난방 기계실 라벨링 운영데이터, Zenodo 2025.11)</td></tr><tr><td>개발 범위</td><td>백엔드(서버·DB·ML/DL·LangGraph) + 프론트엔드(React/TS 인프라 관제)</td></tr><tr><td>도메인</td><td>인프라 / 열에너지 (HDC랩스 건설사업본부 인프라 인접)</td></tr></tbody></table></div>
+<blockquote>💡 <strong>왜 "지역난방 인프라"인가?</strong><br>① 차별화: 주제 01(건물 HVAC)이 <strong>건물 단위 설비</strong>라면, 이건 <strong>수백 개 기계실로 이루어진 도시 인프라 네트워크</strong> — 규모·도메인이 명확히 다르다. 국내는 지역난방 보급률이 높아 현실 적합성이 크다. ② 데이터: 2025년 11월 공개된 <strong>PreDist 데이터셋(93개 기계실, 고장/정비 라벨)</strong>로 실증 가능하며, 선행 모델이 <strong>고장의 60%를 고객 신고 3~5일 전 탐지</strong>. ③ 취업: HDC랩스 인프라본부와 직접 닿으면서, "고객 신고 전 선제 정비"라는 명확한 비즈니스 가치.</blockquote>
+<hr>
+<h2>2. 프로젝트 개요</h2>
+<h3>2.1 개발 배경</h3>
+<ul><li><strong>AX·인프라 전환:</strong> 도시 인프라 운영이 "신고 받고 출동"에서 <strong>"데이터로 미리 감지하고, 계획을 세우고, 차질 시 다시 조정"</strong>하는 방향으로 이동. 에너지 시스템 이상탐지 오픈소스(EnergyFaultDetector)와 공개 라벨 데이터가 등장하며 진입장벽이 낮아짐.</li><li><strong>분산·대수의 운영:</strong> 기계실이 수백 개로 분산되어, 사람이 전수 모니터링은 불가 → 우선순위화가 핵심.</li><li><strong>고객 신고 의존:</strong> 현재는 고객이 "추워요"라고 신고해야 인지 → 이미 서비스 품질이 깨진 시점.</li><li><strong>동적 운영 제약:</strong> 출동팀, 점검 슬롯, 권역 이동, 부품 준비 시간처럼 운영 제약이 계속 바뀌므로 정적 룰만으로 대응하기 어렵다.</li></ul>
+<h3>2.2 문제 정의</h3>
+<blockquote><strong>"도시 열 공급은 수백 개 기계실에 의존하고, 운영자는 늘 제한된 자원 아래 지금 어디를 먼저 보고, 어떤 계획을 바꾸어야 하는지 판단해야 한다."</strong></blockquote>
+<ul><li><strong>누가 쓰는가(Who):</strong> 지역난방 운영센터 관제사, 정비팀, 설비 엔지니어.</li><li><strong>왜 필요한가(Why):</strong> ① 고장의 상당수는 운영데이터에 전조가 있으나 임계 알람으로는 못 잡는다. ② 출동 자원은 한정되어 있어 위험·영향·리드타임을 함께 봐야 한다. ③ 계획을 세운 뒤에도 신규 이상, 일정 지연, 신뢰도 부족이 생겨 재판단이 필요하다. ④ 동절기 공급 중단은 직접적 민원·안전 문제다.</li><li><strong>무엇을 해결하는가(What):</strong> 기계실 스트림 → <strong>이상 징후 감지</strong> → <strong>위험도·리드타임 계산</strong> → <strong>대응 우선순위화</strong> → <strong>출동 계획 수립</strong> → <strong>차질 발생 시 재계획</strong>까지의 운영 폐루프 자동화.</li></ul>
+<h3>2.3 핵심 기능 요약</h3>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>기능</th><th>한 줄 설명</th></tr></thead><tbody><tr><td>1</td><td>다수 기계실 인프라 관제</td><td>네트워크 전체 상태를 지도/그리드로 시각화</td></tr><tr><td>2</td><td>이상 징후·고장 조기 예측</td><td>정상행동 모델 대비 이탈로 조기 탐지</td></tr><tr><td>3</td><td>위험도·리드타임 추정</td><td>어떤 고장·언제쯤 발생할지와 영향도를 계산</td></tr><tr><td>4</td><td>AI Agent 운영 판단</td><td>LangGraph: 감지→진단→우선순위→출동 계획→재계획</td></tr><tr><td>5</td><td>관제 코파일럿(대화)</td><td>"오늘 우선 점검 기계실?" 자연어 질의</td></tr></tbody></table></div>
+<hr>
+<h2>3. 프로젝트 목표</h2>
+<h3>3.1 최종 구현 목표</h3>
+<ol><li>PreDist 데이터를 <strong>MQTT 가상 기계실 스트림(다중 엔티티)</strong>으로 재현하는 파이프라인.</li><li><strong>정상행동 이상탐지(비지도) + 고장유형 분류(지도) + 리드타임 추정</strong> ML/DL + MLflow.</li><li>예측을 입력받아 <strong>진단·우선순위·출동 지시서</strong>를 만드는 <strong>LangGraph Agent</strong>.</li><li>인프라 네트워크 <strong>관제 대시보드 + 알림 + 코파일럿</strong> React/TS 프론트.</li><li>Docker Compose <strong>원클릭 재현</strong>.</li></ol>
+<h3>3.2 사용자가 얻는 가치</h3>
+<ul><li><strong>관제사:</strong> 수백 기계실 중 "지금 봐야 할 곳"을 자동 선별.</li><li><strong>정비팀:</strong> 영향·긴급도 기반 출동 우선순위와 예상 원인 사전 파악.</li><li><strong>운영사:</strong> 공급중단·민원 감소, 정비 인력 효율 극대화.</li></ul>
+<hr>
+<h2>4. 역할 분담</h2>
+<h3>4.1 팀 구성과 담당</h3>
+<p>개인 프로젝트(1인 풀스택). 주차별 수직 슬라이스로 통제.</p>
+<div class="table-wrap"><table><thead><tr><th>주차</th><th>핵심 마일스톤</th></tr></thead><tbody><tr><td>1주차</td><td>데이터 파이프라인(다중 기계실 MQTT) + EDA + 이상탐지 베이스라인 + DB</td></tr><tr><td>2주차</td><td>고장분류·리드타임 모델 + 평가(F-score·earliness) + MLflow + 서빙</td></tr><tr><td>3주차</td><td>LangGraph Agent + 관제 대시보드/코파일럿 + Docker 통합·문서화</td></tr></tbody></table></div>
+<h3>4.2 주요 기여 (포트폴리오 어필 포인트)</h3>
+<ul><li><strong>데이터 엔지니어링:</strong> 수십~수백 엔티티 시계열의 멀티테넌트 스트림 처리.</li><li><strong>ML/DL:</strong> 정상행동 학습 기반 조기탐지, <strong>earliness(조기성) 지표</strong>까지 다룸.</li><li><strong>LLM 시스템:</strong> 우선순위·출동 지시 자동화, 운영 SOP RAG 결합.</li><li><strong>풀스택:</strong> 인프라 네트워크 관제 UI(지도/그리드) + Docker.</li></ul>
+<hr>
+<h2>5. 사용 기술 스택</h2>
+<p><strong>프론트엔드</strong></p>
+<ul><li>React + TypeScript + Vite, TailwindCSS</li><li>Recharts(시계열), 지도/그리드 관제 뷰, WebSocket, Zustand</li></ul>
+<p><strong>백엔드</strong></p>
+<ul><li>Python · FastAPI (REST + WebSocket/SSE), APScheduler</li><li>MQTT Broker(Mosquitto) — 가상 기계실 게이트웨이</li></ul>
+<p><strong>로컬/ML 모델</strong></p>
+<ul><li>scikit-learn, LightGBM(고장분류·리드타임)</li><li>PyTorch(LSTM-Autoencoder 정상행동/이상탐지)</li><li>(옵션) EnergyFaultDetector 류 오픈소스 참고</li><li>MLflow(실험관리), ONNX Runtime(서빙)</li></ul>
+<p><strong>API / 외부 연동</strong></p>
+<ul><li>LangGraph · LangChain, Claude API(<code>claude-opus-4-8</code>)/OpenAI</li><li>pgvector or Chroma (정비 SOP·고장 사례 RAG)</li><li>PostgreSQL + TimescaleDB(시계열), Redis</li><li>(옵션) 외기온 등 기상 데이터 연동(난방 부하 보정)</li><li>Docker Compose, GitHub Actions(CI)</li></ul>
+<blockquote>💡 <strong>왜 정상행동(비지도) 중심인가?</strong> 인프라 고장 라벨은 희소하다. <strong>정상 운영만 학습한 모델의 이탈도</strong>로 미지 고장까지 조기 포착하고(선행 연구는 고장 60%를 신고 3~5일 전 탐지), 라벨 있는 케이스는 분류로 유형을 특정한다.</blockquote>
+<hr>
+<h2>6. 시스템 아키텍처</h2>
+<h3>6.1 전체 프로젝트 아키텍처</h3>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph EDGE[&quot;가상 IoT / 데이터 수집부&quot;]
+        DS[(PreDist 데이터셋\n93개 기계실)]
+        PUB[Replay Publisher\n다중 엔티티]
+        MQTT{{MQTT Broker}}
+        DS --&gt; PUB --&gt; MQTT
+    end
+
+    subgraph BACK[&quot;백엔드 (FastAPI)&quot;]
+        ING[Stream Ingestor]
+        TSDB[(TimescaleDB)]
+        ML[이상탐지/고장분류\nONNX]
+        AG[LangGraph Agent]
+        VDB[(Vector DB\n정비 SOP)]
+        ING --&gt; TSDB --&gt; ML --&gt; AG
+        VDB --&gt; AG
+    end
+
+    subgraph FRONT[&quot;프론트엔드 (React/TS)&quot;]
+        MAP[인프라 관제 맵]
+        ALERT[우선순위/출동지시]
+        CHAT[관제 코파일럿]
+    end
+
+    MQTT --&gt; ING
+    ML --&gt;|WebSocket| MAP
+    AG --&gt;|지시서| ALERT
+    AG &lt;--&gt;|Q&amp;A| CHAT
+    LLM[Claude / OpenAI API]
+    AG &lt;--&gt; LLM</code></pre>
+<blockquote>💡 <strong>왜 다중 엔티티 스트림인가?</strong> 인프라의 본질은 "대수(大數)의 분산 설비"다. 한 기계실이 아니라 수십~수백 개를 동시 스트리밍·추론·우선순위화하는 구조가 이 주제의 기술적 차별점이자 난도다.</blockquote>
+<h3>6.2 프론트엔드 아키텍처</h3>
+<pre><code class="language-mermaid">flowchart TD
+    APP[App Shell] --&gt; R[Router]
+    R --&gt; M[관제 맵 뷰]
+    R --&gt; A[우선순위/지시 뷰]
+    R --&gt; C[Copilot 뷰]
+    M --&gt; WS[WebSocket Client]
+    C --&gt; WS
+    WS --&gt; STORE[Zustand Store]
+    STORE --&gt; CH[기계실 카드·차트]
+    A --&gt; API[REST Client]</code></pre>
+<h3>6.3 백엔드 아키텍처</h3>
+<pre><code class="language-mermaid">flowchart TD
+    GW[FastAPI Gateway] --&gt; WSV[WebSocket 서비스]
+    GW --&gt; REST[REST API]
+    SUB[MQTT Subscriber] --&gt; WRITE[Timeseries Writer] --&gt; TSDB[(TimescaleDB)]
+    SCH[APScheduler] --&gt; INFER[추론 잡(기계실별)]
+    INFER --&gt; AD[이상탐지 ONNX]
+    INFER --&gt; CLF[고장분류/리드타임 ONNX]
+    AD &amp; CLF --&gt; AGRUN[LangGraph 실행기]
+    AGRUN --&gt; RAG[Vector 검색]
+    AGRUN --&gt; LLM[LLM API]
+    AGRUN --&gt; WO[(출동지시 DB)]</code></pre>
+<h3>6.4 데이터 수집·엣지 아키텍처 (원 ToC의 "아두이노 아키텍처" 대체)</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant DS as PreDist 데이터셋
+    participant PUB as Replay Publisher (가상 기계실)
+    participant BR as MQTT Broker
+    participant ING as Stream Ingestor
+    DS-&gt;&gt;PUB: 기계실별 운영 시계열 로드
+    loop 실시간/N배속 재생
+        PUB-&gt;&gt;BR: publish(topic=substation/{id}/telemetry)
+        BR-&gt;&gt;ING: deliver
+        ING-&gt;&gt;ING: 기계실별 정규화·결측보정
+    end</code></pre>
+<blockquote>💡 <strong>왜 이 구조인가?</strong> "가상 기계실(엔티티별 publisher)"이 MQTT로 텔레메트리를 발행하는 실제 인프라 IoT 토폴로지를 모사. 토픽에 기계실 ID를 두어 멀티테넌트 추론·관제가 가능하며, 추후 실물 RTU/PLC 연동으로 교체 가능.</blockquote>
+<hr>
+<h2>7. 핵심 기능</h2>
+<h3>7.1 센서 기반 상태 인식 (인프라 관제)</h3>
+<ul><li>다수 기계실의 공급/환수 온도·차압·유량 등을 맵·그리드로 표시, 위험도 색상화.</li></ul>
+<h3>7.2 고장 예측 &amp; 이상 탐지 (ML/DL 핵심)</h3>
+<ul><li><strong>비지도(정상행동):</strong> LSTM-Autoencoder로 기계실별 정상 패턴 학습 → 이탈도로 조기탐지.</li><li><strong>지도(고장분류):</strong> 라벨 케이스로 고장유형 분류 + 영향도 추정.</li><li><strong>리드타임 추정:</strong> "며칠 내 발생 가능성"으로 정비 일정 최적화.</li><li><strong>평가지표:</strong> 정확도뿐 아니라 <strong>eventwise F-score·earliness(조기성)</strong>로 실제 운영가치 평가.</li></ul>
+<blockquote>💡 <strong>왜 earliness를 평가하나?</strong> "맞췄나"보다 "얼마나 빨리 맞췄나"가 인프라 정비의 가치다. 신고 3~5일 전 탐지가 출동 계획·자재 준비 시간을 만든다.</blockquote>
+<h3>7.3 선제 반응 및 이벤트 처리 (AI Agent 자동화)</h3>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; 모니터링
+    모니터링 --&gt; 이상감지: 이탈도 상승
+    이상감지 --&gt; 진단: 고장유형/영향 추정
+    진단 --&gt; 우선순위화: 긴급도×영향×리드타임
+    우선순위화 --&gt; 출동지시
+    출동지시 --&gt; 기록
+    기록 --&gt; [*]
+    이상감지 --&gt; 관찰: 경계
+    관찰 --&gt; 모니터링</code></pre>
+<ul><li>LangGraph 노드: <strong>감지 → 진단 → 우선순위화 → 출동 지시서 → 기록</strong>.</li><li>다수 이벤트를 <strong>긴급도×영향×리드타임</strong>으로 정렬해 제한된 정비자원 배분.</li></ul>
+<h3>7.4 세션 및 기록 관리</h3>
+<ul><li>기계실별 이벤트·정비 이력 저장, "이 기계실 반복 이상" 패턴 분석(RAG).</li></ul>
+<h3>7.5 다양한 실행·테스트 환경</h3>
+<ul><li><code>docker compose up</code> 원클릭, 특정 기계실 고장 시나리오 주입으로 데모 재현.</li></ul>
+<hr>
+<h2>8. 아이디어 기획 배경 및 필요성</h2>
+<h3>8.1 기존 인프라 운영 방식의 한계</h3>
+<ul><li>임계 알람·고객 신고 의존 → 사후 대응, 품질 저하 후 인지.</li></ul>
+<h3>8.2 센서/데이터 기반 예지보전의 필요성</h3>
+<ul><li>운영데이터에 전조가 선행 → 조기탐지로 공급중단·민원 예방.</li></ul>
+<h3>8.3 대화형 AIoT Agent 적용 가능성</h3>
+<ul><li>수백 기계실을 동시 평가·우선순위화하고, 정비 SOP를 결합해 출동지시 자동화.</li></ul>
+<h3>8.4 기존 솔루션(HDC랩스 포함) 대비 차별성</h3>
+<div class="table-wrap"><table><thead><tr><th>구분</th><th>기존/HDC·주제01</th><th>본 프로젝트 차별점</th></tr></thead><tbody><tr><td>규모</td><td>단일 건물/플랜트 설비</td><td><strong>수백 기계실 인프라 네트워크</strong></td></tr><tr><td>탐지</td><td>임계/룰 알람</td><td><strong>정상행동 이탈 + 조기성(earliness)</strong></td></tr><tr><td>산출</td><td>알람·대시보드</td><td><strong>우선순위화된 출동 지시서</strong></td></tr><tr><td>평가</td><td>정확도</td><td><strong>조기 탐지·운영가치 중심 지표</strong></td></tr></tbody></table></div>
+<blockquote>💡 HDC 인프라 역량과 정면 경쟁하지 않고, <strong>"대수의 분산 설비를 우선순위화하는 운영 지능"</strong> 레이어로 보완·차별화.</blockquote>
+<hr>
+<h2>9. 서비스 기획안</h2>
+<h3>9.1 주요 사용자 시나리오</h3>
+<ol><li>A기계실 환수온도 패턴 이탈 → "열교환기 이상 의심, 2~3일 내 위험" 진단·출동 지시.</li><li>관제사가 코파일럿에 "오늘 우선 점검 5곳?" 질의 → 우선순위 리스트 응답.</li><li>주간 "조기탐지 성공·예방 건수" 운영 리포트 자동 생성.</li></ol>
+<h3>9.2 사용자 경험 흐름</h3>
+<pre><code class="language-mermaid">journey
+    title 운영 관제사 하루 흐름
+    section 오전
+      관제 맵 확인: 4: 관제사
+      야간 이상 요약: 5: 관제사
+    section 대응
+      출동 우선순위 검토: 5: 관제사
+      코파일럿 질의: 5: 관제사
+    section 마감
+      예방성과 리포트: 5: 관제사</code></pre>
+<h3>9.3 핵심 서비스 기능 구성</h3>
+<ul><li>인프라 관제 · 조기 고장탐지 · 진단/우선순위 · 출동지시 자동화 · 운영 리포트.</li></ul>
+<h3>9.4 기대되는 사용자 가치</h3>
+<ul><li>공급중단·민원↓, 정비자원 효율↑, 선제 정비로 비용·리스크↓.</li></ul>
+<h3>9.5 운영 및 확장 방향</h3>
+<ul><li>실물 RTU/PLC 연동, GIS 결합, 열·전기·수도 등 도시 인프라 통합 관제로 확장.</li></ul>
+<hr>
+<h2>10. 기대효과 및 발전 가능성</h2>
+<h3>10.1 공급 안정성·민원 저감</h3>
+<ul><li>고객 신고 전 선제 정비로 동절기 공급중단 리스크 완화.</li></ul>
+<h3>10.2 데이터 기반 운영 고도화</h3>
+<ul><li>임계 알람에서 조기탐지·우선순위 운영으로 전환.</li></ul>
+<h3>10.3 정비자원 효율 극대화</h3>
+<ul><li>영향·긴급도 기반 출동으로 한정 인력 최적 배분.</li></ul>
+<h3>10.4 도시 인프라 통합 관제로의 확장</h3>
+<ul><li>지역난방 → 열·전기·수도·승강기 등 멀티 인프라 플랫폼.</li></ul>
+<h3>10.5 향후 개선·고도화 방향</h3>
+<ul><li>디지털 트윈 연계, 부하예측 결합, 멀티에이전트(진단·배차·검증).</li></ul>
+<hr>
+<h2>부록. 스타 차트(오각형) 자기평가</h2>
+<div class="table-wrap"><table><thead><tr><th>평가축</th><th>점수(5점)</th><th>근거</th></tr></thead><tbody><tr><td>산업 동향</td><td>★★★★</td><td>인프라 예지보전·에너지 이상탐지 오픈소스화, 국내 지역난방 적합</td></tr><tr><td>주제 적합성</td><td>★★★★★</td><td>IoT+ML+Agent 충족, HDC 인프라본부 직접 인접, 01과 명확히 차별</td></tr><tr><td>타당성(3주·1인·무HW)</td><td>★★★★</td><td>2025.11 라벨 공개데이터 존재, 단 다중 엔티티 처리로 난도 있음</td></tr><tr><td>포트폴리오 가능성</td><td>★★★★★</td><td>멀티테넌트 스트림·조기성 지표·우선순위 Agent로 시스템 깊이 어필</td></tr><tr><td>서비스성</td><td>★★★★</td><td>B2B 인프라 운영 명확 수요, 공익성·비용효과 큼</td></tr></tbody></table></div>
+<pre><code class="language-mermaid">%%{init: {&#x27;theme&#x27;:&#x27;neutral&#x27;}}%%
+pie title HeatGrid 강점 비중(정성)
+    &quot;산업동향&quot; : 4
+    &quot;주제적합성&quot; : 5
+    &quot;타당성&quot; : 4
+    &quot;포트폴리오&quot; : 5
+    &quot;서비스성&quot; : 4</code></pre>
+<blockquote><strong>종합:</strong> "주제 적합성·포트폴리오" 축이 최대치인, HDC 인프라본부 정조준 안. 다중 엔티티·조기성 지표라는 차별 난도가 포트폴리오 깊이를 만든다.</blockquote>
+<hr>
+<h3>참고 출처</h3>
+<ul><li><a href="https://zenodo.org/records/17522255">PreDist Dataset — 지역난방 기계실 라벨링 운영데이터 (Zenodo, 2025.11)</a></li><li><a href="https://arxiv.org/abs/2511.14791">Enabling Predictive Maintenance in District Heating Substations (arXiv 2511.14791)</a></li><li><a href="https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets">Fault and anomaly detection in district heating substations: A survey (ResearchGate)</a></li></ul>
+<hr>
+<h2>지표 기반 평가 (00 지표 적용)</h2>
+<h3>점수 기록표</h3>
+<div class="table-wrap"><table><thead><tr><th>번호</th><th>평가 항목</th><th>배점</th><th>점수</th><th>근거</th></tr></thead><tbody><tr><td>1</td><td>4주 내 개인 수행</td><td>15</td><td>12</td><td>다중 엔티티(수백 기계실) 처리로 난도 있음</td></tr><tr><td>2</td><td>AIoT Agent 서비스화 가치</td><td>15</td><td>13</td><td>B2B 인프라 운영, 고객 신고 전 선제 정비</td></tr><tr><td>3</td><td>공개 데이터셋</td><td>10</td><td>9</td><td>PreDist(93개 기계실 라벨, 2025.11)</td></tr><tr><td>4</td><td>주제 선택 근거</td><td>10</td><td>9</td><td>인프라 직무 + 도시 규모로 01과 차별</td></tr><tr><td>5</td><td>타깃 사용자 정의</td><td>10</td><td>9</td><td>지역난방 운영센터 관제사·정비팀</td></tr><tr><td>6</td><td>사용자 필요성·문제 강도</td><td>10</td><td>9</td><td>동절기 공급중단 직결, 출동 자원 우선순위</td></tr><tr><td>7</td><td>LangChain/LangGraph</td><td>10</td><td>9</td><td>감지→진단→우선순위→출동지시→검증</td></tr><tr><td>8</td><td>HW 목업·SW 구현</td><td>10</td><td>10</td><td>공개데이터로 완결</td></tr><tr><td>9</td><td>전공+NOVA 연계</td><td>5</td><td>4</td><td>열·유량·압력 계측 인접(전공 중간) + NOVA</td></tr><tr><td>10</td><td>PHM 기반·PdM 목적</td><td>5</td><td>5</td><td>고장 예측(PHM) → 정비 우선순위·출동(PdM)</td></tr><tr><td></td><td><strong>총점</strong></td><td><strong>100</strong></td><td><strong>89</strong></td><td></td></tr></tbody></table></div>
+<h3>필수 통과 조건</h3>
+<div class="table-wrap"><table><thead><tr><th>필수 조건</th><th>통과</th><th>근거</th></tr></thead><tbody><tr><td>4주 내 MVP</td><td>✅</td><td>다중 엔티티 범위 통제 시 가능</td></tr><tr><td>공개 데이터셋</td><td>✅</td><td>PreDist</td></tr><tr><td>AIoT Agent 가치</td><td>✅</td><td>진단·우선순위·출동 자동화</td></tr><tr><td>LangChain/LangGraph</td><td>✅</td><td>멀티스텝 필수</td></tr><tr><td>소프트웨어 중심</td><td>✅</td><td>무HW 완결</td></tr></tbody></table></div>
+<h2>최종 판단</h2>
+<ul><li>총점: <strong>89 / 100</strong></li><li>판단 결과: <strong>채택 권장</strong></li><li>핵심 강점:</li></ul>
+<p>- 인프라 예지보전 직무 적합성(HD현대·인프라 인접) - 2025.11 라벨 공개데이터로 PHM 실증 - 다중 엔티티 우선순위화로 시스템 깊이</p>
+<ul><li>주요 리스크:</li></ul>
+<p>- 도메인 설명 난도 높음 - 01 BMS와 "예지보전 코파일럿" 메시지 일부 겹침</p>
+<ul><li>보완 방향:</li></ul>
+<p>- 도시 인프라·다중 엔티티 차별을 분명히 - 다중 엔티티 범위를 MVP로 통제</p>
+<h2>최종 선정 여부</h2>
+<p>해당 주제는 <strong>인프라 직무 적합성과 PHM→PdM 우선순위화가 강하나 도메인 난도가 있는</strong> 이유로 인해 프로젝트 주제로 <strong>채택 권장</strong> 한다.</p></article>
+    </main>
+  </div>
+</body>
+</html>

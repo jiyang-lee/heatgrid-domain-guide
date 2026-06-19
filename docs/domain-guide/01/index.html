@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. PreDist 논문 정리</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="page-side">
+      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
+      <p class="side-summary">데이터셋 배경, 라벨 구조, 리드타임 개념을 가장 빠르게 이해합니다.</p>
+      <div class="side-links">
+        <a href="../index.html">메인 허브</a>
+        <a href="../00/index.html">00 메인 가이드</a>
+        <a href="../03/index.html">2-1 국내 구조와 운영</a>
+        <a href="../04/index.html">2-2 해외 구조와 운영</a>
+      </div>
+    </aside>
+    <main class="page-main">
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>PreDist 논문</span></div>
+      <article class="doc-card">
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>핵심 논문 상세 요약</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>PreDist를 처음 읽는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>20분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문 ~ 중급</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../00/index.html">00_HeatGrid_Domain_Guide.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://arxiv.org/abs/2511.14791">arXiv abs</a>, <a href="https://arxiv.org/html/2511.14791v2">HTML v2</a></div></div><div class='meta-row'><div class='meta-key'>로컬 PDF 경로</div><div class='meta-value'><a href="./assets/pdf/01_predist_paper.pdf">01_predist_paper.pdf</a></div></div></section>
+        <h1>01. PreDist 논문 정리</h1>
+<hr>
+<h2>왜 이 문서를 읽어야 하는가</h2>
+<p>PreDist 논문은 <code>데이터셋 설명서</code>이면서 동시에 <code>지역난방 기계실에서 어떤 문제가 중요한가</code>를 알려주는 도메인 입문서다.</p>
+<hr>
+<h2>문서 전체 구조</h2>
+<ul><li>지역난방 기계실과 예지보전 배경</li><li>데이터셋 생성 방식</li><li>라벨링 방식</li><li>baseline 실험</li><li>조기 탐지 성과</li></ul>
+<hr>
+<h2>핵심 개념 한국어 해설</h2>
+<ul><li><code>substation</code>: 지역난방 열을 건물 쪽으로 전달하는 기계실</li><li><code>disturbance</code>: 정상 운전에서 벗어난 상태</li><li><code>maintenance</code>: 실제 정비 개입 시점</li><li><code>customer report</code>: 사용자가 체감해 신고한 시점</li><li><code>lead time</code>: 문제가 체감되기 전까지 남은 시간</li></ul>
+<hr>
+<h2>중요한 내용 번역/해설</h2>
+<ul><li>논문은 공개 운영데이터와 유지보수 로그, 고객 신고 정보를 결합해 기계실 예지보전 데이터셋을 만들었다.</li><li>일부 고장은 <code>고객 신고 전 평균 3~5일 수준의 조기 탐지</code>가 가능하다고 본다.</li><li>핵심은 고장을 모두 맞히는 것이 아니라 <code>고객이 춥다고 말하기 전에 이상 징후를 포착</code>하는 것이다.</li></ul>
+<hr>
+<h2>HeatGrid에 직접 쓰는 포인트</h2>
+<ul><li>고객 신고 전 탐지는 HeatGrid의 <code>운영 가치</code>를 설명하는 근거가 된다.</li><li>disturbance/maintenance/customer report 세 라벨은 <code>감지 -&gt; 작업 -&gt; 체감</code>의 시간 차이를 표현하는 데 유용하다.</li><li>이 논문 덕분에 HeatGrid는 단순 가상 데이터가 아니라 <code>실제 운영 로그 기반 Agent</code>로 설명 가능하다.</li></ul>
+<hr>
+<h2>국내/해외 운영 맥락 비교</h2>
+<ul><li>국내에서는 민원과 긴급신고가 운영의 큰 축이다.</li><li>이 논문은 <code>고객 신고</code>를 라벨로 포함해 그 흐름을 직접 다룬다.</li><li>즉, 해외 논문이지만 국내 지역난방 운영 현실과 연결성이 높다.</li></ul>
+<hr>
+<h2>PreDist/Agent 설계와 연결</h2>
+<ul><li>모델 계층: anomaly score, 리드타임 추정</li><li>운영 계층: maintenance 이전 감지</li><li>Agent 계층: customer report 전에 어떤 작업을 먼저 보낼지 계획</li></ul>
+<hr>
+<h2>초심자 체크포인트</h2>
+<ul><li>PreDist가 단순 센서 데이터가 아니라 정비/민원 라벨까지 포함한 데이터셋인지 설명할 수 있는가</li><li>lead time이 왜 중요한지 설명할 수 있는가</li><li>HeatGrid가 이 데이터를 왜 선택하는지 설명할 수 있는가</li></ul>
+        <nav class='doc-nav'><a class='nav-link prev' href='../00/index.html'>이전: 전체 로드맵</a><a class='nav-link next' href='../02/index.html'>다음: PreDist 데이터셋</a></nav>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

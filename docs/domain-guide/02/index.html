@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02. PreDist 데이터셋 가이드</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="page-side">
+      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
+      <p class="side-summary">실제 파일 구조와 멀티 기계실 데이터를 HeatGrid 관점으로 읽는 방법을 정리합니다.</p>
+      <div class="side-links">
+        <a href="../index.html">메인 허브</a>
+        <a href="../00/index.html">00 메인 가이드</a>
+        <a href="../03/index.html">2-1 국내 구조와 운영</a>
+        <a href="../04/index.html">2-2 해외 구조와 운영</a>
+      </div>
+    </aside>
+    <main class="page-main">
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>PreDist 데이터셋</span></div>
+      <article class="doc-card">
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>데이터셋 사용 가이드</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>PreDist 파일 구조와 컬럼을 처음 보는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>15분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'><a href="../01/index.html">01_PreDist_논문_정리.md</a></div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://zenodo.org/records/17522255">Zenodo</a></div></div><div class='meta-row'><div class='meta-key'>로컬 PDF 경로</div><div class='meta-value'>없음</div></div></section>
+        <h1>02. PreDist 데이터셋 가이드</h1>
+<hr>
+<h2>왜 이 문서를 읽어야 하는가</h2>
+<p>논문을 이해해도 실제 데이터 구조를 모르면 모델과 Agent를 설계할 수 없다.</p>
+<hr>
+<h2>데이터셋을 볼 때 확인할 것</h2>
+<ul><li>파일 구성이 어떻게 나뉘는지</li><li>기계실별 데이터가 어떻게 구분되는지</li><li>시계열 간격이 어떤지</li><li>라벨이 어느 단위로 주어지는지</li><li>유지보수/고객신고 정보와 센서 데이터가 어떻게 연결되는지</li></ul>
+<hr>
+<h2>핵심 해설</h2>
+<ul><li>PreDist는 기계실별로 운영 데이터가 쌓이는 구조이므로 <code>다중 엔티티 시계열</code> 문제로 보는 게 맞다.</li><li>따라서 HeatGrid는 단일 설비 모델보다 <code>기계실 ID를 가진 멀티테넌트 구조</code>로 설계해야 한다.</li></ul>
+<hr>
+<h2>HeatGrid에 직접 쓰는 포인트</h2>
+<ul><li>입력: 기계실별 센서 시계열</li><li>중간산출: anomaly score, 리드타임, 영향도</li><li>출력: 우선순위, 작업지시, 재계획</li></ul>
+<hr>
+<h2>PreDist/Agent 설계와 연결</h2>
+<div class="table-wrap"><table><thead><tr><th>데이터 요소</th><th>설계 연결</th></tr></thead><tbody><tr><td>기계실 ID</td><td>멀티 엔티티 운영</td></tr><tr><td>시계열 센서값</td><td>이상탐지/리드타임 모델</td></tr><tr><td>maintenance 라벨</td><td>작업 결과 로그</td></tr><tr><td>customer report</td><td>민원/체감 이벤트</td></tr></tbody></table></div>
+<hr>
+<h2>초심자 체크포인트</h2>
+<ul><li>이 데이터가 왜 <code>기계실 하나</code>가 아니라 <code>여러 기계실</code> 문제인지 설명할 수 있는가</li><li>어떤 라벨이 Agent 설계에 중요한지 말할 수 있는가</li></ul>
+        <nav class='doc-nav'><a class='nav-link prev' href='../01/index.html'>이전: PreDist 논문</a><a class='nav-link next' href='../03/index.html'>다음: 국내 구조와 운영</a></nav>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

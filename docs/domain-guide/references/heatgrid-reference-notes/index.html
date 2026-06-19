@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeatGrid 참고문헌 및 영문 PDF 번역 정리</title>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="page-side">
+      <a class="side-home" href="../../index.html">HeatGrid Domain Guide</a>
+      <p class="side-summary">HeatGrid 참고문헌 및 번역 정리 참고 문서</p>
+    </aside>
+    <main class="page-main">
+      <div class="breadcrumb"><a href="../../index.html">홈</a> / <span>관련 기획 문서</span></div>
+      <article class="doc-card"><h1>HeatGrid 참고문헌 및 영문 PDF 번역 정리</h1>
+<blockquote><strong>문서 역할</strong><br>도메인 학습용 링크 모음 / 영문 PDF 핵심 번역 요약</blockquote>
+<blockquote><strong>사용 목적</strong><br>PreDist를 중심으로 지역난방 기계실, 운영, 고장, 정비, 정책을 공부할 때 어디서부터 봐야 하는지 정리하고, 영어 PDF는 HeatGrid에 필요한 부분만 한국어로 빠르게 이해할 수 있도록 요약함</blockquote>
+<hr>
+<h2>0. 먼저 보면 좋은 5개</h2>
+<div class="table-wrap"><table><thead><tr><th>우선순위</th><th>자료</th><th>링크</th><th>왜 먼저 봐야 하는가</th></tr></thead><tbody><tr><td>1</td><td>PreDist 논문</td><td><a href="https://arxiv.org/abs/2511.14791">arXiv abs</a>, <a href="https://arxiv.org/html/2511.14791v2">HTML v2</a></td><td>데이터셋 목적, fault 라벨, 리드타임 개념을 가장 직접적으로 설명</td></tr><tr><td>2</td><td>PreDist 데이터셋</td><td><a href="https://zenodo.org/records/17522255">Zenodo</a></td><td>실제 컬럼, 파일 구조, 데이터 범위를 확인 가능</td></tr><tr><td>3</td><td>지역난방 기계실 설계/구성</td><td><a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">District heating substations design and installation PDF</a></td><td>기계실의 부품과 구성요소를 이해하는 기본 교재</td></tr><tr><td>4</td><td>이상탐지/고장 리뷰</td><td><a href="https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets">ResearchGate 리뷰</a>, <a href="https://ui.adsabs.harvard.edu/abs/2023Ene...27627569N/abstract">ADS abstract</a></td><td>어떤 고장과 방법론이 중요한지 한 번에 정리 가능</td></tr><tr><td>5</td><td>국내 AX/시장 방향</td><td><a href="https://www.kdhc.co.kr/kdhc/bbs/B0000038/view.do?menuNo=200125&amp;nttId=6448&amp;pageIndex=1">한국지역난방공사 AX 로드맵</a></td><td>HeatGrid를 국내 현실과 연결하는 기준 자료</td></tr></tbody></table></div>
+<hr>
+<h2>1. PreDist와 직접 연결되는 자료</h2>
+<h3>1.1 데이터셋 / 핵심 논문</h3>
+<ul><li>PreDist 데이터셋: <a href="https://zenodo.org/records/17522255">Zenodo</a></li><li>PreDist 논문: <a href="https://arxiv.org/abs/2511.14791">arXiv abs</a></li><li>PreDist HTML 본문: <a href="https://arxiv.org/html/2511.14791v2">arXiv HTML v2</a></li></ul>
+<h3>1.2 같이 보면 좋은 연구</h3>
+<ul><li>District heating substations 이상탐지 리뷰: <a href="https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets">ResearchGate</a></li><li>같은 리뷰의 abstract: <a href="https://ui.adsabs.harvard.edu/abs/2023Ene...27627569N/abstract">ADS</a></li><li>ML 기반 anomaly detection thesis: <a href="https://www.diva-portal.org/smash/get/diva2%3A1988416/FULLTEXT01.pdf">DiVA PDF</a></li><li>SHEDAD urban substations anomaly detection: <a href="https://arxiv.org/pdf/2408.14499">arXiv PDF</a></li><li>도시 열망 데이터 참고: <a href="https://zenodo.org/records/2562658">Flensburg network data</a></li></ul>
+<hr>
+<h2>2. 지역난방 기계실 구조와 운영을 이해하는 자료</h2>
+<ul><li>District heating substations design and installation: <a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">PDF</a></li><li>Gebwell Installation, Operation and Maintenance Manual: <a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">PDF</a></li><li>IEA DHC Connection Handbook: <a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">PDF</a></li><li>District Heating Manual for London: <a href="https://www.london.gov.uk/sites/default/files/osd12_dh_manual_for_london_february_2013_v1-0.pdf">PDF</a></li></ul>
+<hr>
+<h2>3. 정비사/정비회사 관점 자료</h2>
+<ul><li>BLS HVAC 정비사 직무: <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/">BLS</a></li><li>O*NET HVAC mechanics: <a href="https://www.onetonline.org/link/summary/49-9021.00">O*NET</a></li><li>ASHRAE Standard 180 소개: <a href="https://www.ashrae.org/technical-resources/bookstore/standards-180-and-211">ASHRAE</a></li><li>ASHRAE Standard 180 preview PDF: <a href="https://www.ashrae.org/File%20Library/Technical%20Resources/Bookstore/previews_2016639_pre.pdf">PDF</a></li><li>CIBSE maintenance guidance: <a href="https://www.cibse.org/knowledge-research/knowledge-resources/engineering-guidance/cibse-top-tips/cibse-top-tips-6-maintenance-of-workplace-of-equipment-devices-system-2015/">CIBSE Top Tips 6</a></li><li>District Energy preventive maintenance checklist: <a href="https://www.districtenergy.com/wp-content/uploads/2018/09/District-Energy-Preventive-Maintenance-Checklist.pdf">PDF</a></li></ul>
+<hr>
+<h2>4. 국내 시장/정책/사업자 자료</h2>
+<ul><li>한국지역난방공사 AX 로드맵: <a href="https://www.kdhc.co.kr/kdhc/bbs/B0000038/view.do?menuNo=200125&amp;nttId=6448&amp;pageIndex=1">보도자료</a></li><li>한국지역난방공사 AX 혁신자문단: <a href="https://www.kdhc.co.kr/kdhc/bbs/B0000038/view.do?menuNo=200125&amp;nttId=6571&amp;pageIndex=3">보도자료</a></li><li>한국지역난방공사 메인: <a href="https://www.kdhc.co.kr/kdhc/main/main.do">공식 홈페이지</a></li><li>한국에너지공단 집단에너지사업: <a href="https://www.energy.or.kr/front/conts/105001003005000.do">한국에너지공단</a></li><li>2023 집단에너지사업 편람: <a href="https://www.energy.or.kr/front/board/View10.do?boardMngNo=10&amp;boardNo=24156">게시글</a></li><li>집단에너지사업 운영현황 정보: <a href="https://www.data.go.kr/data/15032291/fileData.do?recommendDataYn=Y">공공데이터포털</a></li><li>지역난방 민간정비업체 정보: <a href="https://www.data.go.kr/data/15069242/fileData.do">공공데이터포털</a></li><li>한국지역난방공사 설비업체 정보: <a href="https://www.kdhc.co.kr/cyb/heat/equip/equipmentListForm.do?menuCode=M020157">설비업체 정보조회</a></li><li>국토부 스마트빌딩 보도자료: <a href="https://www.molit.go.kr/LCMS/DWN.jsp?fileName=250528%28%EC%84%9D%EA%B0%84%29+AI+%ED%92%88%EC%9D%80+%EA%B1%B4%EC%B6%95%EB%AC%BC%2C+%EC%9D%B4%EC%A0%9C%EB%8A%94+%EC%8A%A4%EB%A7%88%ED%8A%B8_%EB%B9%8C%EB%94%A9+%EC%8B%9C%EB%8C%80+%EC%8A%A4%EB%A7%88%ED%8A%B8_%EB%B9%8C%EB%94%A9+%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0+%EA%B0%9C%EB%B0%9C+%EB%B3%B8%EA%B2%A9%ED%99%94%28%EA%B1%B4%EC%B6%95%EC%A0%95%EC%B1%85%EA%B3%BC%29.pdf&amp;fold=koreaNews%2Fmobile%2Ffile">PDF</a></li><li>KAIA 스마트+빌딩 핵심기술 개발: <a href="https://www.kaia.re.kr/mobile/bbs/view/B0000029/12383.do?menuNo=200492">공고</a></li><li>서울연구원 열수송관 안전관리: <a href="https://www.si.re.kr/bbs/view.do?key=2024100039&amp;pstSn=2212230018">현안보고</a></li><li>HDC랩스 소개: <a href="https://hdc-holdings.com/ko/business/ai/hdc-labs">HDC홀딩스</a>, <a href="https://www.hdc-labs.com/area/account">HDC랩스 부동산종합관리</a></li><li>SK쉴더스 시설관리: <a href="https://www.skshieldus.com/industrial-security/facility-management">공식 페이지</a></li><li>GS파워: <a href="https://www.gspower.co.kr/">공식 홈페이지</a></li></ul>
+<hr>
+<h2>5. 영문 PDF 핵심 번역 정리</h2>
+<p>아래는 전체 번역이 아니라, HeatGrid를 설계하고 설명하는 데 꼭 필요한 포인트만 한국어로 요약한 것이다.</p>
+<h3>5.1 District heating substations design and installation</h3>
+<ul><li>원문 링크: <a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">PDF</a></li></ul>
+<h4>문서가 말하는 핵심</h4>
+<ul><li>이 문서는 스웨덴 지역난방 업계 전반에 적용되는 <code>기계실 설계·설치·운영·유지관리 기술 규정</code>이다.</li><li>건물과 지역난방 시스템을 연결할 때, 단순히 배관만 연결하는 게 아니라 <code>용량 결정</code>, <code>설계</code>, <code>설치</code>, <code>운영</code>, <code>유지관리</code> 요구사항을 함께 맞춰야 한다고 본다.</li><li>기계실은 열교환기, 제어밸브, 액추에이터, 온도센서, 압력센서, 필터, 순환펌프, 팽창탱크, 안전밸브 같은 부품들의 조합으로 이해해야 한다.</li></ul>
+<h4>HeatGrid 관점에서 중요한 번역 포인트</h4>
+<ul><li><code>예방정비(preventive maintenance)</code>는 미리 정한 주기나 기준에 따라 고장 가능성을 줄이기 위한 정비를 뜻한다.</li><li><code>상태기반 정비(condition-based maintenance)</code>는 성능이나 파라미터 모니터링 결과를 보고 수행하는 예방정비다.</li><li><code>사후정비(corrective maintenance)</code>는 고장을 인지한 뒤 정상 상태로 복구하기 위한 정비다.</li></ul>
+<h4>우리 프로젝트에 주는 의미</h4>
+<ul><li>HeatGrid는 이 문서의 분류를 그대로 빌려 <code>사후 대응</code>보다 <code>상태기반 정비</code> 쪽으로 포지셔닝할 수 있다.</li><li>또 기계실을 볼 때 <code>열교환기만</code> 보는 게 아니라, 센서·밸브·펌프·필터·제어기를 같이 보는 구조여야 한다.</li></ul>
+<h3>5.2 Gebwell Installation, Operation and Maintenance Manual</h3>
+<ul><li>원문 링크: <a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">PDF</a></li></ul>
+<h4>문서가 말하는 핵심</h4>
+<ul><li>지역난방 기계실은 안전, 설치, 시운전, 정기 유지보수가 모두 중요하다.</li><li>안전밸브는 주기적으로 점검해야 하고, 고온 표면과 압력 계통 때문에 작업 시 주의가 필요하다.</li><li>운영 중 모니터링과 정기 유지보수가 정상 동작 유지에 중요하다고 명시한다.</li></ul>
+<h4>직접 써먹을 수 있는 번역 포인트</h4>
+<ul><li><code>서비스 점검은 최소 연 2회, 난방 시즌 전과 후에 수행해야 한다.</code></li><li><code>전문 유지보수 업체에 의한 종합 예방정비는 매년 수행해야 한다.</code></li><li>연간 점검 항목에는 보통 아래가 포함된다.</li></ul>
+<p>- 입출구 온도가 계획과 맞는지 - 열교환기 압력손실 - 팽창탱크 초기 압력 - 펌프 운전점 - 제어기 튜닝 - 이상 소음 여부</p>
+<h4>우리 프로젝트에 주는 의미</h4>
+<ul><li>HeatGrid는 <code>이상 알림</code>만 주면 부족하고, 실제 현장에서 보는 점검 항목으로 이어져야 한다.</li><li>따라서 작업지시서에 <code>온도 확인</code>, <code>압력손실 확인</code>, <code>펌프 운전점 확인</code>, <code>제어기 튜닝 점검</code> 같은 항목이 들어가야 현실적이다.</li></ul>
+<h3>5.3 IEA DHC Connection Handbook</h3>
+<ul><li>원문 링크: <a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">PDF</a></li></ul>
+<h4>문서가 말하는 핵심</h4>
+<ul><li>열교환기를 병렬 연결할 경우 유지보수와 비상 작업을 위해 개별 차단 밸브가 필요하다.</li><li>기계실 설비는 제조사 권고에 따라 예방정비 일정을 잡아야 한다.</li><li>소비량, 온도, 압력 기록은 예방정비 프로그램에서 중요한 도구다.</li></ul>
+<h4>HeatGrid 관점 번역</h4>
+<ul><li><code>예방정비 일정은 제조사 권고에 따라 수립해야 한다.</code></li><li><code>소비량, 온도, 압력에 대한 좋은 기록은 예방정비 프로그램의 유용한 도구다.</code></li></ul>
+<h4>우리 프로젝트에 주는 의미</h4>
+<ul><li>HeatGrid는 결국 <code>센서 데이터 기록</code>을 <code>정비 계획</code>으로 바꾸는 시스템이어야 한다.</li><li>즉 시계열 DB를 쌓는 이유는 단순 시각화가 아니라, 예방정비·우선순위·재계획에 쓰기 위해서다.</li></ul>
+<h3>5.4 District Energy Preventive Maintenance Checklist</h3>
+<ul><li>원문 링크: <a href="https://www.districtenergy.com/wp-content/uploads/2018/09/District-Energy-Preventive-Maintenance-Checklist.pdf">PDF</a></li></ul>
+<h4>문서가 말하는 핵심</h4>
+<ul><li>열교환기는 연결부 누수 여부를 육안으로 점검해야 한다.</li><li>3-way valve 동작 여부를 확인해야 한다.</li><li>기기와 계측기의 정확도를 확인하고 필요 시 보정해야 한다.</li><li>열교환기는 일정 주기마다 세정이 필요하다.</li><li>안전 릴리프 밸브도 점검 항목이다.</li></ul>
+<h4>직접 번역해 두면 좋은 포인트</h4>
+<ul><li><code>압력이 너무 낮으면 배관/밸브/코일 누설 가능성을 의심한다.</code></li><li><code>압력이 너무 높으면 열교환기 문제나 1차측 유입 문제를 의심한다.</code></li><li><code>5년 주기로 열교환기 세정을 수행할 수 있다.</code></li><li><code>온도 제어밸브는 수동으로 작동시켜 동작 여부를 확인한다.</code></li><li><code>계측기와 transmitter는 정확도를 점검하고 필요 시 보정한다.</code></li></ul>
+<h4>우리 프로젝트에 주는 의미</h4>
+<ul><li>HeatGrid의 출력은 <code>이상 점수 0.87</code> 같은 숫자로 끝나면 안 된다.</li><li><code>압력 이상이면 무엇을 의심하고, 어떤 체크를 해야 하는지</code>까지 연결해야 작업지시서 가치가 생긴다.</li></ul>
+<h3>5.5 ASHRAE Standard 180 Preview</h3>
+<ul><li>원문 링크: <a href="https://www.ashrae.org/File%20Library/Technical%20Resources/Bookstore/previews_2016639_pre.pdf">PDF</a></li></ul>
+<h4>문서가 말하는 핵심</h4>
+<ul><li>유지관리 계획은 점검/정비 수준, 일정, 성과 측정, 기대 결과를 포함하는 문서여야 한다.</li><li>설비별 inventory가 있어야 하고, 각 설비는 고유하게 식별되어야 한다.</li><li>점검 항목, 수행 주기, 책임자, 승인 절차, 피드백 절차까지 계획에 포함돼야 한다.</li><li>점검은 상태를 관찰하고 기록하는 일이고, 정비는 성능을 유지하기 위한 일이다.</li></ul>
+<h4>HeatGrid 관점 번역</h4>
+<ul><li><code>maintenance plan</code>은 자원 제약 안에서 점검과 정비를 어떻게 계획하고 관리할지 정한 문서다.</li><li><code>inspection</code>은 상태를 관찰·기록하는 행위다.</li><li><code>condition indicator</code>는 설비가 얼마나 열화됐는지 판단하기 위한 측정값 또는 관측값이다.</li></ul>
+<h4>우리 프로젝트에 주는 의미</h4>
+<ul><li>HeatGrid는 단순 경보판이 아니라 <code>운영 계획 문서</code>를 생성하는 쪽으로 가야 한다.</li><li>설비 ID, 작업 항목, 수행 주기, 담당자, 완료 기록 구조가 있어야 실제 서비스처럼 보인다.</li></ul>
+<hr>
+<h2>6. 공부 순서 추천</h2>
+<h3>1단계: 구조 이해</h3>
+<ol><li><a href="https://arxiv.org/html/2511.14791v2">PreDist 논문</a></li><li><a href="https://www.energiforetagen.se/4a4e6b/globalassets/energiforetagen/det-erbjuder-vi/publikationer/f101-district-heating-substations-design-and-installation.pdf">Design and installation PDF</a></li><li><a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">Gebwell O&amp;M manual</a></li></ol>
+<h3>2단계: 고장과 정비 이해</h3>
+<ol><li><a href="https://www.researchgate.net/publication/370164650_Fault_and_anomaly_detection_in_district_heating_substations_A_survey_on_methodology_and_data_sets">이상탐지 리뷰</a></li><li><a href="https://www.districtenergy.com/wp-content/uploads/2018/09/District-Energy-Preventive-Maintenance-Checklist.pdf">District Energy PM checklist</a></li><li><a href="https://www.ashrae.org/File%20Library/Technical%20Resources/Bookstore/previews_2016639_pre.pdf">ASHRAE 180 preview</a></li></ol>
+<h3>3단계: 국내 출시 관점</h3>
+<ol><li><a href="https://www.kdhc.co.kr/kdhc/bbs/B0000038/view.do?menuNo=200125&amp;nttId=6448&amp;pageIndex=1">한국지역난방공사 AX 로드맵</a></li><li><a href="https://www.energy.or.kr/front/board/View10.do?boardMngNo=10&amp;boardNo=24156">집단에너지사업 편람</a></li><li><a href="https://www.si.re.kr/bbs/view.do?key=2024100039&amp;pstSn=2212230018">서울연구원 열수송관 안전관리 현안보고</a></li></ol>
+<hr>
+<h2>7. HeatGrid 문서와 연결하는 방법</h2>
+<p>이 자료들을 읽을 때는 아래 질문을 붙여서 보면 된다.</p>
+<ul><li>이 센서값은 어떤 부품 상태를 반영하는가</li><li>정상 패턴과 이상 패턴은 어떻게 구분되는가</li><li>현장에서는 이 이상을 어떤 점검 항목으로 확인하는가</li><li>작업지시서에는 어떤 체크리스트가 들어가야 하는가</li><li>운영자는 여러 기계실 중 어떤 것을 먼저 봐야 하는가</li></ul>
+<p>즉, 공부 목표는 <code>기계실 박사</code>가 되는 것이 아니라, <code>PreDist 데이터 → 현장 점검 항목 → 운영 우선순위 → Agent 출력</code>으로 연결하는 감각을 만드는 것이다.</p></article>
+    </main>
+  </div>
+</body>
+</html>

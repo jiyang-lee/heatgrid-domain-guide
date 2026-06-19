@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeatGrid 출시 타당성 보고서</title>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="page-side">
+      <a class="side-home" href="../../index.html">HeatGrid Domain Guide</a>
+      <p class="side-summary">HeatGrid 출시 타당성 보고서 참고 문서</p>
+    </aside>
+    <main class="page-main">
+      <div class="breadcrumb"><a href="../../index.html">홈</a> / <span>관련 기획 문서</span></div>
+      <article class="doc-card"><h1>HeatGrid 출시 타당성 보고서</h1>
+<blockquote><strong>문서 역할</strong><br>시장·정책·운영·타겟 검증 보고서 / 서비스 출시 판단용</blockquote>
+<blockquote><strong>검토 범위</strong><br>국내 중심으로 지역난방·시설관리 시장, 정책 방향, 현재 정비 운영 방식, 고객군, 출시 요건을 정리하고, 해외 정비사·정비회사 운영 관행은 비교 기준으로 보완함</blockquote>
+<hr>
+<h2>0. Executive Summary</h2>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>판단</th></tr></thead><tbody><tr><td>서비스 가치</td><td><strong>있음.</strong> 단, <code>희귀한 대형 고장 예측</code>보다 <code>분산된 설비 운영 판단·우선순위화·재계획</code> 가치로 포지셔닝해야 함</td></tr><tr><td>국내 시장성</td><td><strong>있음.</strong> 집단에너지 공급은 국내 378만 가구, 전체 가구의 19% 수준이며, 허가 기준 75개 사업자·107개 사업장이 운영 중</td></tr><tr><td>정부/공공 적합성</td><td><strong>우호적.</strong> 산업부·국토부·한국지역난방공사 모두 디지털 전환, AI, 운영 고도화, 스마트빌딩, 설비 효율 개선 방향과 정합</td></tr><tr><td>현업 문제 적합성</td><td><strong>높음.</strong> 현재는 자체점검·정기점검·민원 접수·현장 출동 중심이며, 누수/이상 감시는 존재하지만 조기 판단과 작업 재계획은 약함</td></tr><tr><td>가장 유력한 초기 타겟</td><td><strong>지역난방 사업자 운영조직 + 지역난방 사용 공동주택/업무시설을 관리하는 대형 FM사</strong></td></tr><tr><td>출시 권고</td><td><strong>조건부 출시 권고.</strong> MVP는 <code>예측 모델</code>보다 <code>이상 선별 + 우선순위 + 작업지시 + 재계획</code> 중심으로 가야 함</td></tr></tbody></table></div>
+<h3>한 줄 결론</h3>
+<p>HeatGrid는 <code>고장이 자주 나는 설비를 맞히는 제품</code>으로는 약할 수 있지만, <code>여러 기계실과 사용자 설비를 동시에 운영하는 조직이 어떤 작업을 먼저 보내고 어떻게 재조정할지를 돕는 운영 AIoT Agent</code>로는 충분히 설득력이 있다.</p>
+<hr>
+<h2>1. 왜 지금 이 서비스가 필요한가</h2>
+<h3>1.1 국내 시장 규모와 구조</h3>
+<div class="table-wrap"><table><thead><tr><th>지표</th><th>근거</th><th>시사점</th></tr></thead><tbody><tr><td>국내 집단에너지 사업자 수</td><td>한국에너지공단 기준, 2023년 말 허가 기준 <strong>75개 사업자 / 107개 사업장</strong></td><td>운영 주체가 한 공기업만이 아니라 다수 사업자로 분산되어 있음</td></tr><tr><td>국내 공급 규모</td><td>산업부 자료 기준, 2023년 말 <strong>378만 가구</strong>, 전체 가구의 <strong>19%</strong></td><td>서비스 대상이 틈새가 아니라 제도권 에너지 인프라임</td></tr><tr><td>한난 운영 체계</td><td>한국지역난방공사는 전국 다수 지사와 <strong>24시간 긴급신고 체계</strong>를 운영</td><td>중앙 운영 + 지역 출동 구조에 맞는 소프트웨어 수요가 존재함</td></tr></tbody></table></div>
+<h3>1.2 정책과 산업 방향</h3>
+<div class="table-wrap"><table><thead><tr><th>주체</th><th>확인된 방향</th><th>HeatGrid와의 연결</th></tr></thead><tbody><tr><td>한국지역난방공사</td><td>2025년 AX 로드맵에서 <code>설비 진단</code>, <code>열수요 예측</code>, 이후 <code>AI Agent 기반 완전한 지능화·능동화</code>를 단계 목표로 제시</td><td>HeatGrid 방향과 직접 정합</td></tr><tr><td>산업통상자원부 / 집단에너지 업계</td><td>안정적 열공급, 긴급 상황 대응, 사업자 간 자재 지원체계 강조</td><td>단순 예측보다 운영 대응 자동화가 중요</td></tr><tr><td>국토교통부</td><td>2025년 스마트빌딩 핵심기술 개발을 본격화하고 운영·관리 기술 고도화 방향 제시</td><td>건물/설비 운영 AI 서비스에 우호적</td></tr><tr><td>한국에너지공단 / 한난 지원사업</td><td>PDCV 보수, 자동제어 절약모드, 보온재 교체 등 사용자 기계실 효율 개선을 직접 지원</td><td>정부·공공이 이미 유지보수·효율 개선에 돈을 쓰고 있음</td></tr></tbody></table></div>
+<h3>1.3 결론</h3>
+<p>정부가 지금 당장 <code>지역난방 AI Agent</code>라는 이름의 제품을 사주겠다는 단계는 아니지만, <code>설비 진단</code>, <code>운영 디지털화</code>, <code>AI 기반 능동화</code>, <code>효율 개선</code>, <code>안전관리</code> 방향은 분명히 열려 있다.</p>
+<p>즉, 이 서비스는 <code>정책 역행형</code>이 아니라 <strong>정책 정합형</strong>이다.</p>
+<hr>
+<h2>2. 현업은 지금 어떻게 일하는가</h2>
+<h2>2.1 국내 지역난방/시설 운영의 현재 방식</h2>
+<div class="table-wrap"><table><thead><tr><th>현재 방식</th><th>확인 근거</th><th>한계</th></tr></thead><tbody><tr><td>사업자 자체점검 + 한국에너지공단 정기점검</td><td>서울연구원은 집단에너지사업법에 따라 사업자 자체점검과 한국에너지공단 정기점검이 수행된다고 정리</td><td>점검은 존재하지만, 실시간 운영 의사결정 자동화와는 별개</td></tr><tr><td>고객 민원/긴급신고 기반 대응</td><td>한국지역난방공사는 <code>긴급신고 24시간 운영</code></td><td>민원 기반이면 이미 품질 저하 이후 대응하는 경우가 많음</td></tr><tr><td>열배관 감시 시스템 + 열화상 카메라 활용</td><td>서울연구원은 현재 감시 시스템과 열화상 탐사를 사용한다고 정리</td><td>누수 여부/위치 판단 한계, 지표면에서 이미 감지되면 늦을 수 있음</td></tr><tr><td>부품/설비 단위 유지보수 지원</td><td>한난·에너지공단은 PDCV 보수, 보온재 교체, 자동제어 절약모드 설치를 지원</td><td>현재도 문제는 <code>설비 고도화/정비</code>인데, 판단과 우선순위는 여전히 사람 중심</td></tr><tr><td>민간정비업체 출동</td><td>한난 공개 업체 목록과 공공데이터포털에는 열교환기 세관, 펌프/팬 교체, 밸브 보수, 배관누수 보수 같은 전문 업체 정보가 공개</td><td>현장은 이미 외주/협력업체가 수행하므로, 출동 판단과 작업지시 체계가 중요</td></tr></tbody></table></div>
+<h3>2.2 국내에서 보이는 핵심 문제</h3>
+<ol><li><code>운영 정보는 많지만 행동 우선순위는 약하다</code></li></ol>
+<p>센서값, 사용량, 민원, 정기점검, 지원사업은 있으나 <code>오늘 무엇을 먼저 보낼지</code>는 사람 판단 비중이 크다.</p>
+<ol><li><code>감시는 있지만 조기 판단과 재계획은 약하다</code></li></ol>
+<p>누수 탐사나 점검은 하지만, 다수 설비를 묶어서 <code>긴급도·영향도·가용 인력</code> 기준으로 자동 조정하는 체계는 약하다.</p>
+<ol><li><code>민간정비 생태계가 이미 존재하므로 소프트웨어 접점이 분명하다</code></li></ol>
+<p>현장 수리 자체를 대체하는 게 아니라, <code>누구에게 어떤 작업을 어떤 순서로 내릴지</code>를 잘 결정해주는 계층이 필요하다.</p>
+<h2>2.3 해외 정비사/정비회사 운영 방식</h2>
+<p>해외는 <code>정비사의 업무 표준화</code>가 국내보다 더 문서화되어 있다.</p>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>근거</th><th>시사점</th></tr></thead><tbody><tr><td>정비사 기본 업무</td><td>미국 BLS/O*NET은 HVAC 정비사가 <code>점검</code>, <code>시험</code>, <code>부품 교체</code>, <code>고객과 고장 논의</code>, <code>작업기록</code>을 수행한다고 설명</td><td>현장 정비는 단순 수리가 아니라 진단·기록·커뮤니케이션까지 포함</td></tr><tr><td>유지보수 표준</td><td>ASHRAE Standard 180은 상업용 HVAC의 최소 점검·유지관리 기준을 제시</td><td>해외는 예방점검 기준과 로그 체계가 제도화되어 있음</td></tr><tr><td>유지관리 정책 수립</td><td>CIBSE Guide M은 maintenance policy와 building log book을 강조</td><td>운영사는 설비별 정책과 기록 체계를 먼저 만든 뒤 정비함</td></tr><tr><td>ETS/서브스테이션 PM</td><td>IEA DHC Connection Handbook은 제조사 권고에 따른 preventive maintenance schedule을 개발하라고 명시</td><td>district heating 계통도 결국 PM/점검 스케줄 기반 운영이 기본</td></tr><tr><td>서브스테이션 안전정비</td><td>Gebwell 매뉴얼은 열교환기·제어밸브 등 유지보수 시 배수와 고온·고압 안전 절차를 명시</td><td>현장 작업은 안전·절차·작업순서가 핵심이며, Agent가 지시서로 연결할 수 있음</td></tr><tr><td>체크리스트 기반 정비</td><td>District Energy St. Paul은 예방정비 체크리스트를 공개</td><td>해외 정비는 <code>체크리스트·작업오더·기록</code> 기반으로 움직이는 경향이 강함</td></tr></tbody></table></div>
+<h3>2.4 정비사 관점에서 지금 일하는 방식 요약</h3>
+<ul><li>이벤트를 받는다</li><li>현장 가서 계측하고 원인을 확인한다</li><li>필요 부품/교체 항목을 판단한다</li><li>작업 후 기록을 남긴다</li><li>다시 재발하는지 본다</li></ul>
+<p>즉, 현직 정비사의 일은 이미 <code>관측 → 판단 → 조치 → 기록</code> 구조다. HeatGrid는 이 앞단에서 <code>무엇을 먼저 보낼지</code>, <code>무엇을 들고 가야 할지</code>, <code>계획이 틀어지면 어떻게 바꿀지</code>를 더 잘 돕는 제품이어야 한다.</p>
+<hr>
+<h2>3. 이 서비스의 효용성과 가치</h2>
+<h2>3.1 가치가 생기는 지점</h2>
+<p>HeatGrid의 가치는 <code>희귀한 대형 사고를 기적처럼 맞히는 것</code>이 아니다.</p>
+<p>가치는 아래 네 군데에서 나온다.</p>
+<div class="table-wrap"><table><thead><tr><th>가치 포인트</th><th>설명</th></tr></thead><tbody><tr><td>이상 선별</td><td>많은 이벤트 중 지금 볼 것과 나중에 볼 것을 구분</td></tr><tr><td>우선순위화</td><td>리드타임만이 아니라 영향도, 민원 가능성, 계절성, 신뢰도, 권역 제약을 함께 반영</td></tr><tr><td>작업지시</td><td>출동 전 점검 포인트, 예상 원인, 준비 부품, 안전 유의사항 제시</td></tr><tr><td>재계획</td><td>팀 지연, 신규 고위험 설비 발생, 오탐 가능성 발생 시 기존 계획 조정</td></tr></tbody></table></div>
+<h2>3.2 사업적 효용</h2>
+<div class="table-wrap"><table><thead><tr><th>이해관계자</th><th>기대효과</th></tr></thead><tbody><tr><td>지역난방 사업자</td><td>공급 안정성 향상, 긴급 출동 감소, 민원 대응 속도 개선</td></tr><tr><td>FM사 / 공동주택 운영사</td><td>사용자 설비 문제를 더 빠르게 분류하고 외주 작업을 더 효율적으로 관리</td></tr><tr><td>민간 정비업체</td><td>무의미한 출동 감소, 사전 정보가 있는 작업지시 확보, 재방문 감소</td></tr><tr><td>공공/정책 측면</td><td>에너지 효율, 설비 수명, 안전관리, 취약계층 난방 품질 개선과 정합</td></tr></tbody></table></div>
+<h2>3.3 약한 서사와 강한 서사</h2>
+<div class="table-wrap"><table><thead><tr><th>서사</th><th>평가</th></tr></thead><tbody><tr><td><code>기계실 고장이 매우 자주 나므로 꼭 필요하다</code></td><td><strong>약함</strong></td></tr><tr><td><code>분산된 설비를 적은 인력으로 운영해야 하므로 우선순위화와 재계획이 필요하다</code></td><td><strong>강함</strong></td></tr><tr><td><code>희귀 고장을 AI가 다 맞힌다</code></td><td><strong>약함</strong></td></tr><tr><td><code>부분 고장·성능 저하·제어 이상을 조기 감지하고 행동으로 연결한다</code></td><td><strong>강함</strong></td></tr></tbody></table></div>
+<hr>
+<h2>4. 누구를 타겟으로 해야 하는가</h2>
+<h2>4.1 우선 타겟 고객군</h2>
+<h3>A. 1차 타겟: 지역난방 사업자 운영조직</h3>
+<div class="table-wrap"><table><thead><tr><th>세그먼트</th><th>예시</th><th>구매 논리</th></tr></thead><tbody><tr><td>공공 대형 사업자</td><td>한국지역난방공사, 서울에너지공사</td><td>지사/권역 단위 다수 설비 운영, AX·안전·효율 정책 정합</td></tr><tr><td>민간 지역에너지 사업자</td><td>GS파워, 나래에너지서비스 등</td><td>열공급 안정성과 민원/장애 최소화, 열수송·사용자 설비 운영 고도화</td></tr></tbody></table></div>
+<p><strong>가장 강한 타겟</strong>은 여기다. 이들은 이미 운영 데이터, 정비 체계, 긴급 대응 구조, 자회사/협력업체 네트워크를 갖고 있어 Agent의 효과가 보이기 쉽다.</p>
+<h3>B. 2차 타겟: 지역난방 사용 건물을 관리하는 대형 FM사</h3>
+<div class="table-wrap"><table><thead><tr><th>세그먼트</th><th>예시</th><th>구매 논리</th></tr></thead><tbody><tr><td>공동주택/오피스/복합시설 FM</td><td>HDC랩스, SK쉴더스 FM, KT estate 등</td><td>사용자 기계실·공용부 설비 운영, VOC 대응, 외주 작업관리 효율화</td></tr></tbody></table></div>
+<p>FM사는 열을 생산하지는 않지만 <code>사용자 기계실</code>, <code>공용부 설비</code>, <code>민원</code>, <code>외주 작업관리</code>를 실제로 붙잡고 있다. 특히 공동주택·대형 오피스에서 지역난방을 쓰는 경우 HeatGrid의 가치가 직접적이다.</p>
+<h3>C. 3차 타겟: 민간 정비업체 / 유지보수 협력사</h3>
+<div class="table-wrap"><table><thead><tr><th>세그먼트</th><th>예시</th><th>구매 논리</th></tr></thead><tbody><tr><td>지역난방 전문 정비업체</td><td>열교환기 세관, 펌프/밸브 교체, 배관 누수 보수 수행 업체들</td><td>출동 전 정보 확보, 반복 고장 이력 활용, 작업오더 표준화</td></tr></tbody></table></div>
+<p>다만 이들은 <code>최종 구매자</code>보다는 <code>현장 사용자</code>에 가깝다. 실제 초기 판매는 발주권과 운영권이 있는 사업자/FM사가 더 적합하다.</p>
+<h2>4.2 구매자 / 사용자 / 영향자 구분</h2>
+<div class="table-wrap"><table><thead><tr><th>역할</th><th>누구</th><th>관심사</th></tr></thead><tbody><tr><td>경제적 구매자</td><td>운영본부장, 기술처장, FM 본부장</td><td>장애 감소, 비용 절감, SLA, 민원</td></tr><tr><td>실사용자</td><td>관제사, 기계실 담당자, 현장 팀장</td><td>오늘 뭘 먼저 봐야 하는지, 오탐 줄이기</td></tr><tr><td>영향자</td><td>안전팀, 품질팀, 디지털전환 조직, 협력업체</td><td>도입 리스크, 데이터 품질, 현장 수용성</td></tr></tbody></table></div>
+<hr>
+<h2>5. 문제 정의와 솔루션 요건</h2>
+<h2>5.1 고객이 실제로 겪는 문제</h2>
+<div class="table-wrap"><table><thead><tr><th>문제</th><th>현상</th><th>HeatGrid가 풀어야 하는 포인트</th></tr></thead><tbody><tr><td>이벤트 과다</td><td>민원, 점검, 센서 이상, 제어 이상이 한꺼번에 발생</td><td>무엇을 먼저 볼지 자동 분류</td></tr><tr><td>리드타임만으론 부족</td><td>짧은 리드타임이 항상 가장 중요한 건 아님</td><td>영향도·신뢰도·가용 자원까지 반영</td></tr><tr><td>현장 정보 단절</td><td>관제실과 정비사 사이에 설명 손실 발생</td><td>작업지시서와 이력 연결</td></tr><tr><td>재계획 부재</td><td>팀 지연, 신규 이상, 부품 부족 시 사람 머리로 다시 조정</td><td>동적 우선순위 재산정</td></tr><tr><td>기록 미활용</td><td>반복 고장/세관/교체 이력 누적돼도 재활용이 약함</td><td>SOP + 이력 기반 추천</td></tr></tbody></table></div>
+<h2>5.2 반드시 들어가야 하는 솔루션 구성</h2>
+<h3>MVP 필수</h3>
+<div class="table-wrap"><table><thead><tr><th>모듈</th><th>내용</th></tr></thead><tbody><tr><td>이상 이벤트 수집</td><td>기계실/BMS/SCADA/계측 데이터 수집</td></tr><tr><td>우선순위 엔진</td><td>리드타임 + 영향도 + 신뢰도 + 제약 반영</td></tr><tr><td>운영 대시보드</td><td>권역별 설비 상태, 긴급도, 추천 작업</td></tr><tr><td>작업지시 초안</td><td>예상 원인, 점검 순서, 필요 준비 항목</td></tr><tr><td>로그/이력 저장</td><td>조치 결과, 재발 여부, 작업 완료 기록</td></tr></tbody></table></div>
+<h3>1차 상용화 필수</h3>
+<div class="table-wrap"><table><thead><tr><th>모듈</th><th>내용</th></tr></thead><tbody><tr><td>재계획 루프</td><td>신규 이벤트/지연 발생 시 자동 재정렬</td></tr><tr><td>모바일 현장 뷰</td><td>정비사가 현장에서 작업오더와 이력 조회</td></tr><tr><td>SOP/RAG</td><td>표준 점검 절차와 과거 작업 사례 검색</td></tr><tr><td>승인 워크플로우</td><td>완전 자동 출동이 아니라 운영자 승인 기반 실행</td></tr><tr><td>성과지표</td><td>오탐률, 평균 출동시간, 미조치 고위험 설비 수, 반복 고장률</td></tr></tbody></table></div>
+<h3>도입 후반부 확장</h3>
+<div class="table-wrap"><table><thead><tr><th>모듈</th><th>내용</th></tr></thead><tbody><tr><td>외주 협력사 연계</td><td>협력업체별 전문성/권역/가용성 반영</td></tr><tr><td>부품/재고 연계</td><td>필요한 부품 유무에 따라 우선순위 조정</td></tr><tr><td>계약/SLA 연동</td><td>고객군별 복구시간 목표 반영</td></tr></tbody></table></div>
+<hr>
+<h2>6. 출시 전략 제안</h2>
+<h2>6.1 어떤 형태로 내야 하는가</h2>
+<p>출시 초기는 <code>완전 자동 출동 Agent</code>보다 아래 형태가 더 현실적이다.</p>
+<h3>권장 제품 형태</h3>
+<p><code>운영 추천 시스템 + 재계획 보조 Agent</code></p>
+<p>즉,</p>
+<ul><li>처음에는 <code>추천</code></li><li>운영자가 검토·승인</li><li>현장 결과를 다시 학습</li></ul>
+<p>이 구조가 현업 저항이 가장 적다.</p>
+<h2>6.2 초기 파일럿 추천</h2>
+<div class="table-wrap"><table><thead><tr><th>항목</th><th>추천</th></tr></thead><tbody><tr><td>파일럿 고객</td><td>지역난방 사업자 1곳 또는 대형 FM사 1곳</td></tr><tr><td>자산 규모</td><td>20~100개 기계실/건물 수준</td></tr><tr><td>목표</td><td>민원·긴급출동 대응이 아니라 <code>우선순위화 정확도</code>와 <code>작업 준비도 개선</code> 검증</td></tr><tr><td>기간</td><td>난방 피크 전후 포함 2~4개월</td></tr></tbody></table></div>
+<h2>6.3 영업 메시지</h2>
+<h3>사업자용</h3>
+<blockquote>여러 기계실에서 발생하는 이상 이벤트를 하나의 운영 큐로 묶고, 영향도와 가용 자원을 반영해 오늘 처리할 작업을 자동 추천하는 지역난방 운영 Agent</blockquote>
+<h3>FM사용</h3>
+<blockquote>공동주택·오피스 지역난방 사용자 기계실의 이상 신호, 민원, 외주 작업 이력을 묶어 설비팀과 협력업체 출동 순서를 자동 정리하는 시설운영 Agent</blockquote>
+<hr>
+<h2>7. 출시해도 되는가</h2>
+<h2>7.1 Go / No-Go 판단</h2>
+<div class="table-wrap"><table><thead><tr><th>질문</th><th>답</th></tr></thead><tbody><tr><td>효용성이 있는가</td><td><strong>예</strong></td></tr><tr><td>시장이 충분한가</td><td><strong>예</strong></td></tr><tr><td>정부/공공 방향과 맞는가</td><td><strong>예</strong></td></tr><tr><td>현업 워크플로우에 붙일 자리가 있는가</td><td><strong>예</strong></td></tr><tr><td>단순 예측 모델만으로 충분한가</td><td><strong>아니오</strong></td></tr><tr><td>따라서 Agent가 필요한가</td><td><strong>예.</strong> 특히 우선순위화·재계획·작업지시에서 필요</td></tr></tbody></table></div>
+<h2>7.2 단, 이런 경우는 피해야 한다</h2>
+<div class="table-wrap"><table><thead><tr><th>비추천 상황</th><th>이유</th></tr></thead><tbody><tr><td>기계실 1~2개만 운영하는 단일 소규모 현장</td><td>HeatGrid의 <code>Grid</code> 가치가 약함</td></tr><tr><td>데이터 없이 민원 기록만 있는 현장</td><td>Agent 이전에 계측·기록 체계부터 필요</td></tr><tr><td>관제 승인 없이 완전 자동 출동을 바로 원하는 조직</td><td>초기 현장 신뢰 확보가 어려움</td></tr><tr><td>열수송관 구조건전성만 다루는 프로젝트</td><td>별도 안전진단/관로 모니터링 성격이 더 강함</td></tr></tbody></table></div>
+<hr>
+<h2>8. 최종 권고</h2>
+<h3>권고 포지셔닝</h3>
+<p>HeatGrid는 아래처럼 정의하는 것이 가장 납득 가능하다.</p>
+<blockquote><strong>HeatGrid는 지역난방 사업자와 시설운영 조직이 여러 기계실과 사용자 설비에서 발생하는 이상 이벤트를 통합 관리하고, 리드타임·영향도·가용 자원·현장 차질을 반영해 작업 우선순위와 재계획을 자동 추천하는 운영 AIoT Agent다.</strong></blockquote>
+<h3>권고 타겟 순서</h3>
+<ol><li><code>한국지역난방공사 / 서울에너지공사 / GS파워 / 나래에너지서비스</code> 같은 지역난방 사업자</li><li><code>HDC랩스 / SK쉴더스 FM / KT estate</code> 같은 대형 FM사</li><li>민간 정비업체 네트워크</li></ol>
+<h3>권고 MVP 범위</h3>
+<ul><li>고장 예측 자체보다 <code>우선순위 엔진</code></li><li>관제 설명보다 <code>작업지시 초안</code></li><li>챗봇보다 <code>재계획 루프</code></li></ul>
+<p>즉, 이 서비스는 <code>AI가 고장을 다 맞힌다</code>가 아니라 <code>사람이 이미 하고 있는 운영 판단과 출동 조정을 더 빠르고 일관되게 만든다</code>는 방향으로 출시해야 한다.</p>
+<hr>
+<h2>참고 자료</h2>
+<h3>국내</h3>
+<ul><li>한국지역난방공사 AX 로드맵: <a href="https://www.kdhc.co.kr/kdhc/bbs/B0000038/view.do?menuNo=200125&amp;nttId=6448&amp;pageIndex=1">한국지역난방공사 보도자료</a></li><li>한국에너지공단 집단에너지 보급현황: <a href="https://www.energy.or.kr/front/conts/105001003005000.do">한국에너지공단 집단에너지사업</a></li><li>산업부 집단에너지의 날 보도자료: <a href="https://www.motie.go.kr/search/search.do?category=&amp;currentPage=1&amp;date=%24param.date&amp;detailSearch=&amp;end-date=&amp;fdContent=%24param.fdContent&amp;fdFile=%24param.fdFile&amp;fdNotice=%24param.fdNotice&amp;fdTitle=%24param.fdTitle&amp;fdTot=%24param.fdTot&amp;kwd=%EC%A7%91%EB%8B%A8%EC%97%90%EB%84%88%EC%A7%80&amp;ppkFlag=weekly&amp;preCondi=%24param.preCondi&amp;reSrchFlag=&amp;rowPerPage=10&amp;searchOptionAnd=&amp;searchOptionOr=&amp;searchRange=fdTot&amp;site=main&amp;sort=r&amp;srchFd=%24param.srchFd&amp;start-date=">산업통상자원부 검색 결과</a></li><li>한국지역난방공사 고객센터/긴급신고: <a href="https://www.kdhc.co.kr/kdhc/main/main.do">한국지역난방공사 메인</a></li><li>지역난방 설비 지원사업: <a href="https://min24.energy.or.kr/greenhome/contents/view002.do">한국에너지공단 난방설비 지원사업</a></li><li>한국지역난방공사 설비업체 정보: <a href="https://www.kdhc.co.kr/cyb/heat/equip/equipmentListForm.do?menuCode=M020157">설비업체 정보조회</a></li><li>공공데이터포털 민간정비업체 정보: <a href="https://www.data.go.kr/data/15069242/fileData.do">민간정비업체 정보</a></li><li>서울시 열수송관 안전관리 현황: <a href="https://www.si.re.kr/bbs/view.do?key=2024100039&amp;pstSn=2212230018">서울연구원 현안보고</a></li><li>HDC랩스 FM/AIoT 포지셔닝: <a href="https://hdc-holdings.com/ko/business/ai/hdc-labs">HDC홀딩스 - HDC랩스 소개</a>, <a href="https://www.hdc-labs.com/area/account">HDC랩스 부동산종합관리</a></li><li>SK쉴더스 FM 서비스: <a href="https://www.skshieldus.com/industrial-security/facility-management">SK쉴더스 시설관리</a></li><li>GS파워 지역냉난방: <a href="https://www.gspower.co.kr/">GS파워</a></li></ul>
+<h3>해외</h3>
+<ul><li>HVAC 정비사 업무: <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/">BLS 설치·정비·수리 직군</a>, <a href="https://www.onetonline.org/link/summary/49-9021.00">O*NET HVAC Mechanics</a></li><li>유지보수 표준: <a href="https://www.ashrae.org/technical-resources/bookstore/standards-180-and-211">ASHRAE Standard 180</a>, <a href="https://www.ashrae.org/File%20Library/Technical%20Resources/Bookstore/previews_2016639_pre.pdf">Standard 180 Preview PDF</a></li><li>유지관리 정책/로그북: <a href="https://www.cibse.org/knowledge-research/knowledge-resources/engineering-guidance/cibse-top-tips/cibse-top-tips-6-maintenance-of-workplace-of-equipment-devices-system-2015/">CIBSE Top Tips 6</a></li><li>District heating 설비 PM: <a href="https://www.iea-dhc.org/fileadmin/documents/Annex_VI/DHC_Connection_Handbook.pdf">IEA DHC Connection Handbook</a></li><li>District heating substation O&amp;M manual: <a href="https://gebwell.fi/app/uploads/2021/09/Installation-operation-and-maintenance-manual-v2-0-07022019-EN-PRINT.pdf">Gebwell Installation, Operation and Maintenance Manual</a></li><li>District energy PM checklist: <a href="https://www.districtenergy.com/wp-content/uploads/2018/09/District-Energy-Preventive-Maintenance-Checklist.pdf">District Energy St. Paul Preventive Maintenance Checklist</a></li></ul></article>
+    </main>
+  </div>
+</body>
+</html>

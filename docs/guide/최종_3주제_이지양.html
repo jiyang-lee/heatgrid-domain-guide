@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIoT Agent 3선</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{--ink:#15161d;--paper:#fff;--mut:#777b88;--line:#e7e9ef;--soft:#f6f7f9}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard',system-ui,sans-serif;color:var(--ink);background:#d8dade;-webkit-print-color-adjust:exact;print-color-adjust:exact;word-break:keep-all}
+  a{color:var(--acc);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--acc) 35%,transparent)}
+  .page{position:relative;width:210mm;height:297mm;margin:8mm auto;background:var(--paper);padding:12mm 14mm 10mm;overflow:hidden;display:flex;flex-direction:column}
+  .page::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--acc)}
+  .ghost{position:absolute;right:6mm;top:2mm;font-size:290px;font-weight:800;line-height:1;color:var(--acc);opacity:.055;letter-spacing:-.05em;z-index:0}
+  .page>*{position:relative;z-index:1}
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:7mm}
+  .track{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:var(--acc);letter-spacing:.04em}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+  .pageno{font-size:12px;font-weight:800;color:var(--mut);letter-spacing:.1em}
+  .hero{margin-bottom:6mm}
+  .name{font-size:41px;font-weight:850;letter-spacing:-.02em;line-height:1}
+  .name span{color:var(--acc)}
+  .tagline{margin-top:8px;font-size:14px;font-weight:800}
+  .def{margin-top:8px;font-size:13.4px;line-height:1.42;color:#3c3f4b;max-width:165mm;font-weight:550}
+  .def b{color:var(--ink);box-shadow:inset 0 -7px 0 var(--accs)}
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:6mm}
+  .metric{padding:9px 12px}
+  .metric+.metric{border-left:1px solid var(--line)}
+  .k{font-size:10.2px;font-weight:850;letter-spacing:.12em;color:var(--mut);text-transform:uppercase}
+  .v{margin-top:5px;font-size:17px;font-weight:850;line-height:1.12}
+  .v small{display:block;margin-top:3px;font-size:11.4px;font-weight:650;color:var(--mut)}
+  .body{display:grid;grid-template-columns:1.06fr .94fr;gap:8mm;flex:1}
+  .briefs{display:flex;flex-direction:column;gap:7px}
+  .brief{border:1px solid var(--line);border-left:5px solid var(--acc);border-radius:8px;padding:8px 10px 9px;background:#fff}
+  .brief.soft{background:linear-gradient(90deg,var(--accs),#fff 62%)}
+  .t{font-size:10.7px;font-weight:850;letter-spacing:.12em;color:var(--acc);text-transform:uppercase}
+  .q{margin-top:5px;font-size:13px;line-height:1.32;font-weight:850;letter-spacing:-.01em}
+  .d{margin-top:5px;font-size:11.8px;line-height:1.38;font-weight:620;color:#4b4e5b}
+  .data{display:grid;grid-template-columns:23mm 1fr;gap:4px 8px;margin-top:6px;font-size:11.6px;line-height:1.32;color:#444755;font-weight:650}
+  .data span:nth-child(odd){font-size:10px;font-weight:850;letter-spacing:.08em;color:var(--mut);text-transform:uppercase}
+  .who{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+  .who .p{display:flex;gap:7px;align-items:flex-start;font-size:11.8px;font-weight:650;color:#333642}
+  .who i{color:var(--acc);font-style:normal;font-weight:850}
+  .kick{font-size:10.5px;font-weight:850;letter-spacing:.14em;color:var(--acc);text-transform:uppercase;margin-bottom:7px}
+  .vs{background:var(--soft);border-radius:10px;padding:10px 12px}
+  .row{display:flex;flex-direction:column;gap:3px;padding:7px 0}
+  .row+.row{border-top:1px solid var(--line)}
+  .lbl{font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+  .ex{font-size:12.4px;font-weight:650;color:#56596a;line-height:1.35}
+  .ours{font-size:13px;font-weight:800;line-height:1.35}
+  .ours b{color:var(--acc)}
+  .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .link{font-size:10.5px;font-weight:750;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 7px}
+  .pipe{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4mm 0 3mm}
+  .s{font-size:11.4px;font-weight:780;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+  .s.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .a{color:var(--acc);font-weight:850}
+  .foot{margin-top:auto;border-top:1px solid var(--line);padding-top:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:10.2px;font-weight:750;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:5px 8px;color:#4a4c59}
+  .eval-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:4mm 0}
+  .score{border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}
+  .score .big{font-size:22px;font-weight:900;color:var(--acc);line-height:1}
+  .score .cap{margin-top:4px;font-size:11.5px;font-weight:800;color:#343743}
+  .score .txt{margin-top:4px;font-size:10.4px;font-weight:620;line-height:1.25;color:#5a5d69}
+  .matrix{width:100%;border-collapse:collapse;margin-top:6px;font-size:10.1px}
+  .matrix th,.matrix td{border:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+  .matrix th{background:var(--soft);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#565a66}
+  .ok{font-weight:850;color:#0E7A52}
+  .warn{font-weight:850;color:#B45309}
+  .agent-map{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:5px}
+  .agent{border:1px solid var(--line);border-radius:7px;padding:4px 6px;font-size:9.8px;line-height:1.18;background:#fff}
+  .agent b{display:inline;color:var(--ink);font-size:10px}
+  .verdict{margin-top:6px;border-left:5px solid var(--acc);background:var(--accs);border-radius:8px;padding:8px 10px;font-size:12px;font-weight:800;line-height:1.3}
+  /* ===== 표지(1페이지) — 라이트, 큰 글씨 ===== */
+  .cover{background:#f5f4f1;color:#15161d;justify-content:space-between;padding:20mm 16mm}
+  .cover::before{height:0}
+  .cover .top{display:flex;justify-content:space-between;align-items:center}
+  .cover .kick2{font-size:12.5px;font-weight:850;letter-spacing:.3em;color:#6D28D9;text-transform:uppercase}
+  .cover .pageno2{font-size:12px;font-weight:800;letter-spacing:.22em;color:#9a9ca6}
+  .cover .big{font-size:84px;line-height:1.02;font-weight:880;letter-spacing:-.035em}
+  .cover .big .mut{color:#bcbdc4}
+  .cover .big .ac{color:#6D28D9}
+  .cover .sub{font-size:18px;line-height:1.55;font-weight:600;color:#45485a;max-width:150mm}
+  .cover .sub b{color:#15161d;font-weight:800}
+  .cover .flow{display:flex;gap:9px;align-items:stretch}
+  .cover .step{flex:1;border:1px solid #e3e1db;border-radius:14px;padding:16px 12px;background:#fff;text-align:center;display:flex;flex-direction:column}
+  .cover .step .n{font-size:11.5px;font-weight:850;color:#6D28D9;letter-spacing:.14em}
+  .cover .step .w{margin-top:10px;font-size:25px;font-weight:870;letter-spacing:-.02em}
+  .cover .step .e{margin-top:8px;font-size:12px;font-weight:600;color:#80828f;line-height:1.3}
+
+  /* ===== 용어 페이지(2페이지) ===== */
+  .spec{background:#fff;padding:15mm 15mm 13mm}
+  .spec .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7mm}
+  .spec .kick2{font-size:12px;font-weight:850;letter-spacing:.28em;color:#6D28D9;text-transform:uppercase}
+  .spec .pageno2{font-size:12px;font-weight:800;letter-spacing:.22em;color:#9a9ca6}
+  .spec h2{font-size:34px;font-weight:870;letter-spacing:-.03em;line-height:1.08}
+  .spec h2 span{color:#6D28D9}
+  .spec .lead{margin-top:9px;font-size:14px;font-weight:600;color:#5a5d6a}
+  .spec .maps{margin-top:7mm;border-top:1px solid var(--line)}
+  .spec .maprow{display:grid;grid-template-columns:28mm 1fr 42mm;gap:6mm;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+  .spec .simple{display:flex;align-items:baseline;gap:7px}
+  .spec .simple .sw{font-size:23px;font-weight:870;letter-spacing:-.02em}
+  .spec .simple .sn{font-size:11px;font-weight:850;color:#a78bfa}
+  .spec .term{font-size:15px;font-weight:850}
+  .spec .term b{color:#6D28D9}
+  .spec .termd{margin-top:3px;font-size:12.5px;font-weight:600;color:#5e616e;line-height:1.32}
+  .spec .tools{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+  .spec .tool{font-size:10.5px;font-weight:750;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:5px 7px;color:#4a4c59}
+  .spec .gloss{margin-top:7mm}
+  .spec .glabel{font-size:11px;font-weight:850;letter-spacing:.14em;color:#6D28D9;text-transform:uppercase;margin-bottom:8px}
+  .spec .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .spec .gcard{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:#fafafa}
+  .spec .gcard b{font-size:13px;font-weight:850}
+  .spec .gcard p{margin-top:3px;font-size:11.5px;font-weight:600;color:#5e616e;line-height:1.3}
+  .spec .teasers{margin-top:7mm}
+  .spec .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .spec .tfig{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  .spec .tfig svg{display:block;width:100%;height:66px;background:#f3f1f4}
+  .spec .tcap{padding:8px 11px}
+  .spec .tcap b{font-size:12px;font-weight:850}
+  .spec .tcap small{display:block;margin-top:2px;font-size:10.5px;font-weight:600;color:#8a8d9c}
+  @media print{.cover,.spec{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+  @page{size:A4;margin:0}
+  @media print{body{background:#fff}.page{margin:0;box-shadow:none;page-break-after:always}}
+</style>
+</head>
+<body>
+
+<section class="page cover" style="--acc:#6D28D9">
+  <div class="top">
+    <span class="kick2">AIoT 운영 에이전트</span>
+    <span class="pageno2">01 / 05</span>
+  </div>
+
+  <div class="big">
+    장비가 <span class="mut">말을 걸면,</span><br>
+    <span class="ac">예측</span>하고,<br>
+    <span class="ac">결정</span>하고,<br>
+    <span class="ac">설명</span>한다.
+  </div>
+
+  <div class="sub">고장 날 장비를 <b>미리 맞히고</b>, 한정된 시간·사람·전기로 <b>무엇부터 손볼지 골라주고</b>, 왜 그렇게 정했는지 <b>사람 말로 설명하는</b> — 그래서 바로 움직이게 만드는 운영 에이전트.</div>
+
+  <div class="flow">
+    <div class="step"><div class="n">01</div><div class="w">듣고</div><div class="e">센서 신호를 모은다</div></div>
+    <div class="step"><div class="n">02</div><div class="w">맞히고</div><div class="e">망가질 때를 안다</div></div>
+    <div class="step"><div class="n">03</div><div class="w">고르고</div><div class="e">먼저 할 일을 정한다</div></div>
+    <div class="step"><div class="n">04</div><div class="w">말하고</div><div class="e">그 이유를 밝힌다</div></div>
+    <div class="step"><div class="n">05</div><div class="w">시킨다</div><div class="e">작업지시를 낸다</div></div>
+  </div>
+</section>
+
+<section class="page spec" style="--acc:#6D28D9;--accs:#ece4ff">
+  <div class="top"><span class="kick2">안을 열어보면</span><span class="pageno2">02 / 05</span></div>
+  <h2>쉬운 말 뒤에,<br>진짜 <span>기술</span>이 있다.</h2>
+  <div class="lead">앞 페이지의 다섯 단어는, 실제로 이런 용어와 도구로 만들어진다.</div>
+
+  <div class="maps">
+    <div class="maprow">
+      <div class="simple"><span class="sw">듣고</span><span class="sn">01</span></div>
+      <div><div class="term">데이터 수집 <b>(IoT 수집)</b></div><div class="termd">센서·설비 신호를 실시간으로 모은다</div></div>
+      <div class="tools"><span class="tool">MQTT</span><span class="tool">API</span><span class="tool">TimescaleDB</span></div>
+    </div>
+    <div class="maprow">
+      <div class="simple"><span class="sw">맞히고</span><span class="sn">02</span></div>
+      <div><div class="term">예측 — <b>PHM · RUL · 이상탐지</b></div><div class="termd">언제 망가질지, 평소와 뭐가 다른지 맞힌다</div></div>
+      <div class="tools"><span class="tool">LightGBM</span><span class="tool">PyTorch</span></div>
+    </div>
+    <div class="maprow">
+      <div class="simple"><span class="sw">고르고</span><span class="sn">03</span></div>
+      <div><div class="term">결정 — <b>PdM · 운영최적화</b></div><div class="termd">한정된 자원으로 무엇부터 할지 자동으로 정한다</div></div>
+      <div class="tools"><span class="tool">OR-Tools</span><span class="tool">제약 최적화</span></div>
+    </div>
+    <div class="maprow">
+      <div class="simple"><span class="sw">말하고</span><span class="sn">04</span></div>
+      <div><div class="term">설명 — <b>설명가능 AI · RAG</b></div><div class="termd">근거를 매뉴얼·이력에서 찾아 사람 말로 푼다</div></div>
+      <div class="tools"><span class="tool">LangGraph</span><span class="tool">RAG</span></div>
+    </div>
+    <div class="maprow">
+      <div class="simple"><span class="sw">시킨다</span><span class="sn">05</span></div>
+      <div><div class="term">실행 — <b>작업지시 · 자동화</b></div><div class="termd">작업지시서와 알림을 바로 내보낸다</div></div>
+      <div class="tools"><span class="tool">FastAPI</span><span class="tool">대시보드</span></div>
+    </div>
+  </div>
+
+  <div class="gloss">
+    <div class="glabel">용어 한 줄 사전</div>
+    <div class="gg">
+      <div class="gcard"><b>PHM</b><p>고장을 미리 예지하고 건강상태를 관리</p></div>
+      <div class="gcard"><b>PdM</b><p>고장 전에 미리 하는 예지보전</p></div>
+      <div class="gcard"><b>RUL</b><p>앞으로 더 버틸 잔여 수명</p></div>
+      <div class="gcard"><b>이상탐지</b><p>평소와 다른 신호를 잡아내는 것</p></div>
+      <div class="gcard"><b>운영최적화</b><p>제한된 자원에서 최선의 배정 계산</p></div>
+      <div class="gcard"><b>AIoT Agent</b><p>센서+AI가 스스로 판단하고 행동</p></div>
+    </div>
+  </div>
+
+  <div class="teasers">
+    <div class="glabel">같은 코어, 세 가지 현장</div>
+    <div class="tg">
+      <div class="tfig">
+        <svg viewBox="0 0 120 66" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#6D28D9" stroke-width="2"><circle cx="60" cy="33" r="21"/><circle cx="60" cy="33" r="5" fill="#6D28D9" stroke="none"/><g stroke-width="1.6"><line x1="60" y1="33" x2="60" y2="13"/><line x1="60" y1="33" x2="74" y2="19" transform="rotate(0 60 33)"/><line x1="60" y1="33" x2="80" y2="33"/><line x1="60" y1="33" x2="74" y2="47"/><line x1="60" y1="33" x2="60" y2="53"/><line x1="60" y1="33" x2="46" y2="47"/><line x1="60" y1="33" x2="40" y2="33"/><line x1="60" y1="33" x2="46" y2="19"/></g></g></svg>
+        <div class="tcap"><b>항공 엔진</b><small>RUL 예측 · 정비 우선순위</small></div>
+      </div>
+      <div class="tfig">
+        <svg viewBox="0 0 120 66" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#6D28D9" stroke-width="2"><rect x="46" y="14" width="26" height="40" rx="4"/><rect x="52" y="20" width="14" height="11" rx="2"/><path d="M61 33 l-5 9 h4 l-3 9" stroke-width="1.8"/><path d="M72 22 h7 a4 4 0 0 1 4 4 v16 a6 6 0 0 1 -6 6 h-1" /></g></svg>
+        <div class="tcap"><b>전기차 충전</b><small>수요예측 · 전력 배분</small></div>
+      </div>
+      <div class="tfig">
+        <svg viewBox="0 0 120 66" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#6D28D9" stroke-width="2"><rect x="38" y="18" width="30" height="36"/><path d="M46 26 h6 M56 26 h6 M46 34 h6 M56 34 h6 M46 42 h6 M56 42 h6" stroke-width="1.5"/><rect x="74" y="30" width="18" height="16" rx="2"/><circle cx="83" cy="38" r="4.5"/><path d="M83 33.5 v9 M78.5 38 h9" stroke-width="1.4"/></g></svg>
+        <div class="tcap"><b>건물 설비</b><small>이상탐지 · 작업지시</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" style="--acc:#2563EB;--accs:#dbe6fd">
+  <div class="ghost">03</div>
+  <div class="meta"><span class="track"><span class="dot"></span>PdM · 회전기계 Fleet</span><span class="pageno">03 / 05</span></div>
+  <div class="hero">
+    <div class="name">Aero<span>Twin</span></div>
+    <div class="tagline">엔진 RUL 예측 → 정비 슬롯 의사결정 Agent</div>
+    <div class="def"><b>남은 수명(RUL)</b>을 예측하고, 한정된 정비 슬롯에서 어떤 엔진을 먼저 멈출지 Agent가 설명한다.</div>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="k">Data</div><div class="v"><a href="https://data.nasa.gov/dataset/cmapss-jet-engine-simulated-data" target="_blank">NASA C-MAPSS</a><small>fleet run-to-failure 시계열</small></div></div>
+    <div class="metric"><div class="k">Decision</div><div class="v">정비 우선순위<small>RUL·위험도·슬롯 제약</small></div></div>
+    <div class="metric"><div class="k">Demo</div><div class="v">RUL 게이지<small>열화→경보→정비 배정</small></div></div>
+  </div>
+  <div class="body">
+    <div class="briefs">
+      <div class="brief soft"><div class="t">문제</div><div class="q">예측값은 있어도, “지금 무엇을 먼저 정비할지”가 결정되지 않는다.</div></div>
+      <div class="brief"><div class="t">데이터</div><div class="data"><span>Source</span><b>C-MAPSS / N-CMAPSS</b><span>Input</span><span>엔진 cycle, 온도·압력·회전수</span><span>Output</span><span>RUL, 위험등급, 정비 후보</span></div></div>
+      <div class="brief"><div class="t">필요 사용자</div><div class="who"><div class="p"><i>·</i>엔진·터빈 fleet 정비 관제</div><div class="p"><i>·</i>MRO·신뢰성 엔지니어</div><div class="p"><i>·</i>다수 장비 가동중단을 줄여야 하는 운영자</div></div></div>
+    </div>
+    <div>
+      <div class="kick">벤치마킹 & 차별점</div>
+      <div class="vs">
+        <div class="row"><span class="lbl">Benchmark</span><span class="ex"><a href="https://www.geaerospace.com/services" target="_blank">GE Aerospace</a> · <a href="https://www.aviatar.com/" target="_blank">Lufthansa AVIATAR</a> · <a href="https://www.uptake.com/" target="_blank">Uptake</a></span></div>
+        <div class="row"><span class="lbl">기존</span><span class="ex">OEM/항공사 중심 폐쇄형 PHM·APM 플랫폼</span></div>
+        <div class="row"><span class="lbl">AeroTwin</span><span class="ours"><b>공개 표준 데이터</b>로 예측→스케줄링→설명 폐루프를 구현</span></div>
+      </div>
+      <div class="links"><a class="link" href="https://c3.ndc.nasa.gov/dashlink/resources/139/" target="_blank">NASA DASHlink</a><a class="link" href="https://data.nasa.gov/dataset/cmapss-jet-engine-simulated-data" target="_blank">Data.gov</a></div>
+    </div>
+  </div>
+  <div class="pipe"><span class="s">Sensor</span><span class="a">→</span><span class="s">RUL</span><span class="a">→</span><span class="s">Priority</span><span class="a">→</span><span class="s on">Agent 설명</span><span class="a">→</span><span class="s">Work Order</span></div>
+  <div class="foot"><div class="chips"><span class="chip">FastAPI</span><span class="chip">LightGBM/PyTorch</span><span class="chip">OR-Tools</span><span class="chip">LangGraph</span><span class="chip">MLflow</span></div></div>
+</section>
+
+<section class="page" style="--acc:#0E9E6E;--accs:#d2f2e6">
+  <div class="ghost">04</div>
+  <div class="meta"><span class="track"><span class="dot"></span>운영 최적화 · EV 충전</span><span class="pageno">04 / 05</span></div>
+  <div class="hero">
+    <div class="name">Charge<span>Flow</span></div>
+    <div class="tagline">EV 충전 수요예측 → deadline 기반 전력 배분 Agent</div>
+    <div class="def"><b>계약전력 한도</b> 안에서 출발시간을 맞추도록 차량별 전력 배분을 계산하고, Agent가 배분 이유를 설명한다.</div>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="k">Data</div><div class="v"><a href="https://ev.caltech.edu/dataset" target="_blank">ACN-Data</a><small>실제 EV 충전 세션</small></div></div>
+    <div class="metric"><div class="k">Decision</div><div class="v">전력 배분<small>deadline·피크요금·공정성</small></div></div>
+    <div class="metric"><div class="k">Market</div><div class="v">B2B2C<small>운영자 + 사용자</small></div></div>
+  </div>
+  <div class="body">
+    <div class="briefs">
+      <div class="brief soft"><div class="t">문제</div><div class="q">충전기가 있어도 전력이 부족하면 모두가 제시간에 충전되지 않는다.</div></div>
+      <div class="brief"><div class="t">데이터</div><div class="data"><span>Source</span><b>ACN-Data / ACN-Sim</b><span>Input</span><span>도착, 체류, 요구 에너지</span><span>Output</span><span>완료 가능성, 전력 배분안</span></div></div>
+      <div class="brief"><div class="t">필요 사용자</div><div class="who"><div class="p"><i>·</i>건물·단지 충전 운영자(CPO)</div><div class="p"><i>·</i>시설 에너지 담당자</div><div class="p"><i>·</i>출발 시간 제약이 있는 EV 사용자</div></div></div>
+    </div>
+    <div>
+      <div class="kick">벤치마킹 & 차별점</div>
+      <div class="vs">
+        <div class="row"><span class="lbl">Benchmark</span><span class="ex"><a href="https://www.chargepoint.com/" target="_blank">ChargePoint</a> · <a href="https://driivz.com/" target="_blank">Driivz</a> · <a href="https://www.ev.energy/" target="_blank">ev.energy</a></span></div>
+        <div class="row"><span class="lbl">기존</span><span class="ex">부하분산, 수요반응, 전력한도 관리 중심</span></div>
+        <div class="row"><span class="lbl">ChargeFlow</span><span class="ours"><b>완료시간 약속</b>을 최적화 목표로 전면 배치</span></div>
+      </div>
+      <div class="links"><a class="link" href="https://ev.caltech.edu/dataset" target="_blank">ACN Dataset</a><a class="link" href="https://github.com/zach401/acnportal" target="_blank">ACN-Sim</a><a class="link" href="https://dl.acm.org/doi/10.1145/3307772.3328313" target="_blank">ACM Paper</a></div>
+    </div>
+  </div>
+  <div class="pipe"><span class="s">Session</span><span class="a">→</span><span class="s">Demand</span><span class="a">→</span><span class="s">Power Plan</span><span class="a">→</span><span class="s on">Agent 설명</span><span class="a">→</span><span class="s">User Notice</span></div>
+  <div class="foot"><div class="chips"><span class="chip">FastAPI</span><span class="chip">TimescaleDB</span><span class="chip">LightGBM</span><span class="chip">OR-Tools</span><span class="chip">LangGraph</span></div></div>
+</section>
+
+<section class="page" style="--acc:#E8552B;--accs:#fbe0d5">
+  <div class="ghost">05</div>
+  <div class="meta"><span class="track"><span class="dot"></span>PdM · 설비관리 통합</span><span class="pageno">05 / 05</span></div>
+  <div class="hero">
+    <div class="name">HeatGrid<span>Copilot</span></div>
+    <div class="tagline">건물 HVAC + 지역난방 운영 의사결정 Agent</div>
+    <div class="def">BMS 알람과 기계실 이상을 <b>원인·위험도·작업지시·재계획</b>으로 연결한다. 감지 이후의 운영 판단과 동적 대응을 자동화하는 통합 설비 AIoT Agent 주제다.</div>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="k">Data</div><div class="v"><a href="https://data.openei.org/submissions/5763" target="_blank">LBNL FDD</a> + <a href="https://zenodo.org/records/17522255" target="_blank">PreDist</a><small>HVAC + 열 기계실</small></div></div>
+    <div class="metric"><div class="k">Decision</div><div class="v">알람 → 조치<small>진단·우선순위·지시서</small></div></div>
+    <div class="metric"><div class="k">Fit</div><div class="v">AIoT 통합<small>외부 IoT 데이터 기반</small></div></div>
+  </div>
+  <div class="body">
+    <div class="briefs">
+      <div class="brief soft"><div class="t">문제</div><div class="q">알람은 많지만, 지금 위험한 설비와 먼저 보낼 현장팀은 즉시 결정되지 않는다.</div></div>
+      <div class="brief"><div class="t">데이터</div><div class="data"><span>Source</span><b>LBNL FDD / BDG2 + PreDist</b><span>Input</span><span>온도·압력·유량·밸브 시계열</span><span>Output</span><span>고장 유형, 우선순위, 작업지시서</span></div></div>
+      <div class="brief"><div class="t">필요 사용자</div><div class="who"><div class="p"><i>·</i>빌딩·시설 관리자와 BMS 운영팀</div><div class="p"><i>·</i>지역난방 운영센터</div><div class="p"><i>·</i>현장 정비팀·비전문 당직자</div></div></div>
+    </div>
+    <div>
+      <div class="kick">벤치마킹 & 차별점</div>
+      <div class="vs">
+        <div class="row"><span class="lbl">Benchmark</span><span class="ex"><a href="https://www.brainboxai.com/" target="_blank">BrainBox AI</a> · <a href="https://www.danfoss.com/en/about-danfoss/our-businesses/heating/danfoss-leanheat/" target="_blank">Danfoss Leanheat</a> · <a href="https://gradyent.ai/" target="_blank">Gradyent</a></span></div>
+        <div class="row"><span class="lbl">기존</span><span class="ex">건물 제어 최적화 또는 열망 디지털트윈 중심</span></div>
+        <div class="row"><span class="lbl">HeatGrid Copilot</span><span class="ours"><b>진단 + 다중 설비 우선순위 + 재계획형 작업지시</b>를 하나로 연결</span></div>
+      </div>
+      <div class="links"><a class="link" href="https://faultdetection.lbl.gov/homepage/" target="_blank">LBNL FDD</a><a class="link" href="https://arxiv.org/html/2511.14791v2" target="_blank">PreDist Paper</a><a class="link" href="https://zenodo.org/records/17522255" target="_blank">PreDist Data</a></div>
+    </div>
+  </div>
+  <div class="pipe"><span class="s">Facility Data</span><span class="a">→</span><span class="s">Fault</span><span class="a">→</span><span class="s">Priority</span><span class="a">→</span><span class="s on">Agent 작업지시</span><span class="a">→</span><span class="s">Ops View</span></div>
+  <div class="foot"><div class="chips"><span class="chip">FastAPI</span><span class="chip">MQTT</span><span class="chip">TimescaleDB</span><span class="chip">LightGBM</span><span class="chip">RAG</span><span class="chip">LangGraph</span></div></div>
+</section>
+
+</body>
+</html>
