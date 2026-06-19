@@ -4,54 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>03. 국내 지역난방 구조와 운영 가이드</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
+  <div class="progress-bar"><span id="progress-fill"></span></div>
   <div class="page-shell">
     <aside class="page-side">
-      <a class="side-home" href="../index.html">HeatGrid Domain Guide</a>
-      <p class="side-summary">한국의 집단에너지 구조, 민원, 긴급신고, 정기점검, 협력업체 흐름을 설명합니다.</p>
-      <div class="side-links">
-        <a href="../index.html">메인 허브</a>
-        <a href="../00/index.html">00 메인 가이드</a>
-        <a href="index.html">2-1 국내 구조와 운영</a>
-        <a href="../04/index.html">2-2 해외 구조와 운영</a>
-      </div>
+      <a class="side-home" href="../index.html">🔥 HeatGrid<span>Domain Guide</span></a>
+      <nav class='chapter-nav'><p class='nav-progress'>전체 13개 챕터 · 지금 4번째</p><div class='nav-cluster'><p class='nav-cluster-title'>시작</p><a class='nav-item' href='../00/index.html'><span class='nav-num'>00</span><span class='nav-label'>이 문서 하나로 충분합니다</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>데이터 이해</p><a class='nav-item' href='../01/index.html'><span class='nav-num'>01</span><span class='nav-label'>PreDist 논문</span></a><a class='nav-item' href='../02/index.html'><span class='nav-num'>02</span><span class='nav-label'>PreDist 데이터셋</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>국내·해외 구조</p><a class='nav-item active' href='index.html'><span class='nav-num'>03</span><span class='nav-label'>국내 구조와 운영</span></a><a class='nav-item' href='../04/index.html'><span class='nav-num'>04</span><span class='nav-label'>해외 구조와 운영</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>설비·점검 심화</p><a class='nav-item' href='../05/index.html'><span class='nav-num'>05</span><span class='nav-label'>기계실 설계</span></a><a class='nav-item' href='../06/index.html'><span class='nav-num'>06</span><span class='nav-label'>현장 O&amp;M</span></a><a class='nav-item' href='../07/index.html'><span class='nav-num'>07</span><span class='nav-label'>운영 기록과 PM</span></a><a class='nav-item' href='../08/index.html'><span class='nav-num'>08</span><span class='nav-label'>예방정비 체크리스트</span></a><a class='nav-item' href='../09/index.html'><span class='nav-num'>09</span><span class='nav-label'>유지관리 계획</span></a><a class='nav-item' href='../10/index.html'><span class='nav-num'>10</span><span class='nav-label'>이상탐지 해석</span></a></div><div class='nav-cluster'><p class='nav-cluster-title'>시장·정비 서비스</p><a class='nav-item' href='../11/index.html'><span class='nav-num'>11</span><span class='nav-label'>국내 시장과 정책</span></a><a class='nav-item' href='../12/index.html'><span class='nav-num'>12</span><span class='nav-label'>정비사와 출동</span></a></div></nav>
     </aside>
     <main class="page-main">
-      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>국내 구조와 운영</span></div>
+      <div class="breadcrumb"><a href='../index.html'>홈</a> / <span>국내·해외 구조</span> / <span>국내 구조와 운영</span></div>
       <article class="doc-card">
-        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>국내 구조와 운영 입문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>지역난방 기계실과 국내 운영 흐름을 처음 보는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>25분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'>없음</div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.kdhc.co.kr/kdhc/main/main.do">한국지역난방공사</a>, <a href="https://www.energy.or.kr/front/conts/105001003005000.do">에너지공단 집단에너지 사업</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'>없음</div></div></section>
+        <p class='chapter-eyebrow'>CHAPTER 03 · 국내·해외 구조</p>
+        <div class='meta-chips'><span class='chip'>읽는 시간 · 18분</span><span class='chip'>난이도 · 입문</span></div>
+        <section class='meta-box'><div class='meta-row'><div class='meta-key'>문서 역할</div><div class='meta-value'>국내 구조와 운영 입문서</div></div><div class='meta-row'><div class='meta-key'>대상 독자</div><div class='meta-value'>지역난방 기계실과 국내 운영 흐름을 처음 보는 사람</div></div><div class='meta-row'><div class='meta-key'>읽는 시간</div><div class='meta-value'>18분</div></div><div class='meta-row'><div class='meta-key'>난이도</div><div class='meta-value'>입문</div></div><div class='meta-row'><div class='meta-key'>선수지식</div><div class='meta-value'>없음</div></div><div class='meta-row'><div class='meta-key'>원문 링크</div><div class='meta-value'><a href="https://www.kdhc.co.kr/kdhc/main/main.do">한국지역난방공사</a>, <a href="https://www.energy.or.kr/front/conts/105001003005000.do">에너지공단 집단에너지 사업</a></div></div><div class='meta-row'><div class='meta-key'>로컬 자산 경로</div><div class='meta-value'>없음</div></div></section>
         <h1>03. 국내 지역난방 구조와 운영 가이드</h1>
 <hr>
-<h2>왜 지금 이 문서를 읽는가</h2>
-<p>HeatGrid를 지역난방 도메인에 맞게 만들려면 먼저 <code>국내에서 실제로 누가 열을 공급하고, 누가 민원을 받고, 누가 현장으로 출동하는지</code>를 알아야 한다. 이 문서는 기술 구조보다도 <code>국내 운영 맥락</code>을 잡아 주는 핵심 문서다.</p>
-<h2>이 문서를 읽고 나면 할 수 있는 것</h2>
-<ul><li>국내 지역난방 공급 구조를 한 장 그림으로 설명할 수 있다.</li><li>사용자 기계실이 왜 HeatGrid의 관찰 지점인지 설명할 수 있다.</li><li>민원, 긴급신고, 정기점검, 협력업체 출동이 어떻게 연결되는지 말할 수 있다.</li></ul>
+<h2 id="sec-1">한 줄 요약</h2>
+<p>국내 지역난방은 <strong>큰 발전소 한 곳에서 데운 물을 동네 여러 건물로 보내주는 구조</strong>다. 열은 사업자가 만들고, 긴 배관을 타고 건물 기계실까지 가고, 거기서 각 집 난방·온수로 바뀐다. 그리고 실제 불편(민원)은 대부분 이 기계실 이후 구간에서 터진다 — 그래서 HeatGrid가 기계실을 주목한다.</p>
+<div class="callout">
+<strong>이 문서에서 자주 나오는 용어</strong>
+<ul><li><strong>집단에너지 사업자</strong>: 열(과 전기)을 한 곳에서 대량으로 만들어 여러 건물에 공급하는 회사. 한국지역난방공사, GS파워 등.</li><li><strong>열수송망</strong>: 데운 물을 사업자에서 건물까지 실어 나르는 긴 배관망. 도시의 "온수 고속도로".</li><li><strong>(사용자) 기계실</strong>: 건물 지하 등에 있는 설비 묶음. 받은 열을 그 건물의 난방과 온수로 바꿔준다.</li><li><strong>민원</strong>: 사용자가 춥다·온수가 약하다 등 불편을 접수한 것.</li><li><strong>긴급신고</strong>: 당장 조치가 필요한 다급한 신고(예: 난방 완전 중단).</li><li><strong>정기점검</strong>: 문제가 없어도 주기적으로 도는 예방 점검.</li><li><strong>협력업체</strong>: 사업자를 대신해 현장 출동·점검·정비를 맡는 외부 회사.</li></ul>
+</div>
 <p><img src="../assets/img/domestic_dh_structure.svg" alt="국내 지역난방 공급 구조도" class="doc-image"></p>
 <hr>
-<h2>국내 지역난방의 큰 흐름</h2>
-<p><code>집단에너지 사업자 -&gt; 열수송망 -&gt; 사용자 기계실 -&gt; 건물 난방/급탕</code></p>
-<ul><li>사업자는 열을 생산하고 공급한다.</li><li>열수송관은 열을 사용자 측까지 이동시킨다.</li><li>사용자 기계실은 열을 건물 내부 난방과 급탕으로 바꿔 전달한다.</li><li>실제 민원과 체감 불편은 대부분 기계실 이후 사용자 구간에서 드러난다.</li></ul>
-<h2>국내 현장에서는 이렇게 움직인다</h2>
-<ol><li>사용자 또는 관리주체가 온도 저하, 급탕 불안정, 소음 같은 문제를 인지한다.</li><li>운영 조직은 민원인지, 긴급신고인지, 정기점검 중 발견된 이슈인지 분류한다.</li><li>원격 데이터나 기존 이력을 먼저 보고 현장 출동 필요성을 판단한다.</li><li>필요 시 협력업체 또는 정비사가 출동해 기계실 설비를 점검한다.</li><li>작업 후 조치 결과와 재발 가능성을 기록한다.</li></ol>
+<h2 id="sec-2">왜 이 문서를 읽는가</h2>
+<p>HeatGrid를 지역난방에 맞게 만들려면, 기술 구조보다 먼저 <strong>"국내에서 실제로 누가 열을 공급하고, 누가 민원을 받고, 누가 현장으로 달려가는지"</strong>를 알아야 한다. 이 문서는 그 운영 맥락을 잡아주는 핵심 문서다.</p>
+<h2 id="sec-3">열은 이렇게 흐른다</h2>
+<p>전체 흐름은 한 줄로 외울 수 있다.</p>
+<p><code>집단에너지 사업자 → 열수송망 → 사용자 기계실 → 건물 난방/온수</code></p>
+<ul><li><strong>사업자</strong>가 열을 생산해서 공급한다.</li><li><strong>열수송관</strong>이 그 열을 사용자 측까지 실어 나른다.</li><li><strong>사용자 기계실</strong>이 받은 열을 건물 내부 난방과 온수로 바꿔 전달한다.</li><li>그리고 실제 민원과 체감 불편은 대부분 <strong>기계실 이후, 사용자 구간</strong>에서 드러난다.</li></ul>
+<p>마지막 줄이 핵심이다. 열을 아무리 잘 보내도, 기계실에서 문제가 생기면 그 건물 사람들이 바로 춥다고 느낀다. 그래서 기계실이 HeatGrid의 관찰 지점이 된다.</p>
+<h2 id="sec-4">문제가 생기면 현장은 이렇게 움직인다</h2>
+<p>실제 국내 현장의 일 처리 순서는 대략 이렇다. 응급실에서 환자가 들어오면 접수 → 분류 → 진단 → 처치 → 기록으로 가는 것과 비슷하다.</p>
+<ol><li>사용자나 관리주체가 <strong>온도 저하, 온수 불안정, 소음</strong> 같은 문제를 느낀다.</li><li>운영 조직이 이게 <strong>민원인지, 긴급신고인지, 정기점검 중 발견된 이슈인지</strong> 분류한다.</li><li>일단 <strong>원격 데이터나 과거 이력</strong>을 먼저 보고, 사람이 직접 나갈 필요가 있는지 판단한다.</li><li>필요하면 <strong>협력업체나 정비사가 출동</strong>해 기계실 설비를 점검한다.</li><li>작업이 끝나면 <strong>조치 결과와 재발 가능성을 기록</strong>한다.</li></ol>
+<h2 id="sec-5">기계실 안에는 무엇이 있나</h2>
+<p>국내 기계실에서 중요한 설비는 다음과 같다. 이름이 낯설어도, 6장·12장에서 하나씩 더 풀어준다.</p>
+<div class="key-answer">
+<div class="mini-card">
+<h4>열교환기</h4>
+<p>사업자가 보낸 뜨거운 물의 열을, 건물 안 물로 옮겨주는 장치. 두 물이 섞이지 않고 열만 전달한다.</p>
+</div>
+<div class="mini-card">
+<h4>순환펌프</h4>
+<p>건물 안 난방수를 계속 돌게 하는 펌프. 심장처럼 물을 밀어준다.</p>
+</div>
+<div class="mini-card">
+<h4>제어밸브·액추에이터</h4>
+<p>물의 양을 조절하는 밸브와, 그 밸브를 실제로 여닫는 모터.</p>
+</div>
+<div class="mini-card">
+<h4>스트레이너·필터</h4>
+<p>물속 찌꺼기를 걸러주는 거름망. 막히면 흐름이 나빠진다.</p>
+</div>
+<div class="mini-card">
+<h4>온도·압력·유량 센서</h4>
+<p>지금 물이 몇 도인지, 얼마나 세게·많이 흐르는지를 재는 계측기.</p>
+</div>
+<div class="mini-card">
+<h4>제어반·로컬 제어기</h4>
+<p>이 설비들을 자동으로 조절하는 컨트롤 박스.</p>
+</div>
+</div>
+<p>국내에서는 이 설비들만 따로 보는 게 아니라, <strong>민원 대응·긴급출동·지원사업·안전 점검</strong>이 함께 운영의 일부로 묶인다는 점이 특징이다.</p>
+<h2 id="sec-6">운영 단계마다 HeatGrid가 끼어들 자리</h2>
+<p>위에서 본 5단계 흐름의 각 지점마다, HeatGrid가 도울 수 있는 일이 다르다.</p>
+<ul><li><strong>이상 감지 단계</strong> — 민원·정기점검·원격 데이터에서 이상이 보일 때 → HeatGrid는 센서 이탈을 탐지하고 민원 위험을 알린다.</li><li><strong>1차 판단 단계</strong> — 출동이 필요한지, 얼마나 급한지, 영향이 큰지 따질 때 → HeatGrid는 우선순위를 추천하고 영향도를 설명한다.</li><li><strong>현장 출동 단계</strong> — 정비사가 기계실을 점검할 때 → HeatGrid는 점검 순서와 준비물을 제안한다.</li><li><strong>조치 수행 단계</strong> — 세척·교체·재설정을 할 때 → HeatGrid는 작업지시서와 체크리스트를 제공한다.</li><li><strong>기록·후속 단계</strong> — 결과를 남기고 재출동 여부를 판단할 때 → HeatGrid는 이력을 쌓고 재계획을 추천한다.</li></ul>
+<h3 id="sec-7">한눈에 정리</h3>
+<div class="table-wrap"><table><thead><tr><th>단계</th><th>현장에서 실제 일어나는 일</th><th>HeatGrid 개입 지점</th></tr></thead><tbody><tr><td>이상 감지</td><td>민원·정기점검·원격 데이터에서 이상 발견</td><td>센서 이탈 탐지, 민원 리스크 알림</td></tr><tr><td>1차 판단</td><td>출동 필요성·긴급성·영향도 판단</td><td>우선순위 추천, 영향도 설명</td></tr><tr><td>현장 출동</td><td>정비사·협력업체가 기계실 점검</td><td>점검 순서·준비물 제안</td></tr><tr><td>조치 수행</td><td>세척·교체·재설정·추가 점검</td><td>작업지시서·체크리스트 제공</td></tr><tr><td>기록·후속</td><td>결과 기록, 재발 확인, 재출동 판단</td><td>이력 축적, 재계획 추천</td></tr></tbody></table></div>
+<h2 id="sec-8">상황으로 이해하기: 공급온도 저하 + 유량 흔들림</h2>
+<div class="callout">
+<strong>같은 증상도 조합을 봐야 한다</strong>
+<p>공급온도만 떨어지면 제어값 설정 문제일 수도 있다. 하지만 유량까지 같이 흔들리면 이야기가 다르다. 현장에서는 열원 탓을 하기 전에 먼저 펌프 이상, 스트레이너 막힘, 제어밸브 반응 불량을 함께 의심한다. 좋은 Agent라면 "온도가 낮다"가 아니라 &lt;strong&gt;"공급온도 저하와 유량 불안정이 동시에 났으니, 순환펌프와 스트레이너부터 점검하라"&lt;/strong&gt;고 말해줘야 한다.</p>
+</div>
+<h2 id="sec-9">HeatGrid에 주는 시사점</h2>
+<ul><li>국내에서는 단순한 고장 분류보다 <strong>"민원이 터지기 전에 무엇을 먼저 볼 것인가"</strong>가 더 중요하다.</li><li>운영자가 직접 정비하지 않는 경우가 많아서, <strong>어떤 협력업체를 어떤 우선순위로 보낼지</strong>가 핵심이다.</li><li>그래서 HeatGrid는 "고장 맞히는 AI"보다 <strong>"운영 판단을 돕는 Agent"</strong>라는 설명이 국내 맥락에 잘 맞는다.</li></ul>
 <hr>
-<h2>국내 운영에서 중요한 설비</h2>
-<ul><li>열교환기</li><li>순환펌프</li><li>제어밸브와 액추에이터</li><li>스트레이너와 필터</li><li>온도, 압력, 유량 센서</li><li>제어반과 로컬 제어기</li></ul>
-<p>국내에서는 설비 그 자체만이 아니라 <code>민원 대응</code>, <code>긴급출동</code>, <code>지원사업</code>, <code>안전 점검</code>이 함께 운영의 일부로 묶인다.</p>
-<h2>운영 흐름과 HeatGrid 개입 지점</h2>
-<div class="table-wrap"><table><thead><tr><th>단계</th><th>국내 운영에서 실제로 일어나는 일</th><th>HeatGrid가 개입할 수 있는 지점</th></tr></thead><tbody><tr><td>이상 감지</td><td>민원, 정기점검, 원격 데이터에서 이상이 보임</td><td>센서 이탈 탐지, 민원 리스크 알림</td></tr><tr><td>1차 판단</td><td>출동 필요성, 긴급성, 영향도를 판단</td><td>우선순위 추천, 영향도 설명</td></tr><tr><td>현장 출동</td><td>정비사 또는 협력업체가 기계실 점검</td><td>점검 순서와 준비물 제안</td></tr><tr><td>조치 수행</td><td>세척, 교체, 재설정, 추가 점검 수행</td><td>작업지시서와 체크리스트 제공</td></tr><tr><td>기록과 후속 관리</td><td>결과 기록, 재발 확인, 재출동 여부 판단</td><td>이력 축적, 재계획 추천</td></tr></tbody></table></div>
-<hr>
-<h2>상황 예시</h2>
-<h3>공급온도 저하 + 유량 흔들림</h3>
-<ul><li>현장에서는 먼저 <code>열원 문제</code>보다 <code>펌프 이상</code>, <code>스트레이너 막힘</code>, <code>제어밸브 반응 불량</code>을 함께 의심한다.</li><li>공급온도만 떨어진다면 제어값 문제일 수도 있지만, 유량까지 흔들리면 순환 계통을 같이 봐야 한다.</li><li>이때 좋은 Agent는 “온도가 낮다”가 아니라 “공급온도 저하와 유량 불안정이 동시 발생했으니 순환펌프와 스트레이너를 먼저 점검하라”고 말해야 한다.</li></ul>
-<h2>HeatGrid 시사점</h2>
-<ul><li>국내에서는 단순한 고장 분류보다 <code>민원 전에 무엇을 먼저 볼 것인가</code>가 더 중요하다.</li><li>운영자는 직접 정비하지 않는 경우가 많아서, 어떤 협력업체를 어떤 우선순위로 보내야 하는지가 중요하다.</li><li>따라서 HeatGrid는 <code>운영 판단을 돕는 Agent</code>라는 설명이 국내 맥락에 잘 맞는다.</li></ul>
-<h2>다음에 읽을 문서</h2>
-<ul><li><a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a></li><li><a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a></li></ul>
+<h2 id="sec-10">더 깊이 보고 싶다면</h2>
+<ul><li><a href="../04/index.html">04_해외_지역난방_구조와_운영_가이드.md</a> — 해외는 같은 일을 어떻게 다르게 하는가</li><li><a href="../12/index.html">12_정비사_업무와_출동_프로세스_가이드.md</a> — 정비사가 실제로 움직이는 순서</li></ul>
         <nav class='doc-nav'><a class='nav-link prev' href='../02/index.html'>이전: PreDist 데이터셋</a><a class='nav-link next' href='../04/index.html'>다음: 해외 구조와 운영</a></nav>
       </article>
     </main>
+    <aside class='page-toc'><div class='toc-inner'><p class='toc-title'>이 페이지 목차</p><a class='toc-h2' href='#sec-1'>한 줄 요약</a><a class='toc-h2' href='#sec-2'>왜 이 문서를 읽는가</a><a class='toc-h2' href='#sec-3'>열은 이렇게 흐른다</a><a class='toc-h2' href='#sec-4'>문제가 생기면 현장은 이렇게 움직인다</a><a class='toc-h2' href='#sec-5'>기계실 안에는 무엇이 있나</a><a class='toc-h2' href='#sec-6'>운영 단계마다 HeatGrid가 끼어들 자리</a><a class='toc-h3' href='#sec-7'>한눈에 정리</a><a class='toc-h2' href='#sec-8'>상황으로 이해하기: 공급온도 저하 + 유량 흔들림</a><a class='toc-h2' href='#sec-9'>HeatGrid에 주는 시사점</a><a class='toc-h2' href='#sec-10'>더 깊이 보고 싶다면</a></div></aside>
   </div>
+  <script>
+    (function(){
+      var fill = document.getElementById('progress-fill');
+      function onScroll(){
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+        fill.style.width = pct + '%';
+      }
+      document.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
 </body>
 </html>
